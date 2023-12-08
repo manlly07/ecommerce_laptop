@@ -45,6 +45,10 @@ h6 {
   font-family: "Nunito", sans-serif;
 }
 
+.ml-auto {
+  margin-left: auto;
+}
+
 .text-truncate-3 {
   -webkit-line-clamp: 3;
   display: -webkit-box;
@@ -208,7 +212,7 @@ h6 {
 }
 
 .w-fit {
-  width: fit-content;
+  width: fit-content !important;
 }
 
 .h-fit {
