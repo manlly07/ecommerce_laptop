@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
-    <title>Security</title>
+    <title>Thông tin khách hàng</title>
     <meta content="" name="description" />
     <meta content="" name="keywords" />
 
@@ -430,6 +430,7 @@
           </ul>
         </li>
 
+
         <li class="nav-item">
           <a class="nav-link collapsed" href="manage-review.php">
             <i class="bi bi-grid"></i>
@@ -443,13 +444,13 @@
 
     <main id="main" class="main">
       <div class="pagetitle">
-        <h1>CUSTOMERS</h1>
+        <h1>Khách hàng</h1>
         <nav>
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-            <li class="breadcrumb-item">Customers</li>
-            <li class="breadcrumb-item">Customer Detail</li>
-            <li class="breadcrumb-item active">Security</li>
+            <li class="breadcrumb-item"><a href="index.php">Trang chủ</a></li>
+            <li class="breadcrumb-item">Khách hàng</li>
+            <li class="breadcrumb-item">Thông tin khách hàng</li>
+            <li class="breadcrumb-item active">Bảo mật</li>
           </ol>
         </nav>
       </div>
@@ -461,14 +462,15 @@
             class="d-flex flex-column flex-sm-row align-items-center justify-content-sm-between mb-4 text-center text-sm-start gap-2"
           >
             <div class="mb-2 mb-sm-0">
-              <h4 class="mb-1 fw-medium fs-5">Customer ID #634759</h4>
-              <p class="mb-0 fs-7 text-secondary">Aug 17, 2020, 5:48 (ET)</p>
+              <h4 class="mb-1 fw-medium fs-5">Mã khách hàng <span class="custommer-id">#634759</span></h4>
+              <p class="mb-0 fs-7 text-secondary created_at">Aug 17, 2020, 5:48 (ET)</p>
             </div>
             <button
               type="button"
-              class="btn btn-outline-danger delete-customer waves-effect"
+              class="btn btn-outline-success delete-customer waves-effect"
+              data-status=""
             >
-              Delete Customer
+              Kích hoạt tài khoản này
             </button>
           </div>
         </div>
@@ -479,17 +481,20 @@
               <div class="card-body">
                 <div class="customer-avatar-section">
                   <div class="d-flex align-items-center flex-column">
-                    <img
-                      class="img-fluid rounded mb-3 mt-4"
-                      src="./assets/img/apple-touch-icon.png"
-                      height="120"
-                      width="120"
-                      alt="User avatar"
-                    />
+                    <div id="customer-avatar">
+                      <img
+                        class="img-fluid rounded mb-3 mt-4"
+                        src="./assets/img/apple-touch-icon.png"
+                        height="120"
+                        width="120"
+                        alt="User avatar"
+                        style="width: 120px; height: 120px"
+                      />
+                    </div>
                     <div class="customer-info text-center mb-4">
-                      <h5 class="mb-1 fw-medium">Lorine Hischke</h5>
+                      <h5 class="mb-1 fw-medium custommer-name">Lorine Hischke</h5>
                       <span class="text-secondary fs-7"
-                        >Customer ID #634759</span
+                        >Mã khách hàng <span class="custommer-id">#634759</span></span
                       >
                     </div>
                   </div>
@@ -502,8 +507,8 @@
                       </div>
                     </div>
                     <div>
-                      <h5 class="mb-0 fw-medium">184</h5>
-                      <span class="fs-7 text-secondary">Orders</span>
+                      <h5 class="mb-0 fw-medium total-order">184</h5>
+                      <span class="fs-7 text-secondary">Đơn hàng</span>
                     </div>
                   </div>
                   <div class="d-flex align-items-center gap-2">
@@ -513,50 +518,44 @@
                       </div>
                     </div>
                     <div>
-                      <h5 class="mb-0 fw-medium">$12,378</h5>
-                      <span class="fs-7 text-secondary">Spent</span>
+                      <h5 class="mb-0 fw-medium total-spent">$12,378</h5>
+                      <span class="fs-7 text-secondary">Đã chi tiêu</span>
                     </div>
                   </div>
                 </div>
 
                 <div class="info-container">
                   <h5 class="border-bottom text-uppercase pb-3 fw-medium fs-5">
-                    DETAILS
+                    Chi tiết 
                   </h5>
                   <ul class="list-unstyled mb-4">
                     <li class="mb-2">
-                      <span class="me-1 fw-medium">Username:</span>
-                      <span class="fw-7 text-secondary">lorine.hischke</span>
+                      <span class="me-1 fw-medium">Họ và tên:</span>
+                      <span class="fw-7 text-secondary custommer-name">lorine.hischke</span>
                     </li>
                     <li class="mb-2">
-                      <span class="me-1 fw-medium">Email:</span>
-                      <span class="fw-7 text-secondary"
-                        >vafgot@vultukir.org</span
+                      <span class="me-1 fw-medium">Trạng thái:</span>
+                      <span class="badge bg-label-success rounded-pill custommer-status"
+                        >Kích hoạt</span
                       >
                     </li>
                     <li class="mb-2">
-                      <span class="me-1 fw-medium">Status:</span>
-                      <span class="badge bg-label-success rounded-pill"
-                        >Active</span
-                      >
-                    </li>
-                    <li class="mb-2">
-                      <span class="me-1 fw-medium">Contact:</span>
-                      <span class="fw-7 text-secondary">(123) 456-7890</span>
+                      <span class="me-1 fw-medium">Số điện thoại:</span>
+                      <span class="fw-7 text-secondary custommer-phone">(123) 456-7890</span>
                     </li>
 
                     <li>
-                      <span class="me-1 fw-medium">Country:</span>
-                      <span class="fw-7 text-secondary">USA</span>
+                      <span class="me-1 fw-medium">Địa chỉ:</span>
+                      <span class="fw-7 text-secondary custommer-address">Việt Nam</span>
                     </li>
                   </ul>
                   <div class="d-flex justify-content-center">
                     <a
                       href="javascript:;"
-                      class="btn btn-primary me-3"
+                      class="btn btn-primary me-3 "
                       data-bs-target="#editUser"
                       data-bs-toggle="modal"
-                      >Edit Details</a
+                      >Chỉnh sửa</a
                     >
                   </div>
                 </div>
@@ -569,20 +568,21 @@
             <ul class="nav nav-pills flex-column flex-md-row mb-4">
               <li class="nav-item">
                 <a
-                  class="nav-link fw-medium "
-                  href="javascript:void(0);"
-                  ><i class="bi bi-person-circle me-1"></i>Overview</a
+                  class="nav-link custommer-navigate-overview"
+                  href="#"
+                  ><i class="bi bi-person-circle me-1"></i
+                  >Tổng quan</a
                 >
               </li>
               <li class="nav-item">
                 <a
-                  class="nav-link fw-medium active"
-                  href="app-ecommerce-customer-details-security.php"
-                  ><i class="bi-lock-fill mdi-20px me-1"></i>Security</a
+                  class="nav-link active"
+                  href="javascript:void(0);"
+                  ><i class="bi-lock-fill mdi-20px me-1"></i
+                  >Bảo mật</a
                 >
               </li>
             </ul>
-            
 
             <div class="card mb-4">
               <h5 class="card-header px-4 fs-5 fw-bold">Change Password</h5>
@@ -648,6 +648,9 @@
                         class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"
                       ></div>
                     </div>
+                    <div class="mb-3 error text-danger">
+
+                    </div>
                     <div>
                       <button
                         type="submit"
@@ -666,14 +669,90 @@
       </section>
     </main>
     
+    <div class="modal fade" id="editUser" tabindex="-1" aria-modal="true" role="dialog" style="display: none; padding-left: 0px;">
+      <div class="modal-dialog modal-lg modal-simple modal-edit-user">
+        <div class="modal-content p-3 p-md-5">
+          <div class="modal-body py-3 py-md-0">
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div class="text-center mb-4">
+              <h3 class="mb-2 fw-bold ">Cập nhật thông tin khách hàng</h3>
+              <p class="pt-1">Cập nhật chi tiết thông tin khách hàng này</p>
+            </div>
+            <form id="editUserForm" class="row g-4 fv-plugins-bootstrap5 fv-plugins-framework">
+              <div class="col-12 col-md-6">
+                <div class="form-floating form-floating-outline">
+                  <input type="text" id="modalEditUserFirstName" name="modalEditUserFirstName" class="form-control" placeholder="John">
+                  <label for="modalEditUserFirstName">Họ</label>
+                </div>
+              <!-- <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div> -->
+            </div>
+              <div class="col-12 col-md-6">
+                <div class="form-floating form-floating-outline">
+                  <input type="text" id="modalEditUserLastName" name="modalEditUserLastName" class="form-control" placeholder="Doe">
+                  <label for="modalEditUserLastName">Tên</label>
+                </div>
+              <!-- <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div> -->
+            </div>
+              <div class="col-12 fv-plugins-icon-container">
+                <div class="form-floating form-floating-outline">
+                  <input type="text" id="modalEditPhone" name="modalEditPhone" class="form-control" placeholder="john.doe.007">
+                  <label for="modalEditPhone">Số điện thoại</label>
+                </div>
+              <!-- <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div> -->
+            </div>
+              <div class="col-12 col-md-6">
+                <div class="form-floating form-floating-outline">
+                  <select id="modalEditUserStatus" name="modalEditUserStatus" class="form-select" aria-label="Default select example">
+                    <option value="1">Kích hoạt</option>
+                    <option value="0">Vô hiệu</option>
+                  </select>
+                  <label for="modalEditUserStatus">Trạng thái tài khoản</label>
+                </div>
+              </div>
+              <div class="col-12 col-md-6">
+                <div class="form-floating form-floating-outline">
+                  <input type="text" id="modalEditAddress" name="modalEditAddress" class="form-control modal-edit-tax-id" placeholder="123 456 7890">
+                  <label for="modalEditAddress">Địa chỉ</label>
+                </div>
+              </div>
+              <div class="col-12 col-md-6">
+                <div class="form-floating form-floating-outline">
+                  <select id="modalEditUserRole" name="modalEditUserRole" class="form-select" aria-label="Default select example">
+                    <option value="user">Khách hàng</option>
+                    <option value="admin">Admin</option>
+                  </select>
+                  <label for="modalEditUserRole">Cho phép</label>
+                </div>
+              </div>
+              <div class="col-12 col-md-6">
+                <div class="form-floating form-floating-outline">
+                  <input class="form-control" type="file" id="formFile" hidden>
+                  <span class="choose-file d-flex p-0 align-items-center justify-content-center border-secondary" style="margin-left: 16px; border: 1px dashed;width: 60px;height: 60px;">
+                    <i class="bi bi-plus"></i>
+                  </span>
+                </div>
+              </div>
+              
+              <div class="col-12 text-center">
+                <button type="submit" class="btn btn-primary me-sm-3 me-1 waves-effect waves-light">Xác nhận</button>
+                <button type="reset" class="btn btn-outline-secondary waves-effect" data-bs-dismiss="modal" aria-label="Close">Hủy</button>
+              </div>
+            <input type="text" hidden id="image_old">
+          </form>
+          </div>
+        </div>
+      </div>
+    </div>
 
     
     <footer id="footer" class="footer">
       <div class="copyright">
-        &copy; Copyright <strong><span>Thao</span></strong
+        &copy; Copyright <strong><span>Thảo</span></strong
         >. All Rights Reserved
       </div>
-      <div class="credits">Designed by <a href="#">Thảo</a></div>
+      <div class="credits">
+        Designed by <a href="#">Thảo</a>
+      </div>
     </footer>
     
 
@@ -689,11 +768,187 @@
     <script src="assets/vendor/chart.js/chart.umd.js"></script>
     <script src="assets/vendor/echarts/echarts.min.js"></script>
     <script src="assets/vendor/quill/quill.min.js"></script>
-    <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
     <script src="assets/vendor/tinymce/tinymce.min.js"></script>
     <script src="assets/vendor/php-email-form/validate.js"></script>
-
+    <script src="assets/vendor/jquery/jquery-3.7.1.js"></script>
+    <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
     
     <script src="assets/js/main.js"></script>
+    <script>
+        var urlParams = new URLSearchParams(window.location.search);
+        var custommerId = urlParams.get('id');
+        $('.custommer-navigate-overview').attr('href', `./customer-detail.php?id=${custommerId}`)
+
+        const showCustomerById = (id) => {
+          $.ajax({
+            url: 'http://localhost:3000/server/user.php',
+            type: 'POST',
+            data: `id=${id}&action=getbyid`,
+            success: (response) => {
+              const custommer = JSON.parse(response)
+              console.log(custommer);
+              $('.custommer-id').each(function() {
+                console.log($(this));
+                console.log(custommer.id);
+                $(this).html('#'+custommer.id)
+              });
+              $('.created_at').html(custommer.created_at);
+              
+              $('.custommer-name').each(function() {
+                $(this).html(custommer.first_name + ' ' + custommer.last_name)                
+              })
+              $('.total-order').html(custommer.total_orders)
+              $('.total-spent').html(custommer.total_amount_paid ? custommer.total_amount_paid : 0)
+
+              if (custommer.is_active == 0) {
+                $('.custommer-status').removeClass('bg-label-success').addClass('bg-label-danger').html('Vô hiệu hóa')
+
+                $('.delete-customer').removeClass('btn-outline-success').addClass('btn-outline-danger').html('Vô hiệu hóa tài khoản này')
+              }
+              $('.custommer-phone').html(custommer.phone)
+              $('.custommer-address').html(custommer.address)
+
+              $('#modalEditUserFirstName').val(custommer.first_name)
+              $('#modalEditUserLastName').val(custommer.last_name)
+              $('#modalEditPhone').val(custommer.phone)
+              $('#modalEditUserStatus').val(custommer.is_active)
+              $('#modalEditAddress').val(custommer.address)
+              $('#modalEditUserRole').val(custommer.role)
+              $('#image_old').val(custommer.image)
+              $('.delete-customer').data("status", custommer.is_active)
+              if (custommer.image) {
+                $("#customer-avatar img").attr('src', `./server/${custommer.image}`)
+
+                const image = $('<img>').attr('src', `./server/${custommer.image}`).css('width', '100%').css('height', '100%');
+                $('#span').innerHTML = '';
+                $('.choose-file').empty().append(image);
+              }else {
+                const span = `
+                    <span
+                      class="d-flex align-items-center justify-content-center fw-bold fs-3 img-fluid rounded mb-3 mt-4"
+                      style="width: 120px; height: 120px; background: #eee;"
+                    >
+                      ${custommer.first_name.charAt(0)}
+                      ${custommer.last_name.charAt(0)}
+                    </span>
+                `
+                $("#customer-avatar").empty().append(span)
+              }
+            }
+          })
+        }
+
+        $('.choose-file').click(function() {
+          $('#formFile').click()
+        })
+
+        $('#formFile').change(function() {
+          const file = this.files[0];
+          if (file) {
+            const reader = new FileReader();
+
+            reader.addEventListener('load', function() {
+
+              const image = $('<img>').attr('src', reader.result).css('width', '100%').css('height', '100%');
+              $('.choose-file').empty().append(image);
+
+            });
+            reader.readAsDataURL(file);
+          }else {
+            $('.choose-file').html('<i class="bi bi-plus"></i>');
+          }
+        })
+
+        $('#editUserForm').on('submit', function(e) {
+          e.preventDefault()
+          var formData = new FormData();
+          var firstName = $('#modalEditUserFirstName').val();
+          var lastName = $('#modalEditUserLastName').val();
+          var phone = $('#modalEditPhone').val();
+          var status = $('#modalEditUserStatus').val();
+          var role = $('#modalEditUserRole').val();
+          var address = $('#modalEditAddress').val();
+          var image_old = $('#image_old').val()
+          formData.append('firstname', firstName);
+          formData.append('lastname', lastName);
+          formData.append('phone', phone);
+          formData.append('status', status);
+          formData.append('role', role);
+          formData.append('address', address);
+          var imageInput = $('#formFile');
+          if (imageInput.get(0).files.length > 0) {
+            formData.append('image', imageInput.prop('files')[0]);
+          }
+          formData.append('image_old', image_old)
+          formData.append('verify', true);
+          formData.append('id', custommerId)
+          formData.append('action', 'update')
+          $.ajax({
+            url: "http://localhost:3000/server/user.php",
+            type: "POST",
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function(response) {
+              console.log(response);
+              const {status, message} = JSON.parse(response)
+              if(status) {
+                window.location.reload();
+              }else {
+                console.log(message);
+              }
+            }
+          });
+        })
+
+        $('#formChangePassword').on('submit', function(e) {
+          var newPassword = $('#newPassword').val();
+          var confirmPassword = $('#confirmPassword').val();
+          var formData = new FormData();
+          formData.append('newPassword', newPassword)
+          formData.append('confirmPassword', confirmPassword)
+          formData.append('id', custommerId)
+          formData.append('action', 'changePassword')
+          $.ajax({
+            url: "http://localhost:3000/server/user.php",
+            type: "POST",
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function(response) {
+              console.log(response);
+              const {status, message} = JSON.parse(response)
+              if(status) {
+                window.location.reload();
+              }else {
+                $('.error').html(message)
+                console.log(message);
+              }
+            }
+          });
+        })
+
+        $('.delete-customer').click(function() {
+          let status = $(this).data('status');
+          status = 1 ? 0 : 1;
+          console.log(status);
+          $.ajax({
+            url: "http://localhost:3000/server/user.php",
+            type: "POST",
+            data: `action=status&data=${status}&id=${custommerId}`,
+            success: function(response) {
+              console.log(response);
+              const {status, message} = JSON.parse(response)
+              if(status) {
+                window.location.reload();
+              }else {
+                console.log(message);
+              }
+            }
+          });
+        })
+
+        showCustomerById(custommerId)
+    </script>
   </body>
 </html>

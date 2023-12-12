@@ -688,7 +688,7 @@
                 data: null,
                 render: function(data, type, row) {
                   return `
-                    <div class="text-center">${row.total_sales}</div>
+                    <div class="text-center">${row.total_sales ? row.total_sales : 0}</div>
                   `
                 }
               },

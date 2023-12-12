@@ -467,9 +467,10 @@
             </div>
             <button
               type="button"
-              class="btn btn-outline-danger delete-customer waves-effect"
+              class="btn btn-outline-success delete-customer waves-effect"
+              data-status=""
             >
-              Vô hiệu hóa tài khoản này
+              Kích hoạt tài khoản này
             </button>
           </div>
         </div>
@@ -480,13 +481,16 @@
               <div class="card-body">
                 <div class="customer-avatar-section">
                   <div class="d-flex align-items-center flex-column">
-                    <img
-                      class="img-fluid rounded mb-3 mt-4"
-                      src="./assets/img/apple-touch-icon.png"
-                      height="120"
-                      width="120"
-                      alt="User avatar"
-                    />
+                    <div id="customer-avatar">
+                      <img
+                        class="img-fluid rounded mb-3 mt-4"
+                        src="./assets/img/apple-touch-icon.png"
+                        height="120"
+                        width="120"
+                        alt="User avatar"
+                        style="width: 120px; height: 120px"
+                      />
+                    </div>
                     <div class="customer-info text-center mb-4">
                       <h5 class="mb-1 fw-medium custommer-name">Lorine Hischke</h5>
                       <span class="text-secondary fs-7"
@@ -532,7 +536,7 @@
                     <li class="mb-2">
                       <span class="me-1 fw-medium">Trạng thái:</span>
                       <span class="badge bg-label-success rounded-pill custommer-status"
-                        >Active</span
+                        >Kích hoạt</span
                       >
                     </li>
                     <li class="mb-2">
@@ -573,7 +577,7 @@
               <li class="nav-item">
                 <a
                   class="nav-link custommer-navigate-security"
-                  href="customer-detail-security.php"
+                  href="#"
                   ><i class="bi-lock-fill mdi-20px me-1"></i
                   >Bảo mật</a
                 >
@@ -911,7 +915,7 @@
                 <div class="form-floating form-floating-outline">
                   <select id="modalEditUserStatus" name="modalEditUserStatus" class="form-select" aria-label="Default select example">
                     <option value="1">Kích hoạt</option>
-                    <option value="2">Vô hiệu</option>
+                    <option value="0">Vô hiệu</option>
                   </select>
                   <label for="modalEditUserStatus">Trạng thái tài khoản</label>
                 </div>
@@ -925,17 +929,27 @@
               <div class="col-12 col-md-6">
                 <div class="form-floating form-floating-outline">
                   <select id="modalEditUserRole" name="modalEditUserRole" class="form-select" aria-label="Default select example">
-                    <option value="1">Khách hàng</option>
-                    <option value="2">Admin</option>
+                    <option value="user">Khách hàng</option>
+                    <option value="admin">Admin</option>
                   </select>
                   <label for="modalEditUserRole">Cho phép</label>
                 </div>
               </div>
+              <div class="col-12 col-md-6">
+                <div class="form-floating form-floating-outline">
+                  <input class="form-control" type="file" id="formFile" hidden>
+                  <span class="choose-file d-flex p-0 align-items-center justify-content-center border-secondary" style="margin-left: 16px; border: 1px dashed;width: 60px;height: 60px;">
+                    <i class="bi bi-plus"></i>
+                  </span>
+                </div>
+              </div>
+              
               <div class="col-12 text-center">
                 <button type="submit" class="btn btn-primary me-sm-3 me-1 waves-effect waves-light">Xác nhận</button>
                 <button type="reset" class="btn btn-outline-secondary waves-effect" data-bs-dismiss="modal" aria-label="Close">Hủy</button>
               </div>
-            <input type="hidden"></form>
+            <input type="text" hidden id="image_old">
+          </form>
           </div>
         </div>
       </div>
@@ -975,6 +989,7 @@
         var urlParams = new URLSearchParams(window.location.search);
         var custommerId = urlParams.get('id');
         
+        $('.custommer-navigate-security').attr('href', `./customer-detail-security.php?id=${custommerId}`)
         const showCustomerById = (id) => {
           $.ajax({
             url: 'http://localhost:3000/server/user.php',
@@ -989,16 +1004,134 @@
                 $(this).html('#'+custommer.id)
               });
               $('.created_at').html(custommer.created_at);
+              
               $('.custommer-name').each(function() {
                 $(this).html(custommer.first_name + ' ' + custommer.last_name)                
               })
               $('.total-order').html(custommer.total_orders)
               $('.total-spent').html(custommer.total_amount_paid ? custommer.total_amount_paid : 0)
+
+              if (custommer.is_active == 0) {
+                $('.custommer-status').removeClass('bg-label-success').addClass('bg-label-danger').html('Vô hiệu hóa')
+
+                $('.delete-customer').removeClass('btn-outline-success').addClass('btn-outline-danger').html('Vô hiệu hóa tài khoản này')
+              }
               $('.custommer-phone').html(custommer.phone)
               $('.custommer-address').html(custommer.address)
+
+              $('#modalEditUserFirstName').val(custommer.first_name)
+              $('#modalEditUserLastName').val(custommer.last_name)
+              $('#modalEditPhone').val(custommer.phone)
+              $('#modalEditUserStatus').val(custommer.is_active)
+              $('#modalEditAddress').val(custommer.address)
+              $('#modalEditUserRole').val(custommer.role)
+              $('#image_old').val(custommer.image)
+              $('.delete-customer').data("status", custommer.is_active)
+              if (custommer.image) {
+                $("#customer-avatar img").attr('src', `./server/${custommer.image}`)
+
+                const image = $('<img>').attr('src', `./server/${custommer.image}`).css('width', '100%').css('height', '100%');
+                $('#span').innerHTML = '';
+                $('.choose-file').empty().append(image);
+              }else {
+                const span = `
+                    <span
+                      class="d-flex align-items-center justify-content-center fw-bold fs-3 img-fluid rounded mb-3 mt-4"
+                      style="width: 120px; height: 120px; background: #eee;"
+                    >
+                      ${custommer.first_name.charAt(0)}
+                      ${custommer.last_name.charAt(0)}
+                    </span>
+                `
+                $("#customer-avatar").empty().append(span)
+              }
             }
           })
         }
+
+        $('.choose-file').click(function() {
+          $('#formFile').click()
+        })
+
+        $('#formFile').change(function() {
+          const file = this.files[0];
+          if (file) {
+            const reader = new FileReader();
+
+            reader.addEventListener('load', function() {
+
+              const image = $('<img>').attr('src', reader.result).css('width', '100%').css('height', '100%');
+              $('.choose-file').empty().append(image);
+
+            });
+            reader.readAsDataURL(file);
+          }else {
+            $('.choose-file').html('<i class="bi bi-plus"></i>');
+          }
+        })
+
+        $('#editUserForm').on('submit', function(e) {
+          e.preventDefault()
+          var formData = new FormData();
+          var firstName = $('#modalEditUserFirstName').val();
+          var lastName = $('#modalEditUserLastName').val();
+          var phone = $('#modalEditPhone').val();
+          var status = $('#modalEditUserStatus').val();
+          var role = $('#modalEditUserRole').val();
+          var address = $('#modalEditAddress').val();
+          var image_old = $('#image_old').val()
+          formData.append('firstname', firstName);
+          formData.append('lastname', lastName);
+          formData.append('phone', phone);
+          formData.append('status', status);
+          formData.append('role', role);
+          formData.append('address', address);
+          var imageInput = $('#formFile');
+          if (imageInput.get(0).files.length > 0) {
+            formData.append('image', imageInput.prop('files')[0]);
+          }
+          formData.append('image_old', image_old)
+          formData.append('verify', true);
+          formData.append('id', custommerId)
+          formData.append('action', 'update')
+          $.ajax({
+            url: "http://localhost:3000/server/user.php",
+            type: "POST",
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function(response) {
+              console.log(response);
+              const {status, message} = JSON.parse(response)
+              if(status) {
+                window.location.reload();
+              }else {
+                console.log(message);
+              }
+            }
+          });
+        })
+
+        $('.delete-customer').click(function() {
+          let status = $(this).data('status');
+          status = 1 ? 0 : 1;
+          console.log(status);
+          $.ajax({
+            url: "http://localhost:3000/server/user.php",
+            type: "POST",
+            data: `action=status&data=${status}&id=${custommerId}`,
+            success: function(response) {
+              console.log(response);
+              const {status, message} = JSON.parse(response)
+              if(status) {
+                window.location.reload();
+              }else {
+                console.log(message);
+              }
+            }
+          });
+        })
+
         showCustomerById(custommerId)
     </script>
   </body>

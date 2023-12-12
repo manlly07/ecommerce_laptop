@@ -67,8 +67,6 @@
                         order_details od ON p.id = od.product_id
                     LEFT JOIN
                         orders o ON od.order_id = o.id
-                    WHERE
-                        o.status IN ('shipped', 'delivered')
                     GROUP BY
                         b.id, b.name, b.image, b.description, b.is_active";
             $branches = executeQuery($connection, $sql, [], true);

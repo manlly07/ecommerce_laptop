@@ -96,26 +96,52 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Lấy sản phẩm theo số tổng sản phẩm, số tiền bán được và trạng thái của branch đó
     if ($_POST['action'] == 'readandfilter') {
-        $sql = "SELECT
-                    p.id,
-                    (
-                    SELECT link
-                    FROM images
-                    WHERE product_id = p.id
-                    LIMIT 1
-                    ) AS image,
-                    p.name,
-                    p.description,
-                    c.name AS category_name,
-                    b.name AS branch_name,
-                    p.quantity,
-                    p.price,
-                    p.created_at,
-                    p.is_active
-                FROM
-                    products p
-                    LEFT JOIN categories c ON p.category_id = c.id
-                    LEFT JOIN branches b ON p.branches_id = b.id";
+        // $sql = "SELECT
+        //             p.id,
+        //             (
+        //             SELECT link
+        //             FROM images
+        //             WHERE product_id = p.id
+        //             LIMIT 1
+        //             ) AS image,
+        //             p.name,
+        //             p.description,
+        //             c.name AS category_name,
+        //             b.name AS branch_name,
+        //             p.quantity,
+        //             p.price,
+        //             p.created_at,
+        //             p.is_active
+        //         FROM
+        //             products p
+        //             LEFT JOIN categories c ON p.category_id = c.id
+        //             LEFT JOIN branches b ON p.branches_id = b.id";
+        $sql = "
+        SELECT
+    p.id,
+    (
+        SELECT link
+        FROM images
+        WHERE product_id = p.id
+        LIMIT 1
+    ) AS image,
+    p.name,
+    p.description,
+    c.name AS category_name,
+    b.name AS branch_name,
+    p.quantity,
+    p.price,
+    p.created_at,
+    p.is_active,
+    AVG(r.rate) AS average_rate,
+    COUNT(r.id) AS total_reviews
+FROM
+    products p
+    LEFT JOIN categories c ON p.category_id = c.id
+    LEFT JOIN branches b ON p.branches_id = b.id
+    LEFT JOIN reviews r ON p.id = r.product_id
+GROUP BY
+    p.id, p.name, p.description, c.name, b.name, p.quantity, p.price, p.created_at, p.is_active";
         $branches = executeQuery($connection, $sql, [], true);
         echo json_encode($branches);
     }

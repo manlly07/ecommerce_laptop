@@ -103,17 +103,38 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Cập nhật thông tin user
     if ($_POST['action'] == 'update') {
-        $id = $_POST['id'];
-        $first_name = $_POST['first_name'];
-        $last_name = $_POST['last_name'];
+        $first_name = $_POST['firstname'];
+        $last_name = $_POST['lastname'];
         $phone = $_POST['phone'];
-        $password = $_POST['password'];
-        $role = $_POST['role'];
-        $is_active = $_POST['is_active'];
+        $is_active = $_POST['status'] ?? 0;
+        $role = $_POST['role'] ?? 'user';
+        $address = $_POST['address'];
+        $verify = $_POST['verify'] ?? 0;
+        $imageOld = $_POST['image_old'] ?? '';
+        $id = $_POST['id'];
+        $image = '';
 
-        $sql = "UPDATE users SET first_name = ?, last_name = ?, phone = ?, password = ?, role = ?, is_active = ? WHERE id = ?";
-        $parameters = [$first_name, $last_name, $phone, $password, $role, $is_active, $id];
+        if(isset($_FILES['image'])) {
+            $image = $_FILES['image'];
+            // Tạo tên mới cho file ảnh
+            $new_image_name = generateImageName($image);
+            // Thư mục lưu trữ file ảnh
+            $upload_directory = 'uploads/';
+            // Đường dẫn đầy đủ của file ảnh
+            $upload_path = $upload_directory . $new_image_name;
 
+            if (file_exists($imageOld)) {
+                unlink($imageOld);
+            }
+            //Di chuyển file ảnh vào thư mục lưu trữ
+            move_uploaded_file($image['tmp_name'], $upload_path);
+
+            $image = $upload_path;
+        }
+
+        $sql = "UPDATE users SET first_name = ?, last_name = ?, phone = ?, image = ?, phone_verify = ?, address = ?, role = ?, is_active = ?, updated_at = now() WHERE id = ?";
+
+        $parameters = [$first_name, $last_name, $phone, $image, $verify, $address, $role, $is_active, $id];
         $result = executeQuery($connection, $sql, $parameters);
         if ($result) {
             echo json_encode([
@@ -134,6 +155,57 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $sql = "DELETE FROM users WHERE id = ?";
         $parameters = [$id];
+
+        $result = executeQuery($connection, $sql, $parameters);
+        if ($result) {
+            echo json_encode([
+                'status' => true,
+                'message' => 'Successfully'
+            ]);
+        } else {
+            echo json_encode([
+                'status' => false,
+                'message' => 'Something went wrong'
+            ]);
+        }
+    }
+
+    // kích hoạt hoặc vô hiệu hóa khách hàng
+    if ($_POST['action'] == 'status') {
+        $data = $_POST['data'];
+        $id = $_POST['id'];
+        $sql = "UPDATE users SET is_active = ? WHERE id = ?";
+        $parameters = [$data, $id];
+
+        $result = executeQuery($connection, $sql, $parameters);
+        if ($result) {
+            echo json_encode([
+                'status' => true,
+                'message' => 'Successfully'
+            ]);
+        } else {
+            echo json_encode([
+                'status' => false,
+                'message' => 'Something went wrong'
+            ]);
+        }
+    }
+
+    // thay đổi mật khẩu
+    if ($_POST['action'] == 'changePassword') {
+        $id = $_POST['id'];
+        $newPassword = $_POST['newPassword'];
+        $confirmPassword = $_POST['confirmPassword'];
+
+        if ($newPassword !== $confirmPassword) {
+            echo json_encode([
+                'status' => false,
+                'message' => 'Password and Confirm Password do not match'
+            ]);
+            exit;
+        }
+        $sql = "UPDATE users SET password = ? WHERE id = ?";
+        $parameters = [$password, $id];
 
         $result = executeQuery($connection, $sql, $parameters);
         if ($result) {

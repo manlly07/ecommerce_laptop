@@ -501,7 +501,7 @@
                         </div>
                         <div class="d-flex flex-column">
                           <span class="text-nowrap text-heading fw-medium">${row.name}</span>
-                          <small class="text-truncate d-none d-sm-block">${row.description}</small>
+                          <small style="max-width: 370px;overflow-x: hidden;"  class="text-truncate d-none d-sm-block">${row.description}</small>
                         </div>
                       </div>
                   `
