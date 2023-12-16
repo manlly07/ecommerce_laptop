@@ -12,8 +12,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $confirmPassword = $_POST['confirmPassword'];
         $role = $_POST['role'];
         $address = $_POST['address'];
-        $verify = $_POST['verify'] ?? false;
-        $is_active = $_POST['is_active'] ?? false;
+        $verify = $_POST['verify'] ?? 0;
+        $is_active = $_POST['is_active'] ?? 0;
         $image = '';
         // Kiểm tra mật khẩu và xác nhận mật khẩu
         if ($password !== $confirmPassword) {
@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $image = $upload_path;
         }
 
-        $sql = "INSERT INTO users (first_name, last_name, phone, image, phone_verify, password, $address,role, is_active) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO users (first_name, last_name, phone, image, phone_verify, password, address,role, is_active) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $parameters = [$first_name, $last_name, $phone, $image, $verify, $password, $address, $role, $is_active];
         $result = executeQuery($connection, $sql, $parameters);
         if ($result) {
@@ -70,6 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     u.image,
                     u.phone,
                     u.role,
+                    u.is_active,
                     COUNT(o.id) AS total_orders,
                     SUM(o.total) AS total_amount_paid
                 FROM
@@ -77,7 +78,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 LEFT JOIN
                     orders o ON u.id = o.user_id
                 GROUP BY
-                    u.id, u.first_name, u.last_name, u.phone, u.image, u.role";
+                    u.id, u.first_name, u.last_name, u.phone, u.image, u.role, u.is_active";
         $users = executeQuery($connection, $sql, [], true);
         echo json_encode($users);
     }
@@ -94,7 +95,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 LEFT JOIN
                     orders o ON u.id = o.user_id
                 WHERE
-                    u.id = 8
+                    u.id = $id
                 GROUP BY
                     u.id";
         $user = executeQuery($connection, $sql, [], true);

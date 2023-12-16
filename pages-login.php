@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Pages / Login - NiceAdmin Bootstrap Template</title>
+  <title>LOGIN</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -48,38 +48,32 @@
                 <div class="card-body">
 
                   <div class="pt-4 pb-2">
-                    <h5 class="card-title text-center pb-0 fs-4">Login to Your Account</h5>
-                    <p class="text-center small">Enter your username & password to login</p>
+                    <h5 class="card-title text-center pb-0 fs-4">Đăng nhập tài khoản của bạn</h5>
+                    <p class="text-center small">Đăng nhập bằng số điện thoại và mật khẩu</p>
                   </div>
 
-                  <form class="row g-3 needs-validation" novalidate>
+                  <form method="post" class="row g-3 needs-validation" id="formLogin" novalidate>
 
                     <div class="col-12">
-                      <label for="yourUsername" class="form-label">Username</label>
+                      <label for="yourPhone" class="form-label">Số điện thoại</label>
                       <div class="input-group has-validation">
                         <span class="input-group-text" id="inputGroupPrepend">@</span>
-                        <input type="text" name="username" class="form-control" id="yourUsername" required>
-                        <div class="invalid-feedback">Please enter your username.</div>
+                        <input type="text" name="phone" class="form-control" id="yourPhone" required>
+                        <div class="invalid-feedback">Nhập đúng định dạng số điện thoại.</div>
                       </div>
                     </div>
 
                     <div class="col-12">
                       <label for="yourPassword" class="form-label">Password</label>
                       <input type="password" name="password" class="form-control" id="yourPassword" required>
-                      <div class="invalid-feedback">Please enter your password!</div>
+                      <div class="invalid-feedback">Nhập mật khẩu của bạn</div>
                     </div>
 
                     <div class="col-12">
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="remember" value="true" id="rememberMe">
-                        <label class="form-check-label" for="rememberMe">Remember me</label>
-                      </div>
+                      <button class="btn btn-primary w-100" type="submit">Đăng nhập</button>
                     </div>
                     <div class="col-12">
-                      <button class="btn btn-primary w-100" type="submit">Login</button>
-                    </div>
-                    <div class="col-12">
-                      <p class="small mb-0">Don't have account? <a href="pages-register.php">Create an account</a></p>
+                      <p class="small mb-0">Bạn chưa có tài khoản? <a href="pages-register.php">Tạo một tài khoản</a></p>
                     </div>
                   </form>
 
@@ -107,13 +101,36 @@
   <script src="assets/vendor/chart.js/chart.umd.js"></script>
   <script src="assets/vendor/echarts/echarts.min.js"></script>
   <script src="assets/vendor/quill/quill.min.js"></script>
-  <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
   <script src="assets/vendor/tinymce/tinymce.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
-
+  <script src="assets/vendor/jquery/jquery-3.7.1.js"></script>
+  <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
   
   <script src="assets/js/main.js"></script>
-
+  <script>
+    $('#formLogin').on('submit', function(e) {
+      e.preventDefault();
+      var form = $(this).serialize()
+      $.ajax({
+        url: 'http://localhost:3000/server/auth.php',
+        type: 'POST',
+        data: `${form}&action=login`,
+        success: (response) => {
+          console.log(JSON.parse(response));
+          let data = JSON.parse(response)
+          if (data.status) {
+            if(!data.phone) {
+              window.location.href = `./verify-phone.php?id=${data.id}`
+            }else {
+              window.location.href = `./filter.php`
+            }
+          }else {
+            alert(data.message)
+          }
+        }
+      })
+    })
+  </script>
 </body>
 
 </html>

@@ -97,6 +97,8 @@ CREATE TABLE `reviews` (
   `product_id` int NOT NULL,
   `user_id` int NOT NULL,
   `rate` int,
+  `image` varchar(255) DEFAULT "",
+  `created_at` DATE DEFAULT CURRENT_TIMESTAMP
   `content` varchar(255) DEFAULT ""
 );
 

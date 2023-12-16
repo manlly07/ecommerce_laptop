@@ -62,149 +62,17 @@
 
           <li class="nav-item dropdown">
             <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-              <i class="bi bi-bell"></i>
-              <span class="badge bg-primary badge-number">4</span> </a>
+              <i class="bi bi-cart"></i>
+              <span class="badge bg-primary badge-number total-cart">4</span> </a>
 
             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
               <li class="dropdown-header">
-                You have 4 new notifications
-                <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
-              </li>
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-
-              <li class="notification-item">
-                <i class="bi bi-exclamation-circle text-warning"></i>
-                <div>
-                  <h4>Lorem Ipsum</h4>
-                  <p>Quae dolorem earum veritatis oditseno</p>
-                  <p>30 min. ago</p>
-                </div>
-              </li>
-
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-
-              <li class="notification-item">
-                <i class="bi bi-x-circle text-danger"></i>
-                <div>
-                  <h4>Atque rerum nesciunt</h4>
-                  <p>Quae dolorem earum veritatis oditseno</p>
-                  <p>1 hr. ago</p>
-                </div>
-              </li>
-
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-
-              <li class="notification-item">
-                <i class="bi bi-check-circle text-success"></i>
-                <div>
-                  <h4>Sit rerum fuga</h4>
-                  <p>Quae dolorem earum veritatis oditseno</p>
-                  <p>2 hrs. ago</p>
-                </div>
-              </li>
-
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-
-              <li class="notification-item">
-                <i class="bi bi-info-circle text-primary"></i>
-                <div>
-                  <h4>Dicta reprehenderit</h4>
-                  <p>Quae dolorem earum veritatis oditseno</p>
-                  <p>4 hrs. ago</p>
-                </div>
-              </li>
-
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-              <li class="dropdown-footer">
-                <a href="#">Show all notifications</a>
+                Bạn có <span class="total-cart">4</span> sản phẩm trong giỏ hàng
+                <a href="./orders.php"><span class="badge rounded-pill bg-primary p-2 ms-2">xem tất cả</span></a>
               </li>
             </ul>
 
           </li>
-
-
-          <li class="nav-item dropdown">
-            <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-              <i class="bi bi-chat-left-text"></i>
-              <span class="badge bg-success badge-number">3</span> </a>
-
-            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
-              <li class="dropdown-header">
-                You have 3 new messages
-                <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
-              </li>
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-
-              <li class="message-item">
-                <a href="#">
-                  <img src="assets/img/messages-1.jpg" alt="" class="rounded-circle" />
-                  <div>
-                    <h4>Maria Hudson</h4>
-                    <p>
-                      Velit asperiores et ducimus soluta repudiandae labore
-                      officia est ut...
-                    </p>
-                    <p>4 hrs. ago</p>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-
-              <li class="message-item">
-                <a href="#">
-                  <img src="assets/img/messages-2.jpg" alt="" class="rounded-circle" />
-                  <div>
-                    <h4>Anna Nelson</h4>
-                    <p>
-                      Velit asperiores et ducimus soluta repudiandae labore
-                      officia est ut...
-                    </p>
-                    <p>6 hrs. ago</p>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-
-              <li class="message-item">
-                <a href="#">
-                  <img src="assets/img/messages-3.jpg" alt="" class="rounded-circle" />
-                  <div>
-                    <h4>David Muldon</h4>
-                    <p>
-                      Velit asperiores et ducimus soluta repudiandae labore
-                      officia est ut...
-                    </p>
-                    <p>8 hrs. ago</p>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-
-              <li class="dropdown-footer">
-                <a href="#">Show all messages</a>
-              </li>
-            </ul>
-
-          </li>
-
 
           <li class="nav-item dropdown pe-3">
             <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
@@ -272,12 +140,12 @@
           <div class="card-body row">
             <div class="col-lg-4 p-4">
               <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-indicators">
+                <!-- <div class="carousel-indicators">
                   <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                   <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
                   <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                </div>
-                <div class="carousel-inner" style="height: 100% !important;">
+                </div> -->
+                <div class="carousel-inner" id="slideshow" style="height: 100% !important;">
                   <div class="carousel-item active">
                     <img src="https://thegioiso365.vn/wp-content/uploads/2023/10/enovo-Ideapad-Gaming-3-01-510x510.jpg" class="d-block w-100" alt="...">
                   </div>
@@ -299,29 +167,26 @@
               </div>
             </div>
             <div class="col-lg-8 p-4">
-              <h5>Bộ Máy Tính AKA1SY H410 i5 10400 Ram 8Gb Ssd 240Gb VGA GTX 1650 kèm màn 22-24 chơi mượt game Liên minh, fifa 4, csgo
+              <h5 class="product-name">Bộ Máy Tính AKA1SY H410 i5 10400 Ram 8Gb Ssd 240Gb VGA GTX 1650 kèm màn 22-24 chơi mượt game Liên minh, fifa 4, csgo
               </h5>
               <div class="d-flex gap-2">
-                <a href="#" style="border-right: 1px solid black; padding-right: 12px;">45 Đánh giá</a>
-                <a href="#">45 Đã bán</a>
+                <a href="#" class="total-review" style="border-right: 1px solid black; padding-right: 12px;">45 Đánh giá</a>
+                <a href="#" class="total-sold">45 Đã bán</a>
               </div>
               <div class="mt-4 fw-bold fs-2 text-danger">
+                <span class="product-price">8.900.000</span>
                 <sup>đ</sup>
-                <span>8.900.000</span>
-                -
-                <sup>đ</sup>
-                <span>8.900.000</span>
               </div>
               <div class="mt-4 w-fit d-flex gap-2 align-items-center">
                 <div style="width: 64px;">
-                  <input type="number" class="form-control" id="quantity" value="1" placeholder="Số lượng">
+                  <input type="number" class="form-control" min="1" id="quantity" value="1" placeholder="Số lượng">
                 </div>
-                <span class="text-nowrap">2000 sản phẩm trong kho</span>
+                <span class="text-nowrap"><span class="in-stock">2000</span> sản phẩm trong kho</span>
               </div>
               <div class="mt-4">
                 <div class="d-flex align-items-center gap-4">
-                  <button type="button" class="btn btn-lg btn-primary border-0">Thêm vào giỏ hàng</button>
-                  <button type="button" class="btn btn-lg btn-danger">Mua ngay</button>
+                  <button type="button" class="btn btn-lg btn-primary border-0 btn-add-to-cart">Thêm vào giỏ hàng</button>
+                  <button type="button" class="btn btn-lg btn-danger btn-buy-now">Mua ngay</button>
                 </div>
               </div>
               <div class="mt-4">
@@ -360,10 +225,12 @@
             </ul>
             <div class="tab-content w-fit mt-4 mb-4">
               <div class="tab-pane fade show active about-product col-6" id="about-product">
-                  <h4 class="productname fw-bold">MSI MPG Trident 3</h4>
-                  <p class="fs-6 my-4">
-                      MSI MPG Trident 3 10SC-005AU Intel i7 10700F, 2060 SUPER, 16GB RAM, 512GB SSD, 2TB HDD, Windows 10 Home, Gaming Keyboard and Mouse 3 Years Warranty Gaming Desktop
-                  </p>
+                  <h4 class="product-name fw-bold">MSI MPG Trident 3</h4>
+                  <div class="product-description">
+                    <p class="fs-6 my-4">
+                        MSI MPG Trident 3 10SC-005AU Intel i7 10700F, 2060 SUPER, 16GB RAM, 512GB SSD, 2TB HDD, Windows 10 Home, Gaming Keyboard and Mouse 3 Years Warranty Gaming Desktop
+                    </p>
+                  </div>
                   <div>
                       <span class="fw-bold">Nếu bạn có câu hỏi? </span>
                       <a href="#">Liên hệ với chúng tôi</a>
@@ -374,52 +241,49 @@
                     <tbody>
                     <tr>
                     <td scope="row"><strong>CPU</strong></td>
-                    <td scope="row">Ryzen 5-7535HS (3.30GHz up to 4.50GHz, 16MB Cache)</td>
+                    <td id="cpu" scope="row">Ryzen 5-7535HS (3.30GHz up to 4.50GHz, 16MB Cache)</td>
                     </tr>
                     <tr>
                     <td scope="row"><strong>RAM</strong></td>
-                    <td scope="row">8GB (1x8GB) SO-DIMM DDR5 4800MHz (+1 slot nâng cấp tối đa 16GB)</td>
+                    <td id="ram" scope="row">8GB (1x8GB) SO-DIMM DDR5 4800MHz (+1 slot nâng cấp tối đa 16GB)</td>
                     </tr>
                     <tr>
                     <td scope="row"><strong>Ổ cứng</strong></td>
-                    <td scope="row">512GB SSD M.2 2242 PCIe® 4.0×4 NVMe®</td>
+                    <td id="hardware" scope="row">512GB SSD M.2 2242 PCIe® 4.0×4 NVMe®</td>
                     </tr>
                     <tr>
                     <td scope="row"><strong>Card VGA</strong></td>
-                    <td scope="row">NVIDIA GeForce RTX 2050 4GB GDDR6</td>
-                    </tr>
-                    <tr>
-                    <td scope="row"><strong>Mux Switch</strong></td>
-                    <td scope="row">Không</td>
+                    <td id="cardvga" scope="row">NVIDIA GeForce RTX 2050 4GB GDDR6</td>
                     </tr>
                     <tr>
                     <td scope="row"><strong>Màn hình</strong></td>
-                    <td scope="row">15.6inch FHD (1920×1080) IPS 250nits Anti-glare, 45% NTSC, 120Hz, FreeSync™</td>
+                    <td id="display" scope="row">15.6inch FHD (1920×1080) IPS 250nits Anti-glare, 45% NTSC, 120Hz, FreeSync™</td>
                     </tr>
                     <tr>
                     <td scope="row"><strong>Camera</strong></td>
-                    <td scope="row">HD 720p</td>
+                    <td id="camera" scope="row">HD 720p</td>
                     </tr>
                     <tr>
                     <td scope="row"><strong>Cổng kết nối</strong></td>
-                    <td scope="row"><span class="comma">1x USB 3.2 Type-C Thunderbolt 4<br>
-                    </span><span class="comma">1x HDMI 2.0<br>
-                    </span>1x Ethernet (RJ45)<br>
-                    1x Jack tai nghe 3.5 mm<br>
-                    2x USB 3.2 Type-A<br>
-                    1x&nbsp;Power connector</td>
+                    <td id="port" scope="row"><span class="comma">1x USB 3.2 Type-C Thunderbolt 4<br>
+                      </span><span class="comma">1x HDMI 2.0<br>
+                      </span>1x Ethernet (RJ45)<br>
+                      1x Jack tai nghe 3.5 mm<br>
+                      2x USB 3.2 Type-A<br>
+                      1x&nbsp;Power connector
+                    </td>
                     </tr>
                     <tr>
                     <td scope="row"><strong>Trọng lượng</strong></td>
-                    <td scope="row">2.3 kg</td>
+                    <td id="weight" scope="row">2.3 kg</td>
                     </tr>
                     <tr>
                     <td scope="row"><strong>Pin</strong></td>
-                    <td scope="row">60 Wh</td>
+                    <td id="pin" scope="row">60 Wh</td>
                     </tr>
                     <tr>
                     <td scope="row"><strong>Hệ điều hành</strong></td>
-                    <td scope="row">Window 11 bản quyền</td>
+                    <td id="window" scope="row">Window 11 bản quyền</td>
                     </tr>
                     </tbody>
                     </table>
@@ -435,30 +299,8 @@
               <button class="btn btn-primary border-0" data-bs-toggle="modal" data-bs-target="#modal-review">Đánh giá</button>
             </h3>
             <div class="review-list">
-              <div class="review-item d-flex gap-3">
-                <div class="image">
-                  <img src="assets/img/profile-img.jpg" alt="Profile" width="48" class="rounded-circle">
-                </div>
-                <div>
-                  <h6 class="fw-bold mb-0">thaihung</h6>
-                  <div class="star col">
-                    <i class="bi bi-star-fill text-warning"></i>
-                    <i class="bi bi-star-fill text-warning"></i>
-                    <i class="bi bi-star-fill text-warning"></i>
-                    <i class="bi bi-star-fill text-warning"></i>
-                    <i class="bi bi-star-fill text-warning"></i>
-                  </div>
-                  <small>2023-11-09 16:59 | Phân loại hàng: Bộ GAME 24in</small>
-                  <div class="review-content">
-                    Shop giao hàng nhanh bọc gói hàng cẩn thận chu đáo giao hàng đúng mẫu giá cả hợp lý dùng các Ok tặng shop 5 sao
-                  </div>
-                  <div class="review-image">
-                    <img src="./assets/img/product-1.jpg" width="76" alt="">
-                    <img src="./assets/img/product-1.jpg" width="76" alt="">
-                    <img src="./assets/img/product-1.jpg" width="76" alt="">
-                    <img src="./assets/img/product-1.jpg" width="76" alt="">
-                  </div>
-                </div>
+              <div class="review-item-no fs-5 text-center ">
+                Sản phẩm chưa có đánh giá nào
               </div>
             </div>
           </div>
@@ -553,12 +395,12 @@
     <div class="modal-dialog modal-dialog-centered modal-lg">
       <div class="modal-content p-4">
         <div class="modal-header">
-          <h5 class="modal-title fw-bold fs-6" id="exampleModalLabel">Đánh giá [Mới 100%] Lenovo Ideapad Gaming 3 model 2023 15ARH7 (Ryzen 5-7535HS, 8GB, 512GB, RTX 2050 4GB, 15.6″ FHD 120Hz) 
+          <h5 class="modal-title fw-bold fs-6 product-name" id="exampleModalLabel">Đánh giá [Mới 100%] Lenovo Ideapad Gaming 3 model 2023 15ARH7 (Ryzen 5-7535HS, 8GB, 512GB, RTX 2050 4GB, 15.6″ FHD 120Hz) 
           </h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
+        <form action="" id="formAddReview">
         <div class="modal-body">
-          <form action="">
             <div class="row">
               <textarea name="" id="content" cols="30" rows="10" class="w-100 form-control" placeholder="Mời bạn chia sẻ cảm nhận"></textarea>
             </div>
@@ -583,28 +425,6 @@
                 </div>
               </div>
               <div class="col-6 my-3">
-                <!-- <div class="d-flex justify-content-between">
-                  <div class="item d-flex flex-column align-items-center justify-content-center gap-2">
-                    <i class="bi bi-star fs-4"></i>
-                    <label for="" class="fs-6">Rất Tệ</label>
-                  </div>
-                  <div class="item d-flex flex-column align-items-center justify-content-center gap-2">
-                    <i class="bi bi-star fs-4"></i>
-                    <label for="" class="fs-6">Tệ</label>
-                  </div>
-                  <div class="item d-flex flex-column align-items-center justify-content-center gap-2">
-                    <i class="bi bi-star fs-4"></i>
-                    <label for="" class="fs-6">Bình thường</label>
-                  </div>
-                  <div class="item d-flex flex-column align-items-center justify-content-center gap-2">
-                    <i class="bi bi-star fs-4"></i>
-                    <label for="" class="fs-6">Tốt</label>
-                  </div>
-                  <div class="item d-flex flex-column align-items-center justify-content-center gap-2">
-                    <i class="bi bi-star fs-4"></i>
-                    <label for="" class="fs-6">Rất Tốt</label>
-                  </div>
-                </div> -->
                 <div class="d-flex justify-content-between">
                   <div class="item d-flex flex-column align-items-center justify-content-center gap-2">
                     <i class="bi bi-star-fill fs-4 star"></i>
@@ -629,12 +449,12 @@
                 </div>
               </div>
             </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+            <button type="submit" class="btn btn-primary">Đánh giá</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
@@ -644,17 +464,19 @@
   <script src="assets/vendor/chart.js/chart.umd.js"></script>
   <script src="assets/vendor/echarts/echarts.min.js"></script>
   <script src="assets/vendor/quill/quill.min.js"></script>
-  <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
   <script src="assets/vendor/tinymce/tinymce.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
   <script src="assets/vendor/jquery/jquery-3.7.1.js"></script>
+  <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
   <script src="assets/js/main.js"></script>
   <script>
-
+    var urlParams = new URLSearchParams(window.location.search);
+    var productId = urlParams.get('id');
     let selectedImages = []; // Mảng để lưu trữ các tệp ảnh đã chọn
     let rate = 0;
-    function showImagePreview(event) {
+    const showImagePreview = (event) => {
       // Lấy giá trị của thẻ img
+      console.log('hehe');
       const image = event.target;
       var myModal = new bootstrap.Modal($('#modal-image'), {
       keyboard: false
@@ -663,7 +485,10 @@
       myModal.show()
     }
 
-    $('.review-image img').click(showImagePreview);
+    $(document).ready(function() {
+      // Gắn sự kiện "click" cho tất cả các phần tử <img> trong .review-image
+      $(document).on('click', '.review-image img', showImagePreview);
+    });
 
     $('.image-span').click(function() {
       const inputId = $(this).data('id');
@@ -707,12 +532,181 @@
       // Lấy vị trí của label được nhấp
       const position = $(this).index();
       rate = position + 1
-      
+
       // Xóa lớp 'active' từ tất cả các ngôi sao
       $('.star').removeClass('text-warning');
       // Làm sáng các ngôi sao từ đầu đến vị trí label
       $('.item:lt(' + (position + 1) + ') .star').addClass('text-warning');
     });
+
+    const getProductById = (id) => {
+      $.ajax({
+        url: "http://localhost:3000/server/product.php",
+        type: "POST",
+        data: `action=getbyid&id=${id}`,
+        success: (response) => {
+          console.log(JSON.parse(response));
+          let product = JSON.parse(response)
+          $('#slideshow').empty()
+          product.images.forEach((image, index) => {
+            let html = `
+                  <div class="carousel-item ${index === 1 ? 'active': ''}">
+                    <img src="./server/${image}" class="d-block w-100" alt="...">
+                  </div>
+                `
+            $('#slideshow').append(html)
+          })
+          $('.product-name').each(function() {
+            $(this).html(product.name)
+          })
+          $('.total-sold').html(product.total_orders + ' Đã bán')
+          $('.product-price').html(product.price)
+          $('.in-stock').html(product.quantity)
+          $('#quantity').attr('max', product.quantity);
+          $('.product-description').html(product.description)
+          $('#cpu').html(product.cpu)
+          $('#ram').html(product.ram)
+          $('#hardware').html(product.hardware)
+          $('#cardvga').html(product.cardvga)
+          $('#display').html(product.display)
+          $('#camera').html(product.camera)
+          $('#port').html(product.port)
+          $('#weight').html(product.weight)
+          $('#pin').html(product.pin)
+          $('#window').html(product.window)
+        }
+      });
+    }
+
+    $('#formAddReview').on('submit', function(e) {
+      e.preventDefault();
+
+      var content = $('#content').val()
+      var star = rate;
+      var images = selectedImages
+      console.log(content, star, images);
+
+      var formData = new FormData();
+      formData.append("content", content);
+      formData.append("rate", star);
+      for (var i = 0; i < images.length; i++) {
+        var file = images[i];
+        formData.append("images[]", file.file);
+      }
+      formData.append('product_id', productId)
+      formData.append('user_id', 16)
+      formData.append('action', 'create')
+      $.ajax({
+        url: "http://localhost:3000/server/review.php",
+        type: "POST",
+        data: formData,
+        contentType: false,
+        processData: false,
+        success: function(response) {
+          let {status, message} = JSON.parse(response)
+          if(status) {
+            window.location.reload()
+          }else {
+            alert(message)
+          }
+        }
+      });
+    })
+
+    $('.btn-add-to-cart').click(() => handleAddToCart(productId))
+
+    const handleAddToCart = (id) => {
+      let data = {
+        user_id: 16,
+        product_id: id,
+        quantity: 1,
+        action: 'create'
+      }
+      $.ajax({
+        url: "http://localhost:3000/server/cart.php",
+        type: "POST",
+        data: data,
+        success: function(response) {
+          let {status, message} = JSON.parse(response)
+          if(status) {
+            window.location.reload()
+          }else {
+            alert(message)
+          }
+        }
+      });
+    }
+
+    const getReviewById = (id) => {
+      $.ajax({
+        url: 'http://localhost:3000/server/review.php',
+        type: 'POST',
+        data: `action=read&id=${id}`,
+        success: (response) => {
+          console.log(JSON.parse(response));
+          let reviews = JSON.parse(response)
+          $('.total-review').html(reviews.length + ' Đánh giá')
+          if (reviews.length > 0) {
+            $('.review-list').empty()
+            reviews.forEach(function(view) {
+              let starHtml = '';
+              let imageHtml = '';
+              let listImage = view.image.split(';')
+              listImage.pop()
+              console.log(listImage);
+              for(let i = 0; i < listImage.length; i++) {
+                imageHtml += `<img src="./server/${listImage[i]}" width="76" alt="">`
+              }
+              for (let i = 0; i < view.rate; i++) {
+                starHtml += '<i class="bi bi-star-fill text-warning"></i>';
+              }
+              for (let i = 0; i < 5 - view.rate; i++) {
+                starHtml += '<i class="bi bi-star-fill"></i>';
+              }
+              let html = `
+                <div class="review-item mb-3 d-flex gap-3">
+                  <div class="image">
+                    <img src="./server/${view.user_image}" alt="Profile" width="48" class="rounded-circle">
+                  </div>
+                  <div>
+                    <h6 class="fw-bold mb-0">${view.first_name + ' ' + view.last_name}</h6>
+                    <div class="star col">
+                      ${starHtml}
+                    </div>
+                    <small>${view.created_at} | Phân loại hàng: Bộ GAME 24in</small>
+                    <div class="review-content">
+                      ${view.content}
+                    </div>
+                    <div class="review-image">
+                      ${imageHtml}
+                    </div>
+                  </div>
+                </div>
+              `
+              $('.review-list').append(html)
+            })
+          }
+        }
+      })
+    }
+
+    const getCartById = (id) => {
+      $.ajax({
+        url: 'http://localhost:3000/server/cart.php',
+        type: 'POST',
+        data: `action=read&id=${id}`,
+        success: (response) => {
+          console.log(JSON.parse(response));
+          let carts = JSON.parse(response)
+          $('.total-cart').each(function() {
+            $(this).html(carts.length)
+          })
+        }
+      })
+    }
+    getCartById(16)
+    getProductById(productId)
+    getReviewById(productId)
   </script>
 </body>
 

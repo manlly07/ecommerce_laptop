@@ -43,23 +43,16 @@
           </a>
         </div>
 
+
         <div class="search-bar">
-          <form
-            class="search-form d-flex align-items-center"
-            method="POST"
-            action="#"
-          >
-            <input
-              type="text"
-              name="query"
-              placeholder="Search"
-              title="Enter search keyword"
-            />
+          <form class="search-form d-flex align-items-center" method="POST" action="#">
+            <input type="text" name="query" placeholder="Search" title="Enter search keyword" />
             <button type="submit" title="Search">
               <i class="bi bi-search"></i>
             </button>
           </form>
         </div>
+
 
         <nav class="header-nav ms-auto">
           <ul class="d-flex align-items-center">
@@ -69,193 +62,27 @@
               </a>
             </li>
 
-            <li class="nav-item dropdown">
-              <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-                <i class="bi bi-bell"></i>
-                <span class="badge bg-primary badge-number">4</span>
-              </a>
-
-              <ul
-                class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications"
-              >
-                <li class="dropdown-header">
-                  You have 4 new notifications
-                  <a href="#"
-                    ><span class="badge rounded-pill bg-primary p-2 ms-2"
-                      >View all</span
-                    ></a
-                  >
-                </li>
-                <li>
-                  <hr class="dropdown-divider" />
-                </li>
-
-                <li class="notification-item">
-                  <i class="bi bi-exclamation-circle text-warning"></i>
-                  <div>
-                    <h4>Lorem Ipsum</h4>
-                    <p>Quae dolorem earum veritatis oditseno</p>
-                    <p>30 min. ago</p>
-                  </div>
-                </li>
-
-                <li>
-                  <hr class="dropdown-divider" />
-                </li>
-
-                <li class="notification-item">
-                  <i class="bi bi-x-circle text-danger"></i>
-                  <div>
-                    <h4>Atque rerum nesciunt</h4>
-                    <p>Quae dolorem earum veritatis oditseno</p>
-                    <p>1 hr. ago</p>
-                  </div>
-                </li>
-
-                <li>
-                  <hr class="dropdown-divider" />
-                </li>
-
-                <li class="notification-item">
-                  <i class="bi bi-check-circle text-success"></i>
-                  <div>
-                    <h4>Sit rerum fuga</h4>
-                    <p>Quae dolorem earum veritatis oditseno</p>
-                    <p>2 hrs. ago</p>
-                  </div>
-                </li>
-
-                <li>
-                  <hr class="dropdown-divider" />
-                </li>
-
-                <li class="notification-item">
-                  <i class="bi bi-info-circle text-primary"></i>
-                  <div>
-                    <h4>Dicta reprehenderit</h4>
-                    <p>Quae dolorem earum veritatis oditseno</p>
-                    <p>4 hrs. ago</p>
-                  </div>
-                </li>
-
-                <li>
-                  <hr class="dropdown-divider" />
-                </li>
-                <li class="dropdown-footer">
-                  <a href="#">Show all notifications</a>
-                </li>
-              </ul>
-            </li>
 
             <li class="nav-item dropdown">
               <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-                <i class="bi bi-chat-left-text"></i>
-                <span class="badge bg-success badge-number">3</span>
-              </a>
+                <i class="bi bi-cart"></i>
+                <span class="badge bg-primary badge-number total-cart">4</span> </a>
 
-              <ul
-                class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages"
-              >
+              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
                 <li class="dropdown-header">
-                  You have 3 new messages
-                  <a href="#"
-                    ><span class="badge rounded-pill bg-primary p-2 ms-2"
-                      >View all</span
-                    ></a
-                  >
-                </li>
-                <li>
-                  <hr class="dropdown-divider" />
-                </li>
-
-                <li class="message-item">
-                  <a href="#">
-                    <img
-                      src="assets/img/messages-1.jpg"
-                      alt=""
-                      class="rounded-circle"
-                    />
-                    <div>
-                      <h4>Maria Hudson</h4>
-                      <p>
-                        Velit asperiores et ducimus soluta repudiandae labore
-                        officia est ut...
-                      </p>
-                      <p>4 hrs. ago</p>
-                    </div>
-                  </a>
-                </li>
-                <li>
-                  <hr class="dropdown-divider" />
-                </li>
-
-                <li class="message-item">
-                  <a href="#">
-                    <img
-                      src="assets/img/messages-2.jpg"
-                      alt=""
-                      class="rounded-circle"
-                    />
-                    <div>
-                      <h4>Anna Nelson</h4>
-                      <p>
-                        Velit asperiores et ducimus soluta repudiandae labore
-                        officia est ut...
-                      </p>
-                      <p>6 hrs. ago</p>
-                    </div>
-                  </a>
-                </li>
-                <li>
-                  <hr class="dropdown-divider" />
-                </li>
-
-                <li class="message-item">
-                  <a href="#">
-                    <img
-                      src="assets/img/messages-3.jpg"
-                      alt=""
-                      class="rounded-circle"
-                    />
-                    <div>
-                      <h4>David Muldon</h4>
-                      <p>
-                        Velit asperiores et ducimus soluta repudiandae labore
-                        officia est ut...
-                      </p>
-                      <p>8 hrs. ago</p>
-                    </div>
-                  </a>
-                </li>
-                <li>
-                  <hr class="dropdown-divider" />
-                </li>
-
-                <li class="dropdown-footer">
-                  <a href="#">Show all messages</a>
+                  Bạn có <span class="total-cart">4</span> sản phẩm trong giỏ hàng
+                  <a href="./orders.php"><span class="badge rounded-pill bg-primary p-2 ms-2">xem tất cả</span></a>
                 </li>
               </ul>
+
             </li>
 
             <li class="nav-item dropdown pe-3">
-              <a
-                class="nav-link nav-profile d-flex align-items-center pe-0"
-                href="#"
-                data-bs-toggle="dropdown"
-              >
-                <img
-                  src="assets/img/profile-img.jpg"
-                  alt="Profile"
-                  class="rounded-circle"
-                />
-                <span class="d-none d-md-block dropdown-toggle ps-2"
-                  >K. Anderson</span
-                >
-              </a>
+              <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+                <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle" />
+                <span class="d-none d-md-block dropdown-toggle ps-2">K. Anderson</span> </a>
 
-              <ul
-                class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile"
-              >
+              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                 <li class="dropdown-header">
                   <h6>Kevin Anderson</h6>
                   <span>Web Designer</span>
@@ -265,10 +92,7 @@
                 </li>
 
                 <li>
-                  <a
-                    class="dropdown-item d-flex align-items-center"
-                    href="users-profile.php"
-                  >
+                  <a class="dropdown-item d-flex align-items-center" href="users-profile.php">
                     <i class="bi bi-person"></i>
                     <span>My Profile</span>
                   </a>
@@ -278,10 +102,7 @@
                 </li>
 
                 <li>
-                  <a
-                    class="dropdown-item d-flex align-items-center"
-                    href="users-profile.php"
-                  >
+                  <a class="dropdown-item d-flex align-items-center" href="users-profile.php">
                     <i class="bi bi-gear"></i>
                     <span>Account Settings</span>
                   </a>
@@ -291,10 +112,7 @@
                 </li>
 
                 <li>
-                  <a
-                    class="dropdown-item d-flex align-items-center"
-                    href="pages-faq.php"
-                  >
+                  <a class="dropdown-item d-flex align-items-center" href="pages-faq.php">
                     <i class="bi bi-question-circle"></i>
                     <span>Need Help?</span>
                   </a>
@@ -310,7 +128,9 @@
                   </a>
                 </li>
               </ul>
+
             </li>
+
           </ul>
         </nav>
       </div>
@@ -376,7 +196,7 @@
                                     <th scope="col">Tổng giá</th>
                                 </tr>
                                 </thead>
-                                <tbody>
+                                <tbody id="table-cart">
                                 <tr>
                                     <td scope="row">
                                         <div class="d-flex justify-content-start align-items-center">
@@ -421,7 +241,7 @@
                                 <div class="row px-3 gap-3">
                                     <div class="form-group border border-2 border-dark p-3">
                                         <div class="form-check fs-5" >
-                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
+                                            <input class="form-check-input" value="Giao hàng miễn phí" type="radio" name="shipping_method" id="flexRadioDefault1" checked>
                                             <label class="form-check-label" for="flexRadioDefault1">
                                             Giao hàng miễn phí
                                             </label>
@@ -429,7 +249,7 @@
                                     </div>
                                     <div class="form-group border border-2 border-dark p-3">
                                         <div class="form-check fs-5">
-                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                                            <input class="form-check-input" value="Giao hàng hỏa tốc" type="radio" name="shipping_method" id="flexRadioDefault2">
                                             <label class="form-check-label" for="flexRadioDefault2">
                                             Giao hàng hỏa tốc
                                             </label>
@@ -439,7 +259,7 @@
                                 
                                 <div class="px-3 d-flex justify-content-between mt-4">
                                     <span class="fw-bold fs-4">Tổng:</span>
-                                    <span class="fs-4">1.000.000 <sup>đ</sup></span>
+                                    <span class="fs-4"><span class="total-bill">1.000.000</span> <sup>đ</sup></span>
                                 </div>
 
                                 <button class="btn btn-dark mt-3 w-100 p-3">Thanh toán</button>
@@ -451,7 +271,7 @@
                 <div class="tab-pane fade details" id="details">
                     <div class="row">
                         <div class="col-lg-7">
-                            <form action="">
+                            <form action="" id="formAddOrder">
                                 <div class="card">
                                     <div class="card-body">
                                         <h4 class="card-title fw-bold fs-5">Thông tin liên lạc</h4>
@@ -465,11 +285,11 @@
                                                 <label for="lastname" class="form-label">Tên</label>
                                                 <input type="text" class="form-control" id="lastname">
                                             </div>
-                                            <div class="col-12 mb-3">
+                                            <div class="col-lg-6 mb-3">
                                                 <label for="phone" class="form-label">Số điện thoại</label>
                                                 <input type="text" class="form-control" id="phone">
                                             </div>
-                                            <div class="col-12 mb-3">
+                                            <div class="col-lg-6 mb-3">
                                                 <label for="email" class="form-label">Email</label>
                                                 <input type="email" class="form-control" id="email">
                                             </div>
@@ -477,6 +297,34 @@
                                                 <label for="address" class="form-label">Địa chỉ</label>
                                                 <textarea type="text" class="form-control" id="address"></textarea>
                                             </div>
+                                            <div class="col-12 mb-3">
+                                                <label for="address" class="form-label">Ghi chú</label>
+                                                <textarea type="text" class="form-control" id="note"></textarea>
+                                            </div>
+                                            <div class="col-12 mb-3 gap-3  nav nav-tabs nav-tabs-bordered">
+                                              <div class="form-check form-switch nav-item">
+                                                <input class="form-check-input active" type="radio" id="flexSwitchCheckDefault" value="COD" name="payment-method" checked 
+                                                data-bs-toggle="tab"
+                                                data-bs-target="#cod"
+                                                >
+                                                <label class="form-check-label" for="flexSwitchCheckDefault">Thanh toán khi nhận hàng</label>
+                                              </div>
+                                              <div class="form-check form-switch nav-item">
+                                                <input class="form-check-input" type="radio" id="flexSwitchCheckChecked" value="OnlineBanking" name="payment-method"
+                                                data-bs-toggle="tab"
+                                                data-bs-target="#pay"
+                                                >
+                                                <label class="form-check-label" for="flexSwitchCheckChecked">Thanh toán chuyển khoản</label>
+                                              </div>
+                                            </div>
+                                            <!-- <div class="tab-content">
+                                              <div class="tab-pane fade show active cod" id="cod">
+                                                hello
+                                              </div>
+                                              <div class="tab-pane fade show pay" id="pay">
+                                                pay
+                                              </div>
+                                            </div> -->
                                         </div>
 
                                         <button class="btn btn-dark w-100 p-3">Đặt hàng</button>
@@ -490,35 +338,13 @@
                                     <div class="card-title fw-bold">Chi tiết giỏ hàng</div>
                                     <div class="row">
                                         <table class="table">
-                                            <tbody>
-                                              <tr>
-                                                <td scope="row">
-                                                    <div class="d-flex justify-content-start align-items-center">
-                                                        <div class="avatar-wrapper me-3">
-                                                          <div style="width: 80px;height: 96px;">
-                                                            <img src="./assets/img/messages-1.jpg" class="w-100 h-100" alt="Avatar">
-                                                          </div>
-                                                        </div>
-                                                        <div class="d-flex flex-column">
-                                                          <a href="about-product.php" class="text-truncate">
-                                                            <span class="text-heading fs-6 fw-medium">Cristine Easom</span>
-                                                          </a>
-                                                          <div class="form-group" style="width: 84px;">
-                                                            <input type="number" class="form-control" value="1" min="1">
-                                                            </div>
-                                                        </div>
-                                                      </div>
-                                                </td>
-                                                <td class="fw-bold fs-5" style="vertical-align:middle">
-                                                    <span>19000000</span>
-                                                    <sup>đ</sup>
-                                                </td>
-                                              </tr>
+                                            <tbody id="table-cart-2">
+                                              
                                               <tr>
                                                 <td scope="row" class="fw-bold fs-5">
-                                                    Total
+                                                    Tổng
                                                 </td>
-                                                <td><span class="fs-6 fw-bold">234.000.000</span> <sup>đ</sup></td>
+                                                <td><span class="fs-6 fw-bold"><span class="total-bill">234.000.000</span></span> <sup>đ</sup></td>
                                               </tr>
                                             </tbody>
                                           </table>
@@ -657,10 +483,195 @@
     <script src="assets/vendor/chart.js/chart.umd.js"></script>
     <script src="assets/vendor/echarts/echarts.min.js"></script>
     <script src="assets/vendor/quill/quill.min.js"></script>
-    <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
     <script src="assets/vendor/tinymce/tinymce.min.js"></script>
     <script src="assets/vendor/php-email-form/validate.js"></script>
     <script src="assets/vendor/jquery/jquery-3.7.1.js"></script>
+    <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
     <script src="assets/js/main.js"></script>
+    <script>
+      let totalBill = 0
+      const getCartById = (id) => {
+        $.ajax({
+          url: 'http://localhost:3000/server/cart.php',
+          type: 'POST',
+          data: `action=read&id=${id}`,
+          success: (response) => {
+            console.log(JSON.parse(response));
+            let carts = JSON.parse(response)
+            $('.total-cart').each(function() {
+              $(this).html(carts.length)
+            })
+            $('#table-cart').empty()
+            // $('#table-cart-2').empty()
+            carts.forEach((cart) => {
+              totalBill += cart.quantity * cart.product_price
+              let htmls = `
+                        <tr>
+                          <td scope="row">
+                              <div class="d-flex justify-content-start align-items-center">
+                                  <div class="avatar-wrapper me-3">
+                                  <div style="width: 80px;height: 96px;">
+                                      <img src="./server/${cart.product_image}" class="w-100 h-100" alt="Avatar">
+                                  </div>
+                                  </div>
+                                  <div class="d-flex flex-column">
+                                  <a href="about-product.php?id=${cart.product_id}" class="text-truncate">
+                                      <span class="text-heading fs-7 fw-medium">${cart.product_name}</span>
+                                  </a>
+                                  <a onclick="handleDelete(${cart.id})" href="javascript:void(0)" class="d-flex align-items-center fw-medium text-secondary"><i class="bi bi-x fs-3"></i> Xóa bỏ</a>
+                                  </div>
+                              </div>
+                          </td>
+                          <td style="vertical-align:middle">
+                              <div class="form-group" style="width: 84px;">
+                                  <input type="number" class="form-control" value="${cart.quantity}" min="1" onchange="calculateTotal(this)">
+                              </div>
+                          </td>
+                          <td style="vertical-align:middle">
+                              <span>${cart.product_price}</span>
+                              <sup>đ</sup>
+                          </td>
+                          <td class="fw-bold" style="vertical-align:middle">
+                              <span>${cart.quantity * cart.product_price}</span>
+                              <sup>đ</sup>
+                          </td>
+                        </tr>
+              `
+
+              let htmls2 = `
+                            <tr>
+                              <td scope="row">
+                                  <div class="d-flex justify-content-start align-items-center">
+                                      <div class="avatar-wrapper me-3">
+                                        <div style="width: 80px;height: 96px;">
+                                          <img src="./server/${cart.product_image}" class="w-100 h-100" alt="Avatar">
+                                        </div>
+                                      </div>
+                                      <div class="d-flex flex-column">
+                                        <a href="about-product.php?id=${cart.product_id}" class="text-truncate">
+                                          <span class="text-heading fs-6 fw-medium">Cristine Easom</span>
+                                        </a>
+                                        <div class="form-group" style="width: 84px;">
+                                          <input type="number" class="form-control" value="${cart.quantity}" min="1" disabled readonly>
+                                        </div>
+                                      </div>
+                                    </div>
+                              </td>
+                              <td class="fw-bold fs-5" style="vertical-align:middle">
+                                  <span>${cart.quantity * cart.product_price}</span>
+                                  <sup>đ</sup>
+                              </td>
+                            </tr>
+              
+              `
+              $('#table-cart').append(htmls)
+              $('#table-cart-2 tr:first').before(htmls2);
+            })
+            $('.total-bill').html(totalBill)
+          }
+        })
+      }
+      const handleDelete = (id) => {
+        console.log(id);
+        $.ajax({
+          url: 'http://localhost:3000/server/cart.php',
+          type: 'POST',
+          data: `action=delete&id=${id}`,
+          success: (response) => {
+            console.log(JSON.parse(response));
+            let {status, message} = JSON.parse(response)
+            if (status) {
+              getCartById(16)
+              alert(message)
+            }else {
+              alert(message)
+            }
+          }
+        })
+      }
+      const calculateTotal = (input) => {
+        // Lấy giá trị số lượng từ ô input
+        var quantity = input.value;
+
+        // Lấy ô td cuối cùng trong hàng chứa ô input
+        var row = input.parentNode.parentNode.parentNode; // Điều chỉnh dựa trên cấu trúc của bảng thực tế
+        var totalCell = row.querySelector("td:last-child");
+
+        // Lấy giá sản phẩm từ ô td giá
+        var price = parseFloat(row.querySelector("td:nth-child(3) span").innerText);
+
+        // Tính toán tổng giá mới
+        var total = price * quantity;
+
+        // Cập nhật giá trị tổng giá trong ô td cuối cùng
+        totalCell.innerHTML = `<span>${total}</span><sup>đ</sup>`;
+
+
+        // Lấy id sản phẩm từ thuộc tính href của thẻ a trong cùng hàng
+        var productId = $(input).closest("tr").find("a").attr("href").split("=")[1];
+        console.log(productId);
+        var data = {
+          user_id: 16,
+          product_id: productId,
+          quantity,
+          action: 'update'
+        }
+        $.ajax({
+          url: 'http://localhost:3000/server/cart.php',
+          type: 'POST',
+          data: data,
+          success: (response) => {
+            console.log(JSON.parse(response));
+            let {status, message} = JSON.parse(response)
+            if (!status) {
+              alert(message)
+            }
+            getCartById(16)
+          }
+        })
+      }
+      const getDate = () => {
+        var currentDate = new Date();
+
+        var day = currentDate.getDate();
+        var month = currentDate.getMonth() + 1;
+        var year = currentDate.getFullYear();
+
+        var currentTime = day + '/' + month + '/' + year;
+        return currentTime
+      }
+
+      $('#formAddOrder').on('submit', function(e) {
+        e.preventDefault()
+        var firstname = $('#firstname').val()
+        var lastname = $('#lastname').val()
+        var phone = $('#phone').val()
+        var email = $('#email').val()
+        var address = $('#address').val()
+        var note = $('#note').val()
+        var shipping_method = $('input[name="shipping_method"]:checked').val()
+        var payment_method = $('input[name="payment-method"]:checked').val()
+        var action = 'create'
+        var user_id = 16
+        var total = totalBill
+        var payload = {
+          firstname, lastname, phone, email, address, note, shipping_method, payment_method, user_id, action, total
+        }
+        console.log(payload);
+        $.ajax({
+          url: 'http://localhost:3000/server/order.php',
+          type: 'POST',
+          data: payload,
+          success: (response) => {
+            console.log(JSON.parse(response));
+            let data = JSON.parse(response)
+            if (data.status) {
+              window.location.href = `./order-success.php?order_id=${data.order}&date=${getDate()}&total=${total}&method=${shipping_method}`
+            }
+          }
+        })
+      })
+      getCartById(16)
+    </script>
   </body>
 </html>

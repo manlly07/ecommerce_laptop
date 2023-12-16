@@ -467,11 +467,11 @@
             </div>
             <button
               type="button"
-              class="btn btn-outline-success delete-customer waves-effect"
+              class="btn btn-outline-danger delete-customer waves-effect"
               data-status=""
             >
-              Kích hoạt tài khoản này
-            </button>
+              Vô hiệu hóa tài khoản này
+            </button> 
           </div>
         </div>
         <div class="row">
@@ -1014,7 +1014,7 @@
               if (custommer.is_active == 0) {
                 $('.custommer-status').removeClass('bg-label-success').addClass('bg-label-danger').html('Vô hiệu hóa')
 
-                $('.delete-customer').removeClass('btn-outline-success').addClass('btn-outline-danger').html('Vô hiệu hóa tài khoản này')
+                $('.delete-customer').removeClass('btn-outline-danger').addClass('btn-outline-success').html('Kích hoạt tài khoản này')
               }
               $('.custommer-phone').html(custommer.phone)
               $('.custommer-address').html(custommer.address)

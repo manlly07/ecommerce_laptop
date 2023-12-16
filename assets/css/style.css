@@ -23,6 +23,105 @@ body {
   color: #444444;
 }
 
+.authentication-wrapper {
+  display: flex;
+  flex-basis: 100%;
+  min-height: 100vh;
+  width: 100%;
+}
+.authentication-wrapper.authentication-basic {
+  align-items: center;
+  justify-content: center;
+}
+
+.authentication-wrapper.authentication-basic .authentication-inner {
+  max-width: 450px;
+}
+.authentication-wrapper .authentication-inner {
+  width: 100%;
+}
+
+.app-brand {
+  display: flex;
+  flex-grow: 0;
+  flex-shrink: 0;
+  overflow: hidden;
+  line-height: 1;
+  min-height: 1px;
+  align-items: center;
+}
+
+.app-brand-link {
+  display: flex;
+  align-items: center;
+}
+
+.fv-plugins-icon-container {
+  position: relative;
+}
+
+.authentication-wrapper .auth-input-wrapper .auth-input {
+  max-width: 50px;
+  padding-left: 0.4rem;
+  padding-right: 0.4rem;
+  font-size: 150%;
+}
+
+.authentication-wrapper .authentication-image-object-left {
+  position: absolute;
+  bottom: 6%;
+  left: 4%;
+}
+
+.authentication-wrapper .authentication-image {
+  z-index: -1;
+  inline-size: 100%;
+  position: absolute;
+  inset-inline-start: 0;
+  bottom: 0;
+}
+
+.authentication-wrapper .authentication-image-object-right {
+  position: absolute;
+  bottom: 7%;
+  right: 4%;
+}
+
+.misc-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  justify-content: center;
+  position: relative;
+  padding: 1.25rem;
+}
+
+.misc-bg {
+  inline-size: 100%;
+  position: absolute;
+  inset-inline-start: 0;
+  bottom: 0;
+}
+
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+}
+
+.misc-model {
+  position: relative;
+  bottom: 1rem;
+  scale: 1.3;
+}
+
+.misc-object {
+  position: absolute;
+  bottom: 15%;
+  left: 10%;
+  z-index: 1;
+}
+
 .font-poppins {
   font-family: "Poppins", sans-serif !important;
   font-size: 13px;

@@ -779,7 +779,8 @@
         if (imageInput.get(0).files.length > 0) {
           formData.append('image', imageInput.prop('files')[0]);
         }
-        formData.append('verify', true);
+        formData.append('verify', 1);
+        formData.append('is_active', 1);
         formData.append('action', 'create')
 
         $.ajax({
@@ -924,7 +925,7 @@
               {
                 data: 'status',
                 render: function(data, type, row) {
-                  if(row.branch_status == 2) {
+                  if(row.is_active == 0) {
                     return `
                         <span class="badge rounded-pill bg-label-danger text-capitalized">
                           Inactive

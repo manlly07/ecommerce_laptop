@@ -546,23 +546,7 @@
       $(`#${rateParam}`).addClass('bg-five');
     }
 
-    // Xử lý sự kiện khi nhấp vào các dòng đánh giá
-    $('li[id^="rate"]').click(function() {
-      const rate = $(this).attr('id');
 
-      // Xóa lớp active của tất cả các dòng đánh giá
-      $('li[id^="rate"]').removeClass('bg-five');
-
-      // Thêm lớp active cho dòng được nhấp vào
-      $(this).addClass('bg-five');
-
-      // Cập nhật URL với tham số 'rate'
-      const urlParams = new URLSearchParams(window.location.search);
-      urlParams.set('rate', rate);
-
-      const newUrl = `${window.location.pathname}?${urlParams.toString()}`;
-      history.pushState(null, '', newUrl);
-    });
 
     if (priceParam) {
       const [fromPrice, toPrice] = priceParam.split(';');
@@ -570,21 +554,46 @@
       $('#toPrice').val(toPrice);
     }
 
+        // Xử lý sự kiện khi nhấp vào các dòng đánh giá
+    $('li[id^="rate"]').click(function() {
+      const rate = $(this).attr('id');
+
+      const urlParams = new URLSearchParams(window.location.search);
+      
+      if ($(this).hasClass('bg-five')) {
+        $(this).removeClass('bg-five')
+        urlParams.delete('rate');
+        const newUrl = `${window.location.pathname}?${urlParams.toString()}`;
+        history.pushState(null, '', newUrl);
+      }else {
+        // Xóa lớp active của tất cả các dòng đánh giá
+        $('li[id^="rate"]').removeClass('bg-five');
+        // Thêm lớp active cho dòng được nhấp vào
+        $(this).addClass('bg-five');  
+        urlParams.set('rate', rate);
+        const newUrl = `${window.location.pathname}?${urlParams.toString()}`;
+        history.pushState(null, '', newUrl);
+      }
+
+      filterProduct()
+    });
+
       // Xử lý sự kiện khi nhấp vào nút "Lọc"
-  $('#priceButton').click(function() {
-    const fromPrice = $('#fromPrice').val();
-    const toPrice = $('#toPrice').val();
+    $('#priceButton').click(function() {
+      const fromPrice = $('#fromPrice').val();
+      const toPrice = $('#toPrice').val();
 
-    // Tạo tham số 'price' từ giá trị nhập vào
-    const priceParam = `${fromPrice || ''};${toPrice || ''}`;
+      // Tạo tham số 'price' từ giá trị nhập vào
+      const priceParam = `${fromPrice || ''};${toPrice || ''}`;
 
-    // Cập nhật URL với tham số 'price'
-    const urlParams = new URLSearchParams(window.location.search);
-    urlParams.set('price', priceParam);
+      // Cập nhật URL với tham số 'price'
+      const urlParams = new URLSearchParams(window.location.search);
+      urlParams.set('price', priceParam);
 
-    const newUrl = `${window.location.pathname}?${urlParams.toString()}`;
-    history.pushState(null, '', newUrl);
-  });
+      const newUrl = `${window.location.pathname}?${urlParams.toString()}`;
+      history.pushState(null, '', newUrl);
+      filterProduct()
+    });
 
     const updateUrlParamsCategory = () => {
       const selectedCategories = [];
@@ -602,6 +611,7 @@
       
       const newUrl = `${window.location.pathname}?${urlParams.toString()}`;
       history.pushState(null, '', newUrl);
+      filterProduct()
     };
 
     const updateUrlParamsBranch = () => {
@@ -615,13 +625,13 @@
       if (selectedBranch.length > 0) {
         urlParams.set('branches', selectedBranch.join(';'));
       } else {
-        urlParams.delete('braches');
+        urlParams.delete('branches');
       }
       
       const newUrl = `${window.location.pathname}?${urlParams.toString()}`;
       history.pushState(null, '', newUrl);
+      filterProduct()
     };
-
 
     const showCategoryFilter = () => {
       $.ajax({
@@ -637,7 +647,7 @@
             let html = `
               <li>
                   <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="category" value="" id="category-${category.id}" onclick="updateUrlParamsCategory()">
+                    <input class="form-check-input" type="checkbox" name="category" value="${category.id}" id="category-${category.id}" onclick="updateUrlParamsCategory()">
                     <label class="form-check-label text-black" for="category-${category.id}">
                       ${category.name}
                     </label>
@@ -655,6 +665,7 @@
               }
             }
           });
+          // filterProduct()
         }
       });
     };
@@ -672,7 +683,7 @@
             let html = `
               <li>
                   <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="branch" value="" id="branch-${branch.id}"
+                    <input class="form-check-input" type="checkbox" name="branch" value="${branch.id}" id="branch-${branch.id}"
                     onclick="updateUrlParamsBranch()">
                     <label class="form-check-label text-black" for="branch-${branch.id}">
                       ${branch.name}
@@ -691,20 +702,20 @@
               }
             }
           });
+          // filterProduct()
         }
       })
     }
 
     $('#clearFilterBtn').click(function() {
-    // Xóa tất cả các tham số trong URL
-    const newUrl = window.location.pathname;
-    history.pushState(null, '', newUrl);
-    
-    // Tải lại trang
-    location.reload();
-  });
+      // Xóa tất cả các tham số trong URL
+      const newUrl = window.location.pathname;
+      history.pushState(null, '', newUrl);
+      // Tải lại trang
+      location.reload();
+    });
 
-  const showProduct = () => {
+    const showProduct = () => {
       $.ajax({
         url: 'http://localhost:3000/server/product.php',
         type: 'POST',
@@ -750,9 +761,76 @@
         }
       })
     }
-    showProduct()
+    
+    const filterProduct = () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const categoryParams = urlParams.get('categories')?.split(';') || [];
+      const branchParams = urlParams.get('branches')?.split(';') || [];
+      const price = urlParams.get('price')?.split(';') || []
+      const priceFrom = price.length > 0 ? Math.min(...price) : '';
+      const priceTo = price.length > 0 ? Math.max(...price) : '';
+      const rate = urlParams.get('rate')?.replace('rate-', '');
+
+      // var rate = urlParams.get('rate')?.replace('rate-','');
+      console.log(categoryParams, branchParams, priceFrom, priceTo, rate);
+
+      var requestData = {
+        categories: JSON.stringify(categoryParams),
+        branches: JSON.stringify(branchParams),
+        priceFrom: priceFrom,
+        priceTo: priceTo,
+        rate: rate,
+        action: 'readandfilter'
+      }
+      
+      $.ajax({
+        url: "http://localhost:3000/server/product.php",
+        type: "POST",
+        data: requestData,
+        success: (response) => {
+          console.log(JSON.parse(response));
+          let products = JSON.parse(response)
+          $('.filter-product-list').empty()
+          products.forEach(product => {
+            let html = `
+                <a href="./about-product.php?id=${product.id}" class="col-lg-3 min-w-200 col-md-6 col-sm-12 p-1">
+                  <div class="card h-100 mb-0">
+                      <div class="card-body pt-1 pb-2">
+                          <div class="col-12 badge rounded-pill bg-label-success text-capitalized">
+                              <i class="bi bi-check-circle me-1"></i>
+                              <span>In stock</span>
+                          </div>
+                          <div class="col-12 my-1">
+                              <img src="./server/${product.image}" alt="" style="width:100%; height:185px; object-fit:cover" class="w-100 h-150px">
+                              <div class="rate col">
+                                  <i class="bi bi-star-fill text-danger fs-8"></i>
+                                  <i class="bi bi-star-fill text-danger fs-8"></i>
+                                  <i class="bi bi-star-fill text-danger fs-8"></i>
+                                  <i class="bi bi-star-fill text-danger fs-8"></i>
+                                  <i class="bi bi-star-fill text-danger fs-8"></i>
+                                  <span class="fs-8 text-third">Review (${product.total_reviews})</span>
+                              </div>
+                              <div class="name col font-poppins text-warp text-truncate-3 fs-7">
+                                  ${product.name}
+                              </div>
+                              <div class="price col mt-2">
+                                  <p class="fw-bold fs-5 mb-0">${product.price}<sup>đ</sup></p>
+                              </div>
+                          </div>
+                          
+                      </div>
+                  </div>
+                </a>
+            `
+            $('.filter-product-list').append(html);
+          })
+        }
+      });
+    }
     showBrachFilter()
     showCategoryFilter()
+    // showProduct()
+    filterProduct()
   </script>
 </body>
 
