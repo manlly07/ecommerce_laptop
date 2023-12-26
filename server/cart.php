@@ -5,7 +5,9 @@
 
         // Thêm giỏ hàng mới hoặc tăng số lượng nếu sản phẩm đã tồn tại
         if ($_POST['action'] == 'create') {
-            $user_id = $_POST['user_id'];
+            $serializedObject = $_SESSION['user']; // Lấy chuỗi đối tượng từ phiên
+            $user = unserialize($serializedObject); // Chuyển đổi chuỗi thành đối tượng ban đầu
+            $user_id = $user['id']; //
             $product_id = $_POST['product_id'];
             $quantity = $_POST['quantity'] ?? 1;
 
@@ -56,7 +58,9 @@
 
         // Lấy thông tin giỏ hàng của người dùng
         if ($_POST['action'] == 'read') {
-            $user_id = $_POST['id'];
+            $serializedObject = $_SESSION['user']; // Lấy chuỗi đối tượng từ phiên
+            $user = unserialize($serializedObject); // Chuyển đổi chuỗi thành đối tượng ban đầu
+            $user_id = $user['id'];
 
             $sql = "SELECT carts.*, products.name AS product_name, products.quantity AS product_quantity,       products.price AS product_price,
                     (SELECT link FROM images WHERE product_id = products.id LIMIT 1) AS product_image
@@ -70,7 +74,9 @@
 
         // Cập nhật số lượng trong giỏ hàng
         if ($_POST['action'] == 'update') {
-            $user_id = $_POST['user_id'];
+            $serializedObject = $_SESSION['user']; // Lấy chuỗi đối tượng từ phiên
+            $user = unserialize($serializedObject); // Chuyển đổi chuỗi thành đối tượng ban đầu
+            $user_id = $user['id'];
             $product_id = $_POST['product_id'];
             $quantity = $_POST['quantity'];
         

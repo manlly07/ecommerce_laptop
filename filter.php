@@ -62,158 +62,26 @@
 
           <li class="nav-item dropdown">
             <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-              <i class="bi bi-bell"></i>
-              <span class="badge bg-primary badge-number">4</span> </a>
+              <i class="bi bi-cart"></i>
+              <span class="badge bg-primary badge-number total-cart">4</span> </a>
 
             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
               <li class="dropdown-header">
-                You have 4 new notifications
-                <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
-              </li>
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-
-              <li class="notification-item">
-                <i class="bi bi-exclamation-circle text-warning"></i>
-                <div>
-                  <h4>Lorem Ipsum</h4>
-                  <p>Quae dolorem earum veritatis oditseno</p>
-                  <p>30 min. ago</p>
-                </div>
-              </li>
-
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-
-              <li class="notification-item">
-                <i class="bi bi-x-circle text-danger"></i>
-                <div>
-                  <h4>Atque rerum nesciunt</h4>
-                  <p>Quae dolorem earum veritatis oditseno</p>
-                  <p>1 hr. ago</p>
-                </div>
-              </li>
-
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-
-              <li class="notification-item">
-                <i class="bi bi-check-circle text-success"></i>
-                <div>
-                  <h4>Sit rerum fuga</h4>
-                  <p>Quae dolorem earum veritatis oditseno</p>
-                  <p>2 hrs. ago</p>
-                </div>
-              </li>
-
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-
-              <li class="notification-item">
-                <i class="bi bi-info-circle text-primary"></i>
-                <div>
-                  <h4>Dicta reprehenderit</h4>
-                  <p>Quae dolorem earum veritatis oditseno</p>
-                  <p>4 hrs. ago</p>
-                </div>
-              </li>
-
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-              <li class="dropdown-footer">
-                <a href="#">Show all notifications</a>
+                Bạn có <span class="total-cart">4</span> sản phẩm trong giỏ hàng
+                <a href="./orders.php"><span class="badge rounded-pill bg-primary p-2 ms-2">xem tất cả</span></a>
               </li>
             </ul>
 
           </li>
-
-
-          <li class="nav-item dropdown">
-            <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-              <i class="bi bi-chat-left-text"></i>
-              <span class="badge bg-success badge-number">3</span> </a>
-
-            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
-              <li class="dropdown-header">
-                You have 3 new messages
-                <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
-              </li>
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-
-              <li class="message-item">
-                <a href="#">
-                  <img src="assets/img/messages-1.jpg" alt="" class="rounded-circle" />
-                  <div>
-                    <h4>Maria Hudson</h4>
-                    <p>
-                      Velit asperiores et ducimus soluta repudiandae labore
-                      officia est ut...
-                    </p>
-                    <p>4 hrs. ago</p>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-
-              <li class="message-item">
-                <a href="#">
-                  <img src="assets/img/messages-2.jpg" alt="" class="rounded-circle" />
-                  <div>
-                    <h4>Anna Nelson</h4>
-                    <p>
-                      Velit asperiores et ducimus soluta repudiandae labore
-                      officia est ut...
-                    </p>
-                    <p>6 hrs. ago</p>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-
-              <li class="message-item">
-                <a href="#">
-                  <img src="assets/img/messages-3.jpg" alt="" class="rounded-circle" />
-                  <div>
-                    <h4>David Muldon</h4>
-                    <p>
-                      Velit asperiores et ducimus soluta repudiandae labore
-                      officia est ut...
-                    </p>
-                    <p>8 hrs. ago</p>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-
-              <li class="dropdown-footer">
-                <a href="#">Show all messages</a>
-              </li>
-            </ul>
-
-          </li>
-
 
           <li class="nav-item dropdown pe-3">
             <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-              <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle" />
-              <span class="d-none d-md-block dropdown-toggle ps-2">K. Anderson</span> </a>
+              <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle profile-image" />
+              <span class="d-none d-md-block dropdown-toggle ps-2 profile-name text-truncate" style="width: 120px;">K. Anderson</span> </a>
 
             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
               <li class="dropdown-header">
-                <h6>Kevin Anderson</h6>
+                <h6 style="width: 250px;" class="text-truncate profile-name">Kevin Anderson</h6>
                 <span>Web Designer</span>
               </li>
               <li>
@@ -221,7 +89,7 @@
               </li>
 
               <li>
-                <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                <a class="dropdown-item d-flex align-items-center" href="users-profile.php">
                   <i class="bi bi-person"></i>
                   <span>My Profile</span>
                 </a>
@@ -231,27 +99,16 @@
               </li>
 
               <li>
-                <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-                  <i class="bi bi-gear"></i>
-                  <span>Account Settings</span>
-                </a>
+                <hr class="dropdown-divider" />
               </li>
+
+              
               <li>
                 <hr class="dropdown-divider" />
               </li>
 
               <li>
-                <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
-                  <i class="bi bi-question-circle"></i>
-                  <span>Need Help?</span>
-                </a>
-              </li>
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-
-              <li>
-                <a class="dropdown-item d-flex align-items-center" href="#">
+                <a class="dropdown-item d-flex align-items-center sign-out" href="#">
                   <i class="bi bi-box-arrow-right"></i>
                   <span>Sign Out</span>
                 </a>
@@ -452,78 +309,6 @@
       </div>
   </main>
 
-  <footer class="bg-black">
-    <div class="container-2xxl p-10 text-white">
-      <div class="row align-items-end">
-        <div class="col-md-6 col-sm-12">
-          <h3 class="fw-bold fs-2">Sign Up To Our Newsletter.</h3>
-          <p>Be the first to hear about the latest offers.</p>
-        </div>
-        <div class="col-md-6 col-sm-12">
-          <div class="input-group mb-3 gap-1">
-            <input type="text" class=" form-control py-2 bg-transparent text-white" placeholder="Recipient's email"
-              aria-label="Recipient's email" aria-describedby="button-addon2">
-            <button class="btn btn-primary border-0" type="button" id="button-addon2">Subcribe</button>
-          </div>
-        </div>
-      </div>
-      <div class="row mt-4">
-        <ul class="col list-unstyled">
-          <li class="fw-bold text-secondary fs-4 mb-4">Information</li>
-          <li class="mt-1 font-poppins fs-6">About us</li>
-          <li class="mt-1 font-poppins fs-6">About Zip</li>
-          <li class="mt-1 font-poppins fs-6">Privacy Policy</li>
-          <li class="mt-1 font-poppins fs-6">Search</li>
-          <li class="mt-1 font-poppins fs-6">Terms</li>
-          <li class="mt-1 font-poppins fs-6">Orders and Returns</li>
-          <li class="mt-1 font-poppins fs-6">Contact Us</li>
-          <li class="mt-1 font-poppins fs-6">Advanced Search</li>
-          <li class="mt-1 font-poppins fs-6">Newsletter Subscription</li>
-        </ul>
-        <ul class="col list-unstyled">
-          <li class="fw-bold text-secondary fs-4 mb-4">PC Parts</li>
-          <li class="mt-1 font-poppins fs-6">CPUS</li>
-          <li class="mt-1 font-poppins fs-6">Add On Cards</li>
-          <li class="mt-1 font-poppins fs-6">Hard Drives (Internal)</li>
-          <li class="mt-1 font-poppins fs-6">Graphic Cards</li>
-          <li class="mt-1 font-poppins fs-6">Keyboards / Mice</li>
-          <li class="mt-1 font-poppins fs-6">Cases / Power Supplies / Cooling</li>
-          <li class="mt-1 font-poppins fs-6">RAM (Memory)</li>
-          <li class="mt-1 font-poppins fs-6">Software</li>
-          <li class="mt-1 font-poppins fs-6">Speakers / Headsets</li>
-          <li class="mt-1 font-poppins fs-6">Motherboards</li>
-        </ul>
-        <ul class="col list-unstyled">
-          <li class="fw-bold text-secondary fs-4 mb-4">Desktop PCs</li>
-          <li class="mt-1 font-poppins fs-6">Custom PCs</li>
-          <li class="mt-1 font-poppins fs-6">Servers</li>
-          <li class="mt-1 font-poppins fs-6">MSI All-In-One PCs</li>
-          <li class="mt-1 font-poppins fs-6">HP/Compaq PCs</li>
-          <li class="mt-1 font-poppins fs-6">ASUS PCs</li>
-          <li class="mt-1 font-poppins fs-6">Tecs PCs</li>
-        </ul>
-        <ul class="col list-unstyled">
-          <li class="fw-bold text-secondary fs-4 mb-4">Laptops</li>
-          <li class="mt-1 font-poppins fs-6">Evryday Use Notebooks</li>
-          <li class="mt-1 font-poppins fs-6">MSI Workstation Series</li>
-          <li class="mt-1 font-poppins fs-6">MSI Prestige Series</li>
-          <li class="mt-1 font-poppins fs-6">Tablets and Pads</li>
-          <li class="mt-1 font-poppins fs-6">Netbooks</li>
-          <li class="mt-1 font-poppins fs-6">Infinity Gaming Notebooks</li>
-        </ul>
-        <ul class="col list-unstyled">
-          <li class="fw-bold text-secondary fs-4 mb-4">Address</li>
-          <li class="mt-1 font-poppins fs-6">Address: 1234 Street Adress City Address, 1234</li>
-          <li class="mt-1 font-poppins fs-6">Phones: (00) 1234 5678</li>
-          <li class="mt-1 font-poppins fs-6">We are open: Monday-Thursday: 9:00 AM - 5:30 PM</li>
-          <li class="mt-1 font-poppins fs-6">Friday: 9:00 AM - 6:00 PM</li>
-          <li class="mt-1 font-poppins fs-6">Saturday: 11:00 AM - 5:00 PM</li>
-          <li class="mt-1 font-poppins fs-6">E-mail: shop@email.com</li>
-        </ul>
-      </div>
-    </div>
-  </footer>
-
   <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/chart.js/chart.umd.js"></script>
@@ -535,6 +320,9 @@
   <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
 
   <script src="assets/js/main.js"></script>
+
+  <script src="./assets/js/auth.js"></script>
+
   <script>
     
     // Lấy giá trị từ tham số 'price' trong URL và điền vào các trường input
@@ -545,8 +333,6 @@
     if (rateParam) {
       $(`#${rateParam}`).addClass('bg-five');
     }
-
-
 
     if (priceParam) {
       const [fromPrice, toPrice] = priceParam.split(';');
@@ -827,6 +613,9 @@
         }
       });
     }
+
+
+
     showBrachFilter()
     showCategoryFilter()
     // showProduct()

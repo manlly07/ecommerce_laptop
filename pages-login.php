@@ -29,6 +29,9 @@
   
   <link href="assets/css/style.css" rel="stylesheet">
 
+
+  <script src="assets/vendor/jquery/jquery-3.7.1.js"></script>
+  <script src="./assets/js/auth.js"></script>
   
 </head>
 
@@ -103,11 +106,13 @@
   <script src="assets/vendor/quill/quill.min.js"></script>
   <script src="assets/vendor/tinymce/tinymce.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="assets/vendor/jquery/jquery-3.7.1.js"></script>
   <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
   
   <script src="assets/js/main.js"></script>
   <script>
+    
+    var userRole = checkAuth()
+    console.log(userRole);
     $('#formLogin').on('submit', function(e) {
       e.preventDefault();
       var form = $(this).serialize()

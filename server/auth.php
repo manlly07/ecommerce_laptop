@@ -1,5 +1,6 @@
 <?php 
     include './database.php';
+    include './send.php';
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -20,11 +21,26 @@
                 ]);
                 exit;
             }
+
+            $sql = "SELECT * FROM users WHERE phone = ?";
+            $parameters = [$phone];
+
+            $result = executeQuery($connection, $sql, $parameters, true);
+
+            if (count($result) != 0) {
+                echo json_encode([
+                    'status' => false,
+                    'message' => 'Tài khoản đã tồn tại',
+                ]);
+                exit;
+            }
     
             $sql = "INSERT INTO users (first_name, last_name, phone, image, phone_verify, password, address) VALUES (?, ?, ?, ?, ?, ?, ?)";
             $parameters = [$first_name, $last_name, $phone, $image, false, $password, $address];
             $result = executeQuery($connection, $sql, $parameters, false, true);
             if ($result) {
+                $phone = '84' . ltrim($phone, '0');
+                sendOtp($connection, $result, $phone);
                 echo json_encode([
                     'status' => true,
                     'message' => 'Đăng kí thành công',
@@ -62,6 +78,8 @@
                         'id' => $result[0]['id']
                     ]);
                 }else {
+                    //Lưu đối tượng dưới dạng chuỗi vào phiên
+                    $_SESSION['user'] = serialize($result[0]);
                     echo json_encode([
                         'status' => true,
                         'message' => 'Đăng nhập thành công!',
@@ -71,171 +89,54 @@
                 }
             }
         }
-    
-        // Lấy toàn bộ users
-        if ($_POST['action'] == 'read') {
-            $sql = "SELECT * FROM users";
-            $users = executeQuery($connection, $sql, [], true);
-            echo json_encode($users);
+
+        if ($_POST['action'] == 'logout') {
+            session_destroy();
         }
-    
-        // Lấy user 
-        if ($_POST['action'] == 'readbyfilter') {
-            $sql = "SELECT
-                        u.id AS user_id,
-                        u.first_name,
-                        u.last_name,
-                        u.image,
-                        u.phone,
-                        u.role,
-                        u.is_active,
-                        COUNT(o.id) AS total_orders,
-                        SUM(o.total) AS total_amount_paid
-                    FROM
-                        users u
-                    LEFT JOIN
-                        orders o ON u.id = o.user_id
-                    GROUP BY
-                        u.id, u.first_name, u.last_name, u.phone, u.image, u.role, u.is_active";
-            $users = executeQuery($connection, $sql, [], true);
-            echo json_encode($users);
-        }
-    
-        // Lấy thông tin user theo id
-        if ($_POST['action'] == 'getbyid') {
+
+        if ($_POST['action'] == 'resend') {
             $id = $_POST['id'];
-            $sql = "SELECT
-                        u.*,
-                        COUNT(o.id) AS total_orders,
-                        SUM(o.total) AS total_amount_paid
-                    FROM
-                        users u
-                    LEFT JOIN
-                        orders o ON u.id = o.user_id
-                    WHERE
-                        u.id = $id
-                    GROUP BY
-                        u.id";
-            $user = executeQuery($connection, $sql, [], true);
-            echo json_encode($user[0]);
-        }
-    
-        // Cập nhật thông tin user
-        if ($_POST['action'] == 'update') {
-            $first_name = $_POST['firstname'];
-            $last_name = $_POST['lastname'];
             $phone = $_POST['phone'];
-            $is_active = $_POST['status'] ?? 0;
-            $role = $_POST['role'] ?? 'user';
-            $address = $_POST['address'];
-            $verify = $_POST['verify'] ?? 0;
-            $imageOld = $_POST['image_old'] ?? '';
+            $phone = '84' . ltrim($phone, '0');
+            sendOtp($connection, $id, $phone);
+        }
+
+        if ($_POST['action'] == 'verify') {
+            $otp = $_POST['otp'];
             $id = $_POST['id'];
-            $image = '';
-    
-            if(isset($_FILES['image'])) {
-                $image = $_FILES['image'];
-                // Tạo tên mới cho file ảnh
-                $new_image_name = generateImageName($image);
-                // Thư mục lưu trữ file ảnh
-                $upload_directory = 'uploads/';
-                // Đường dẫn đầy đủ của file ảnh
-                $upload_path = $upload_directory . $new_image_name;
-    
-                if (file_exists($imageOld)) {
-                    unlink($imageOld);
-                }
-                //Di chuyển file ảnh vào thư mục lưu trữ
-                move_uploaded_file($image['tmp_name'], $upload_path);
-    
-                $image = $upload_path;
-            }
-    
-            $sql = "UPDATE users SET first_name = ?, last_name = ?, phone = ?, image = ?, phone_verify = ?, address = ?, role = ?, is_active = ?, updated_at = now() WHERE id = ?";
-    
-            $parameters = [$first_name, $last_name, $phone, $image, $verify, $address, $role, $is_active, $id];
-            $result = executeQuery($connection, $sql, $parameters);
-            if ($result) {
+            $sql = "SELECT * FROM otp WHERE user_id = '$id' AND code = '$otp' AND expiration_time > 'NOW()'";
+            $result = executeQuery($connection, $sql, [], true);
+            if (count($result) == 1) {
+                $sql = "UPDATE users set phone_verify = '1' WHERE id = '$id'";
+                $result = executeQuery($connection, $sql, []);
                 echo json_encode([
                     'status' => true,
-                    'message' => 'Successfully'
-                ]);
-            } else {
+                    'message' => 'Xác thực thành công',
+                ]); 
+            }else {
                 echo json_encode([
                     'status' => false,
-                    'message' => 'Something went wrong'
+                    'message' => 'Không chính xác',
                 ]);
             }
         }
-    
-        // Xóa user
-        if ($_POST['action'] == 'delete') {
-            $id = $_POST['id'];
-    
-            $sql = "DELETE FROM users WHERE id = ?";
-            $parameters = [$id];
-    
-            $result = executeQuery($connection, $sql, $parameters);
-            if ($result) {
+
+        if ($_POST['action'] == 'checkAuth') {
+            if(isset($_SESSION['user'])) {
+                $serializedObject = $_SESSION['user']; // Lấy chuỗi đối tượng từ phiên
+                $user = unserialize($serializedObject); // Chuyển đổi chuỗi thành đối tượng ban đầu
+                unset($user['password']);
                 echo json_encode([
                     'status' => true,
-                    'message' => 'Successfully'
+                    'message' => 'Đã đăng nhập',
+                    'user' => $user
                 ]);
-            } else {
+            }else {
+                $user['role'] = 'guest';
                 echo json_encode([
                     'status' => false,
-                    'message' => 'Something went wrong'
-                ]);
-            }
-        }
-    
-        // kích hoạt hoặc vô hiệu hóa khách hàng
-        if ($_POST['action'] == 'status') {
-            $data = $_POST['data'];
-            $id = $_POST['id'];
-            $sql = "UPDATE users SET is_active = ? WHERE id = ?";
-            $parameters = [$data, $id];
-    
-            $result = executeQuery($connection, $sql, $parameters);
-            if ($result) {
-                echo json_encode([
-                    'status' => true,
-                    'message' => 'Successfully'
-                ]);
-            } else {
-                echo json_encode([
-                    'status' => false,
-                    'message' => 'Something went wrong'
-                ]);
-            }
-        }
-    
-        // thay đổi mật khẩu
-        if ($_POST['action'] == 'changePassword') {
-            $id = $_POST['id'];
-            $newPassword = $_POST['newPassword'];
-            $confirmPassword = $_POST['confirmPassword'];
-    
-            if ($newPassword !== $confirmPassword) {
-                echo json_encode([
-                    'status' => false,
-                    'message' => 'Password and Confirm Password do not match'
-                ]);
-                exit;
-            }
-            $sql = "UPDATE users SET password = ? WHERE id = ?";
-            $parameters = [$password, $id];
-    
-            $result = executeQuery($connection, $sql, $parameters);
-            if ($result) {
-                echo json_encode([
-                    'status' => true,
-                    'message' => 'Successfully'
-                ]);
-            } else {
-                echo json_encode([
-                    'status' => false,
-                    'message' => 'Something went wrong'
+                    'message' => 'Chưa đăng nhập',
+                    'user' => $user
                 ]);
             }
         }

@@ -58,30 +58,31 @@
                     <div class="card-body mt-2">
                         <h4 class="mb-2">Xác thực số điện thoại 💬</h4>
                         <p class="text-start mb-4">
-                            We sent a verification code to your mobile. Enter the code from the mobile in the field below.
+                            Chúng tôi đã gửi một mã xác thực đến điện thoại di động của bạn. Vui lòng nhập mã từ điện thoại vào ô bên dưới.
                             <!-- <span class="d-block mt-2">******1234</span> -->
                         </p>
-                        <p class="mb-0">Type your 6 digit security code</p>
-                        <form id="twoStepsForm" action="index.html" method="GET" class="fv-plugins-bootstrap5 fv-plugins-framework" novalidate="novalidate">
+                        <p class="mb-0">Vui lòng nhập mã bảo mật gồm 6 chữ số của bạn.</p>
+                        <form id="twoStepsForm" class="fv-plugins-bootstrap5 fv-plugins-framework">
                             <div class="mb-3 fv-plugins-icon-container">
                                 <div class="auth-input-wrapper d-flex align-items-center justify-content-sm-between numeral-mask-wrapper">
-                                    <input type="tel" class="form-control auth-input text-center numeral-mask h-px-50 mx-1 my-2" maxlength="1" autofocus="">
-                                    <input type="tel" class="form-control auth-input text-center numeral-mask h-px-50 mx-1 my-2" maxlength="1">
-                                    <input type="tel" class="form-control auth-input text-center numeral-mask h-px-50 mx-1 my-2" maxlength="1">
-                                    <input type="tel" class="form-control auth-input text-center numeral-mask h-px-50 mx-1 my-2" maxlength="1">
-                                    <input type="tel" class="form-control auth-input text-center numeral-mask h-px-50 mx-1 my-2" maxlength="1">
-                                    <input type="tel" class="form-control auth-input text-center numeral-mask h-px-50 mx-1 my-2" maxlength="1">
+                                    <input required type="tel" class="form-control auth-input text-center numeral-mask h-px-50 mx-1 my-2" maxlength="1" autofocus="">
+                                    <input required type="tel" class="form-control auth-input text-center numeral-mask h-px-50 mx-1 my-2" maxlength="1">
+                                    <input required type="tel" class="form-control auth-input text-center numeral-mask h-px-50 mx-1 my-2" maxlength="1">
+                                    <input required type="tel" class="form-control auth-input text-center numeral-mask h-px-50 mx-1 my-2" maxlength="1">
+                                    <input required type="tel" class="form-control auth-input text-center numeral-mask h-px-50 mx-1 my-2" maxlength="1">
+                                    <input required type="tel" class="form-control auth-input text-center numeral-mask h-px-50 mx-1 my-2" maxlength="1">
                                 </div>
                                 <!-- Create a hidden field which is combined by 3 fields above -->
                                 <input type="hidden" name="otp">
+                                <input type="number" id="phone" hidden>
                                 <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
                             </div>
                             <button class="btn btn-primary d-grid w-100 mb-3 waves-effect waves-light">
-                                Verify my account
+                                Xác thực tài khoản
                             </button>
-                            <div class="text-center">Didn't get the code?
-                                <a href="javascript:void(0);">
-                                    Resend
+                            <div class="text-center">Chưa nhận được mã?
+                                <a id="resend" href="javascript:void(0);">
+                                    Gửi lại
                                 </a>
                             </div>
                             <input type="hidden">
@@ -121,13 +122,44 @@
                 success: (response) => {
                     console.log(JSON.parse(response));
                     let user = JSON.parse(response)
+                    $('#phone').val(user.phone)
                     if (!user) {
                         window.location.href = './page-error.php'
+                    }
+                    if(user.phone_verify == 1) {
+                        window.location.href = './filter.php'
                     }
                 }
             })
         }
 
+        const handleResendOtp = () => {
+            var phone = $('#phone').val()
+            $.ajax({
+                url: 'http://localhost:3000/server/auth.php',
+                type: 'POST',
+                data: `action=resend&phone=${phone}&id=${userId}`,
+                success: (response) => {
+                    console.log(JSON.parse(response));
+                    alert('Gửi mã xác thực thành công')
+                }
+            })
+        }
+
+        $('#twoStepsForm').on('submit', function(e) {
+            e.preventDefault();
+            var otp = $('input[name="otp"]').val();
+            $.ajax({
+                url: 'http://localhost:3000/server/auth.php',
+                type: 'POST',
+                data: `action=verify&otp=${otp}&id=${userId}`,
+                success: (response) => {
+                    console.log(JSON.parse(response));
+                }
+            })
+        })
+
+        $('#resend').on('click', handleResendOtp)
 
         $(document).ready(function() {
             $('.numeral-mask').on('input', function() {

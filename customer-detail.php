@@ -78,201 +78,30 @@
               <i class="bi bi-search"></i>
             </a>
           </li>
-          
+
 
           <li class="nav-item dropdown">
             <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-              <i class="bi bi-bell"></i>
-              <span class="badge bg-primary badge-number">4</span> </a
-            >
+              <i class="bi bi-cart"></i>
+              <span class="badge bg-primary badge-number total-cart">4</span> </a>
 
-            <ul
-              class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications"
-            >
+            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
               <li class="dropdown-header">
-                You have 4 new notifications
-                <a href="#"
-                  ><span class="badge rounded-pill bg-primary p-2 ms-2"
-                    >View all</span
-                  ></a
-                >
-              </li>
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-
-              <li class="notification-item">
-                <i class="bi bi-exclamation-circle text-warning"></i>
-                <div>
-                  <h4>Lorem Ipsum</h4>
-                  <p>Quae dolorem earum veritatis oditseno</p>
-                  <p>30 min. ago</p>
-                </div>
-              </li>
-
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-
-              <li class="notification-item">
-                <i class="bi bi-x-circle text-danger"></i>
-                <div>
-                  <h4>Atque rerum nesciunt</h4>
-                  <p>Quae dolorem earum veritatis oditseno</p>
-                  <p>1 hr. ago</p>
-                </div>
-              </li>
-
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-
-              <li class="notification-item">
-                <i class="bi bi-check-circle text-success"></i>
-                <div>
-                  <h4>Sit rerum fuga</h4>
-                  <p>Quae dolorem earum veritatis oditseno</p>
-                  <p>2 hrs. ago</p>
-                </div>
-              </li>
-
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-
-              <li class="notification-item">
-                <i class="bi bi-info-circle text-primary"></i>
-                <div>
-                  <h4>Dicta reprehenderit</h4>
-                  <p>Quae dolorem earum veritatis oditseno</p>
-                  <p>4 hrs. ago</p>
-                </div>
-              </li>
-
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-              <li class="dropdown-footer">
-                <a href="#">Show all notifications</a>
+                Bạn có <span class="total-cart">4</span> sản phẩm trong giỏ hàng
+                <a href="./orders.php"><span class="badge rounded-pill bg-primary p-2 ms-2">xem tất cả</span></a>
               </li>
             </ul>
-            
+
           </li>
-          
-
-          <li class="nav-item dropdown">
-            <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-              <i class="bi bi-chat-left-text"></i>
-              <span class="badge bg-success badge-number">3</span> </a
-            >
-
-            <ul
-              class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages"
-            >
-              <li class="dropdown-header">
-                You have 3 new messages
-                <a href="#"
-                  ><span class="badge rounded-pill bg-primary p-2 ms-2"
-                    >View all</span
-                  ></a
-                >
-              </li>
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-
-              <li class="message-item">
-                <a href="#">
-                  <img
-                    src="assets/img/messages-1.jpg"
-                    alt=""
-                    class="rounded-circle"
-                  />
-                  <div>
-                    <h4>Maria Hudson</h4>
-                    <p>
-                      Velit asperiores et ducimus soluta repudiandae labore
-                      officia est ut...
-                    </p>
-                    <p>4 hrs. ago</p>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-
-              <li class="message-item">
-                <a href="#">
-                  <img
-                    src="assets/img/messages-2.jpg"
-                    alt=""
-                    class="rounded-circle"
-                  />
-                  <div>
-                    <h4>Anna Nelson</h4>
-                    <p>
-                      Velit asperiores et ducimus soluta repudiandae labore
-                      officia est ut...
-                    </p>
-                    <p>6 hrs. ago</p>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-
-              <li class="message-item">
-                <a href="#">
-                  <img
-                    src="assets/img/messages-3.jpg"
-                    alt=""
-                    class="rounded-circle"
-                  />
-                  <div>
-                    <h4>David Muldon</h4>
-                    <p>
-                      Velit asperiores et ducimus soluta repudiandae labore
-                      officia est ut...
-                    </p>
-                    <p>8 hrs. ago</p>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-
-              <li class="dropdown-footer">
-                <a href="#">Show all messages</a>
-              </li>
-            </ul>
-            
-          </li>
-          
 
           <li class="nav-item dropdown pe-3">
-            <a
-              class="nav-link nav-profile d-flex align-items-center pe-0"
-              href="#"
-              data-bs-toggle="dropdown"
-            >
-              <img
-                src="assets/img/profile-img.jpg"
-                alt="Profile"
-                class="rounded-circle"
-              />
-              <span class="d-none d-md-block dropdown-toggle ps-2"
-                >K. Anderson</span
-              > </a
-            >
+            <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+              <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle profile-image" />
+              <span class="d-none d-md-block dropdown-toggle ps-2 profile-name text-truncate" style="width: 120px;">K. Anderson</span> </a>
 
-            <ul
-              class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile"
-            >
+            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
               <li class="dropdown-header">
-                <h6>Kevin Anderson</h6>
+                <h6 style="width: 250px;" class="text-truncate profile-name">Kevin Anderson</h6>
                 <span>Web Designer</span>
               </li>
               <li>
@@ -280,10 +109,7 @@
               </li>
 
               <li>
-                <a
-                  class="dropdown-item d-flex align-items-center"
-                  href="users-profile.php"
-                >
+                <a class="dropdown-item d-flex align-items-center" href="users-profile.php">
                   <i class="bi bi-person"></i>
                   <span>My Profile</span>
                 </a>
@@ -293,41 +119,24 @@
               </li>
 
               <li>
-                <a
-                  class="dropdown-item d-flex align-items-center"
-                  href="users-profile.php"
-                >
-                  <i class="bi bi-gear"></i>
-                  <span>Account Settings</span>
-                </a>
+                <hr class="dropdown-divider" />
               </li>
+
+              
               <li>
                 <hr class="dropdown-divider" />
               </li>
 
               <li>
-                <a
-                  class="dropdown-item d-flex align-items-center"
-                  href="pages-faq.php"
-                >
-                  <i class="bi bi-question-circle"></i>
-                  <span>Need Help?</span>
-                </a>
-              </li>
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-
-              <li>
-                <a class="dropdown-item d-flex align-items-center" href="#">
+                <a class="dropdown-item d-flex align-items-center sign-out" href="#">
                   <i class="bi bi-box-arrow-right"></i>
                   <span>Sign Out</span>
                 </a>
               </li>
             </ul>
-            
+
           </li>
-          
+
         </ul>
       </nav>
       
@@ -340,7 +149,7 @@
         <li class="nav-item">
           <a class="nav-link collapsed" href="index.php">
             <i class="bi bi-grid"></i>
-            <span>Dashboard</span>
+            <span>Trang chủ</span>
           </a>
         </li>
         
@@ -352,7 +161,7 @@
             data-bs-toggle="collapse"
             href="#"
           >
-            <i class="bi bi-menu-button-wide"></i><span>Products</span
+            <i class="bi bi-menu-button-wide"></i><span>Sản phẩm</span
             ><i class="bi bi-chevron-down ms-auto"></i>
           </a>
           <ul
@@ -362,17 +171,22 @@
           >
             <li>
               <a href="products-list.php">
-                <i class="bi bi-circle"></i><span>Product List</span>
+                <i class="bi bi-circle"></i><span>Danh sách sản phẩm</span>
               </a>
             </li>
             <li>
               <a href="add-product.php">
-                <i class="bi bi-circle"></i><span>Add Product</span>
+                <i class="bi bi-circle"></i><span>Thêm sản phẩm</span>
               </a>
             </li>
             <li>
-              <a href="branch-list.php" class="active">
-                <i class="bi bi-circle"></i><span>Category List</span>
+              <a href="branch-list.php">
+                <i class="bi bi-circle"></i><span>Danh sách thương hiệu</span>
+              </a>
+            </li>
+            <li>
+              <a href="category-list.php">
+                <i class="bi bi-circle"></i><span>Danh sách phân loại</span>
               </a>
             </li>
           </ul>
@@ -386,7 +200,7 @@
             data-bs-toggle="collapse"
             href="#"
           >
-            <i class="bi bi-menu-button-wide"></i><span>Orders</span
+            <i class="bi bi-menu-button-wide"></i><span>Đơn hàng</span
             ><i class="bi bi-chevron-down ms-auto"></i>
           </a>
           <ul
@@ -396,12 +210,7 @@
           >
             <li>
               <a href="orders-list.php">
-                <i class="bi bi-circle"></i><span>Order List</span>
-              </a>
-            </li>
-            <li>
-              <a href="orders-detail.php">
-                <i class="bi bi-circle"></i><span>Order Details</span>
+                <i class="bi bi-circle"></i><span>Danh sách đơn hàng</span>
               </a>
             </li>
           </ul>
@@ -414,7 +223,7 @@
             data-bs-toggle="collapse"
             href="#"
           >
-            <i class="bi bi-menu-button-wide"></i><span>Customer</span
+            <i class="bi bi-menu-button-wide"></i><span>Khách hàng</span
             ><i class="bi bi-chevron-down ms-auto"></i>
           </a>
           <ul
@@ -424,7 +233,7 @@
           >
             <li>
               <a href="all-customer.php" class="active">
-                <i class="bi bi-circle"></i><span>Customer List</span>
+                <i class="bi bi-circle"></i><span>Danh sách khách hàng</span>
               </a>
             </li>
           </ul>
@@ -434,7 +243,7 @@
         <li class="nav-item">
           <a class="nav-link collapsed" href="manage-review.php">
             <i class="bi bi-grid"></i>
-            <span>Manage Reviews</span>
+            <span>Quản lý đánh giá</span>
           </a>
         </li>
 
@@ -658,7 +467,8 @@
                         </th>
                       </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="orderHistory">
+                      <tr>
                         <td class="sorting_1">
                           <a href="app-ecommerce-order-details.php"
                             ><span>#9957</span></a
@@ -731,6 +541,7 @@
                           </div>
                         </td>
                       </tr>
+                      <tr>
                         <td class="sorting_1">
                           <a href="app-ecommerce-order-details.php"
                             ><span>#9885</span></a
@@ -800,6 +611,7 @@
                           </div>
                         </td>
                       </tr>
+                      <tr>
                         <td class="sorting_1">
                           <a href="app-ecommerce-order-details.php"
                             ><span>#9877</span></a
@@ -956,16 +768,6 @@
     </div>
 
     
-    <footer id="footer" class="footer">
-      <div class="copyright">
-        &copy; Copyright <strong><span>Thảo</span></strong
-        >. All Rights Reserved
-      </div>
-      <div class="credits">
-        Designed by <a href="#">Thảo</a>
-      </div>
-    </footer>
-    
 
     <a
       href="#"
@@ -985,10 +787,15 @@
     <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
     
     <script src="assets/js/main.js"></script>
+
+    <script src="./assets/js/auth.js"></script>
+
     <script>
         var urlParams = new URLSearchParams(window.location.search);
         var custommerId = urlParams.get('id');
-        
+        if(!custommerId) {
+          history.back()
+        }
         $('.custommer-navigate-security').attr('href', `./customer-detail-security.php?id=${custommerId}`)
         const showCustomerById = (id) => {
           $.ajax({
@@ -1045,6 +852,40 @@
                 `
                 $("#customer-avatar").empty().append(span)
               }
+            }
+          })
+        }
+
+        const showOrderHistory = (id) => {
+          // orderHistory
+          $.ajax({
+            url: 'http://localhost:3000/server/order.php',
+            type: 'POST',
+            data: `id=${id}&action=getOrderByUserId`,
+            success: (response) => {
+              const orders = JSON.parse(response)
+              console.log(orders);
+              $('.orderHistory').empty()
+              orders.forEach(function(order) {
+                let html = `
+                          <tr>
+                            <td class="sorting_1">
+                              <a href="orders-detail.php?id=${order.id}"
+                                ><span>#${order.id}</span></a
+                              >
+                            </td>
+                            <td><span class="text-nowrap">${order.order_date}</span></td>
+                            <td>
+                              <span
+                                class="badge rounded-pill bg-label-success text-capitalize"
+                                >${order.status}</span
+                              >
+                            </td>
+                            <td><span>${order.total}<sup>đ</sup></span></td>
+                          </tr>
+                `
+                $('.orderHistory').append(html)
+              })
             }
           })
         }
@@ -1132,7 +973,10 @@
           });
         })
 
+
+
         showCustomerById(custommerId)
+        showOrderHistory(custommerId)
     </script>
   </body>
 </html>

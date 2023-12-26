@@ -8,7 +8,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $product_name = $_POST['product_name'];
         $branch_id = $_POST['branch_id'];
         $category_id =  $_POST['category_id'];
-        $images = $_FILES['images'];
         $cpu = $_POST['cpu'];
         $ram = $_POST['ram'];
         $hardware = $_POST['hardware'];
@@ -29,7 +28,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $product_id = executeQuery($connection, $sql, $parameters, false, true);
 
-        if ($product_id) {
+        if ($product_id && isset($_FILES['images'])) {
+            $images = $_FILES['images'];
             foreach ($images['tmp_name'] as $key => $tmp_name) {
                 $file = $images['name'][$key];
 
@@ -51,17 +51,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 $result = executeQuery($connection, $sql, $parameters);
             }
-        } else {
-            echo json_encode([
-                'status' => false,
-                'message' => 'Something went wrong'
-            ]);
+            
         }
 
         echo json_encode([
             'status' => true,
-            'message' => 'Successfully'
+            'message' => 'Thêm sản phẩm thành công'
         ]);
+        exit();
     }
 
     // Lấy toàn bộ sản phẩm 

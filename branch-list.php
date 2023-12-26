@@ -5,7 +5,7 @@
   <meta charset="utf-8" />
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
-  <title>Branch</title>
+  <title>Thương hiệu</title>
   <meta content="" name="description" />
   <meta content="" name="keywords" />
 
@@ -48,213 +48,73 @@
     </div>
 
     <nav class="header-nav ms-auto">
-      <ul class="d-flex align-items-center">
-        <li class="nav-item d-block d-lg-none">
-          <a class="nav-link nav-icon search-bar-toggle" href="#">
-            <i class="bi bi-search"></i>
-          </a>
-        </li>
-
-        <li class="nav-item dropdown">
-          <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-            <i class="bi bi-bell"></i>
-            <span class="badge bg-primary badge-number">4</span> </a>
-
-          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
-            <li class="dropdown-header">
-              You have 4 new notifications
-              <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
-            </li>
-            <li>
-              <hr class="dropdown-divider" />
-            </li>
-
-            <li class="notification-item">
-              <i class="bi bi-exclamation-circle text-warning"></i>
-              <div>
-                <h4>Lorem Ipsum</h4>
-                <p>Quae dolorem earum veritatis oditseno</p>
-                <p>30 min. ago</p>
-              </div>
-            </li>
-
-            <li>
-              <hr class="dropdown-divider" />
-            </li>
-
-            <li class="notification-item">
-              <i class="bi bi-x-circle text-danger"></i>
-              <div>
-                <h4>Atque rerum nesciunt</h4>
-                <p>Quae dolorem earum veritatis oditseno</p>
-                <p>1 hr. ago</p>
-              </div>
-            </li>
-
-            <li>
-              <hr class="dropdown-divider" />
-            </li>
-
-            <li class="notification-item">
-              <i class="bi bi-check-circle text-success"></i>
-              <div>
-                <h4>Sit rerum fuga</h4>
-                <p>Quae dolorem earum veritatis oditseno</p>
-                <p>2 hrs. ago</p>
-              </div>
-            </li>
-
-            <li>
-              <hr class="dropdown-divider" />
-            </li>
-
-            <li class="notification-item">
-              <i class="bi bi-info-circle text-primary"></i>
-              <div>
-                <h4>Dicta reprehenderit</h4>
-                <p>Quae dolorem earum veritatis oditseno</p>
-                <p>4 hrs. ago</p>
-              </div>
-            </li>
-
-            <li>
-              <hr class="dropdown-divider" />
-            </li>
-            <li class="dropdown-footer">
-              <a href="#">Show all notifications</a>
-            </li>
-          </ul>
-        </li>
+        <ul class="d-flex align-items-center">
+          <li class="nav-item d-block d-lg-none">
+            <a class="nav-link nav-icon search-bar-toggle" href="#">
+              <i class="bi bi-search"></i>
+            </a>
+          </li>
 
 
-        <li class="nav-item dropdown">
-          <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-            <i class="bi bi-chat-left-text"></i>
-            <span class="badge bg-success badge-number">3</span> </a>
+          <li class="nav-item dropdown">
+            <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+              <i class="bi bi-cart"></i>
+              <span class="badge bg-primary badge-number total-cart">4</span> </a>
 
-          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
-            <li class="dropdown-header">
-              You have 3 new messages
-              <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
-            </li>
-            <li>
-              <hr class="dropdown-divider" />
-            </li>
+            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
+              <li class="dropdown-header">
+                Bạn có <span class="total-cart">4</span> sản phẩm trong giỏ hàng
+                <a href="./orders.php"><span class="badge rounded-pill bg-primary p-2 ms-2">xem tất cả</span></a>
+              </li>
+            </ul>
 
-            <li class="message-item">
-              <a href="#">
-                <img src="assets/img/messages-1.jpg" alt="" class="rounded-circle" />
-                <div>
-                  <h4>Maria Hudson</h4>
-                  <p>
-                    Velit asperiores et ducimus soluta repudiandae labore
-                    officia est ut...
-                  </p>
-                  <p>4 hrs. ago</p>
-                </div>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider" />
-            </li>
+          </li>
 
-            <li class="message-item">
-              <a href="#">
-                <img src="assets/img/messages-2.jpg" alt="" class="rounded-circle" />
-                <div>
-                  <h4>Anna Nelson</h4>
-                  <p>
-                    Velit asperiores et ducimus soluta repudiandae labore
-                    officia est ut...
-                  </p>
-                  <p>6 hrs. ago</p>
-                </div>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider" />
-            </li>
+          <li class="nav-item dropdown pe-3">
+            <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+              <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle profile-image" />
+              <span class="d-none d-md-block dropdown-toggle ps-2 profile-name text-truncate" style="width: 120px;">K. Anderson</span> </a>
 
-            <li class="message-item">
-              <a href="#">
-                <img src="assets/img/messages-3.jpg" alt="" class="rounded-circle" />
-                <div>
-                  <h4>David Muldon</h4>
-                  <p>
-                    Velit asperiores et ducimus soluta repudiandae labore
-                    officia est ut...
-                  </p>
-                  <p>8 hrs. ago</p>
-                </div>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider" />
-            </li>
+            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+              <li class="dropdown-header">
+                <h6 style="width: 250px;" class="text-truncate profile-name">Kevin Anderson</h6>
+                <span>Web Designer</span>
+              </li>
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
 
-            <li class="dropdown-footer">
-              <a href="#">Show all messages</a>
-            </li>
-          </ul>
+              <li>
+                <a class="dropdown-item d-flex align-items-center" href="users-profile.php">
+                  <i class="bi bi-person"></i>
+                  <span>My Profile</span>
+                </a>
+              </li>
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
 
-        </li>
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
 
-        <li class="nav-item dropdown pe-3">
-          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle" />
-            <span class="d-none d-md-block dropdown-toggle ps-2">K. Anderson</span> </a>
+              
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
 
-          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
-            <li class="dropdown-header">
-              <h6>Kevin Anderson</h6>
-              <span>Web Designer</span>
-            </li>
-            <li>
-              <hr class="dropdown-divider" />
-            </li>
+              <li>
+                <a class="dropdown-item d-flex align-items-center sign-out" href="#">
+                  <i class="bi bi-box-arrow-right"></i>
+                  <span>Sign Out</span>
+                </a>
+              </li>
+            </ul>
 
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-                <i class="bi bi-person"></i>
-                <span>My Profile</span>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider" />
-            </li>
+          </li>
 
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-                <i class="bi bi-gear"></i>
-                <span>Account Settings</span>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider" />
-            </li>
-
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
-                <i class="bi bi-question-circle"></i>
-                <span>Need Help?</span>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider" />
-            </li>
-
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="#">
-                <i class="bi bi-box-arrow-right"></i>
-                <span>Sign Out</span>
-              </a>
-            </li>
-          </ul>
-
-        </li>
-      </ul>
-
-    </nav>
+        </ul>
+      </nav>
 
   </header>
 
@@ -264,28 +124,33 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="index.php">
           <i class="bi bi-grid"></i>
-          <span>Dashboard</span>
+          <span>Trang chủ</span>
         </a>
       </li>
 
       <li class="nav-item">
         <a class="nav-link" data-bs-target="#products-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-menu-button-wide"></i><span>Products</span><i class="bi bi-chevron-down ms-auto"></i>
+          <i class="bi bi-menu-button-wide"></i><span>Sản phẩm</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="products-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav">
           <li>
             <a href="products-list.php">
-              <i class="bi bi-circle"></i><span>Product List</span>
+              <i class="bi bi-circle"></i><span>Danh sách sản phẩm</span>
             </a>
           </li>
           <li>
             <a href="add-product.php">
-              <i class="bi bi-circle"></i><span>Add Product</span>
+              <i class="bi bi-circle"></i><span>Thêm sản phẩm</span>
             </a>
           </li>
           <li>
             <a href="branch-list.php" class="active">
-              <i class="bi bi-circle"></i><span>Branch List</span>
+              <i class="bi bi-circle"></i><span>Danh sách nhãn hàng</span>
+            </a>
+          </li>
+          <li>
+            <a href="category-list.php">
+              <i class="bi bi-circle"></i><span>Danh sách phân loại</span>
             </a>
           </li>
         </ul>
@@ -293,17 +158,12 @@
 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#orders-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-menu-button-wide"></i><span>Orders</span><i class="bi bi-chevron-down ms-auto"></i>
+          <i class="bi bi-menu-button-wide"></i><span>Đơn hàng</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="orders-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
             <a href="orders-list.php">
-              <i class="bi bi-circle"></i><span>Order List</span>
-            </a>
-          </li>
-          <li>
-            <a href="orders-detail.php">
-              <i class="bi bi-circle"></i><span>Order Details</span>
+              <i class="bi bi-circle"></i><span>Danh sách đơn hàng</span>
             </a>
           </li>
         </ul>
@@ -311,12 +171,12 @@
 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#customer-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-menu-button-wide"></i><span>Customer</span><i class="bi bi-chevron-down ms-auto"></i>
+          <i class="bi bi-menu-button-wide"></i><span>Khách hàng</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="customer-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
           <li>
             <a href="all-customer.php">
-              <i class="bi bi-circle"></i><span>Customer List</span>
+              <i class="bi bi-circle"></i><span>Danh sách khách hàng</span>
             </a>
           </li>
         </ul>
@@ -325,7 +185,7 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="manage-review.php">
           <i class="bi bi-grid"></i>
-          <span>Manage Reviews</span>
+          <span>Quản lý sản phẩm</span>
         </a>
       </li>
     </ul>
@@ -333,12 +193,12 @@
 
   <main id="main" class="main">
     <div class="pagetitle">
-      <h1>Dashboard</h1>
+      <h1>Trang chủ</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-          <li class="breadcrumb-item">Product</li>
-          <li class="breadcrumb-item active">Branch List</li>
+          <li class="breadcrumb-item"><a href="index.php">Trang chủ</a></li>
+          <li class="breadcrumb-item">Sản phẩm</li>
+          <li class="breadcrumb-item active">Danh sách thương hiệu</li>
         </ol>
       </nav>
     </div>
@@ -349,18 +209,18 @@
           <div class="card">
             <div class="card-body">
               <h5 class="card-title d-flex align-items-center justify-content-between">
-                Filter
-                <button class="btn btn-primary" data-bs-toggle="offcanvas" data-bs-target="#offcanvasEcommerceBranchList" aria-controls="DataTables_Table_0">Add Branch</button>
+                Lọc
+                <button class="btn btn-primary" data-bs-toggle="offcanvas" data-bs-target="#offcanvasEcommerceBranchList" aria-controls="DataTables_Table_0">Thêm thương hiệu</button>
               </h5>
 
               <table class="table datatable" id="dataTable">
                 <thead>
                   <tr>
-                    <th><b>B</b>ranches</th>
-                    <th>Total Products</th>
-                    <th>Total Earning</th>
-                    <th>Status</th>
-                    <th>Action</th>
+                    <th><b>T</b>hương hiệu</th>
+                    <th>Tồn kho</th>
+                    <th>Doanh thu</th>
+                    <th>Trạng thái</th>
+                    <th></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -414,15 +274,6 @@
       </div>
     </section>
   </main>
-
-  <footer id="footer" class="footer">
-    <div class="copyright">
-      &copy; Copyright <strong><span>Thảo</span></strong>. All Rights Reserved
-    </div>
-    <div class="credits">
-      Designed by <a href="#">Thảo</a>
-    </div>
-  </footer>
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
@@ -539,6 +390,8 @@
   <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
   <script src="assets/js/main.js"></script>
  
+  <script src="./assets/js/auth.js"></script>
+
   <script>
     $('#eCommerceBranchListForm').on('submit', function(e) {
       e.preventDefault();

@@ -55,84 +55,73 @@
 
 
         <nav class="header-nav ms-auto">
-          <ul class="d-flex align-items-center">
-            <li class="nav-item d-block d-lg-none">
-              <a class="nav-link nav-icon search-bar-toggle" href="#">
-                <i class="bi bi-search"></i>
-              </a>
-            </li>
+        <ul class="d-flex align-items-center">
+          <li class="nav-item d-block d-lg-none">
+            <a class="nav-link nav-icon search-bar-toggle" href="#">
+              <i class="bi bi-search"></i>
+            </a>
+          </li>
 
 
-            <li class="nav-item dropdown">
-              <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-                <i class="bi bi-cart"></i>
-                <span class="badge bg-primary badge-number total-cart">4</span> </a>
+          <li class="nav-item dropdown">
+            <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+              <i class="bi bi-cart"></i>
+              <span class="badge bg-primary badge-number total-cart">4</span> </a>
 
-              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
-                <li class="dropdown-header">
-                  Bạn có <span class="total-cart">4</span> sản phẩm trong giỏ hàng
-                  <a href="./orders.php"><span class="badge rounded-pill bg-primary p-2 ms-2">xem tất cả</span></a>
-                </li>
-              </ul>
+            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
+              <li class="dropdown-header">
+                Bạn có <span class="total-cart">4</span> sản phẩm trong giỏ hàng
+                <a href="./orders.php"><span class="badge rounded-pill bg-primary p-2 ms-2">xem tất cả</span></a>
+              </li>
+            </ul>
 
-            </li>
+          </li>
 
-            <li class="nav-item dropdown pe-3">
-              <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle" />
-                <span class="d-none d-md-block dropdown-toggle ps-2">K. Anderson</span> </a>
+          <li class="nav-item dropdown pe-3">
+            <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+              <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle profile-image" />
+              <span class="d-none d-md-block dropdown-toggle ps-2 profile-name text-truncate" style="width: 120px;">K. Anderson</span> </a>
 
-              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
-                <li class="dropdown-header">
-                  <h6>Kevin Anderson</h6>
-                  <span>Web Designer</span>
-                </li>
-                <li>
-                  <hr class="dropdown-divider" />
-                </li>
+            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+              <li class="dropdown-header">
+                <h6 style="width: 250px;" class="text-truncate profile-name">Kevin Anderson</h6>
+                <span>Web Designer</span>
+              </li>
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
 
-                <li>
-                  <a class="dropdown-item d-flex align-items-center" href="users-profile.php">
-                    <i class="bi bi-person"></i>
-                    <span>My Profile</span>
-                  </a>
-                </li>
-                <li>
-                  <hr class="dropdown-divider" />
-                </li>
+              <li>
+                <a class="dropdown-item d-flex align-items-center" href="users-profile.php">
+                  <i class="bi bi-person"></i>
+                  <span>My Profile</span>
+                </a>
+              </li>
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
 
-                <li>
-                  <a class="dropdown-item d-flex align-items-center" href="users-profile.php">
-                    <i class="bi bi-gear"></i>
-                    <span>Account Settings</span>
-                  </a>
-                </li>
-                <li>
-                  <hr class="dropdown-divider" />
-                </li>
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
 
-                <li>
-                  <a class="dropdown-item d-flex align-items-center" href="pages-faq.php">
-                    <i class="bi bi-question-circle"></i>
-                    <span>Need Help?</span>
-                  </a>
-                </li>
-                <li>
-                  <hr class="dropdown-divider" />
-                </li>
+              
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
 
-                <li>
-                  <a class="dropdown-item d-flex align-items-center" href="#">
-                    <i class="bi bi-box-arrow-right"></i>
-                    <span>Sign Out</span>
-                  </a>
-                </li>
-              </ul>
+              <li>
+                <a class="dropdown-item d-flex align-items-center sign-out" href="#">
+                  <i class="bi bi-box-arrow-right"></i>
+                  <span>Sign Out</span>
+                </a>
+              </li>
+            </ul>
 
-            </li>
+          </li>
 
-          </ul>
-        </nav>
+        </ul>
+      </nav>
       </div>
     </header>
 
@@ -164,15 +153,6 @@
                   </button>
                 </li>
 
-                <li class="nav-item">
-                  <button
-                    class="nav-link"
-                    data-bs-toggle="tab"
-                    data-bs-target="#success"
-                  >
-                    Hoàn thành
-                  </button>
-                </li>
               </ul>
             </div>
           </div>
@@ -327,7 +307,7 @@
                                             </div> -->
                                         </div>
 
-                                        <button class="btn btn-dark w-100 p-3">Đặt hàng</button>
+                                        <button class="btn btn-dark w-100 p-3 buy-now">Đặt hàng</button>
                                     </div>
                                 </div>
                             </form>
@@ -340,13 +320,16 @@
                                         <table class="table">
                                             <tbody id="table-cart-2">
                                               
-                                              <tr>
-                                                <td scope="row" class="fw-bold fs-5">
-                                                    Tổng
-                                                </td>
-                                                <td><span class="fs-6 fw-bold"><span class="total-bill">234.000.000</span></span> <sup>đ</sup></td>
-                                              </tr>
+                                              
                                             </tbody>
+                                            <tfoot>
+                                              <tr>
+                                                  <td scope="row" class="fw-bold fs-5">
+                                                      Tổng
+                                                  </td>
+                                                  <td><span class="fs-6 fw-bold"><span class="total-bill">234.000.000</span></span> <sup>đ</sup></td>
+                                                </tr>
+                                            </tfoot>
                                           </table>
                                     </div>
                                 </div>
@@ -354,36 +337,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="tab-pane fade success" id="success">
-                    <div class="card w-fit m-auto">
-                        <div class="card-body text-center p-4">
-                            <div class="card-title fw-bold text-secondary fs-4">
-                                Thank you! 🎉
-                            </div>
-                            <p class="fw-bold fs-4">Đơn hàng của bạn đã được đặt thành công</p>
-                            <table class="table">
-                                <tr>
-                                    <td scope="row">Mã</td>
-                                    <td class="fw-bold">#1</td>
-                                </tr>
-                                <tr>
-                                    <td scope="row">Ngày</td>
-                                    <td class="fw-bold">#1</td>
-                                </tr>
-                                <tr>
-                                    <td scope="row">Tổng</td>
-                                    <td class="fw-bold">#1</td>
-                                </tr>
-                                <tr>
-                                    <td scope="row">Vận chuyển</td>
-                                    <td class="fw-bold">#1</td>
-                                </tr>
-                            </table>
 
-                            <button class="btn btn-dark rounded-pill px-4">Lịch sử giao dịch</button>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
       </div>
@@ -488,13 +442,18 @@
     <script src="assets/vendor/jquery/jquery-3.7.1.js"></script>
     <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
     <script src="assets/js/main.js"></script>
+
+    <script src="./assets/js/auth.js"></script>
+
     <script>
       let totalBill = 0
-      const getCartById = (id) => {
+      const getCartById = () => {
+        let userId = localStorage.getItem('userId');
+
         $.ajax({
           url: 'http://localhost:3000/server/cart.php',
           type: 'POST',
-          data: `action=read&id=${id}`,
+          data: `action=read&id=${userId}`,
           success: (response) => {
             console.log(JSON.parse(response));
             let carts = JSON.parse(response)
@@ -502,7 +461,7 @@
               $(this).html(carts.length)
             })
             $('#table-cart').empty()
-            // $('#table-cart-2').empty()
+            $('#table-cart-2').empty()
             carts.forEach((cart) => {
               totalBill += cart.quantity * cart.product_price
               let htmls = `
@@ -565,9 +524,13 @@
               
               `
               $('#table-cart').append(htmls)
-              $('#table-cart-2 tr:first').before(htmls2);
+              $('#table-cart-2').append(htmls2);
             })
             $('.total-bill').html(totalBill)
+
+            if (carts.length === 0) {
+              $('.buy-now').remove()
+            }
           }
         })
       }
@@ -626,7 +589,7 @@
             if (!status) {
               alert(message)
             }
-            getCartById(16)
+            getCartById()
           }
         })
       }
@@ -671,7 +634,7 @@
           }
         })
       })
-      getCartById(16)
+      getCartById()
     </script>
   </body>
 </html>

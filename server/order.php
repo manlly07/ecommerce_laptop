@@ -5,7 +5,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Thêm đơn hàng mới
     if ($_POST['action'] == 'create') {
-        $user_id = $_POST['user_id'];
+        // $user_id = $_POST['user_id'];
+        $serializedObject = $_SESSION['user']; // Lấy chuỗi đối tượng từ phiên
+        $user = unserialize($serializedObject); // Chuyển đổi chuỗi thành đối tượng ban đầu
+        $user_id = $user['id']; //
         $firstname = $_POST['firstname'];
         $lastname = $_POST['lastname'];
         $fullname = $firstname.' '.$lastname;
@@ -76,8 +79,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Đọc thông tin đơn hàng
-    if ($_POST['action'] == 'read_order') {
-        $sql = "SELECT * FROM orders";
+    if ($_POST['action'] == 'read') {
+        $sql = "SELECT o.*, u.image, u.first_name, u.last_name, u.phone, u.id as user_id
+                FROM orders o
+                JOIN users u ON o.user_id = u.id;";
         $orders = executeQuery($connection, $sql, [], true);
         echo json_encode($orders);
     }
@@ -85,7 +90,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Cập nhật thông tin đơn hàng
     if ($_POST['action'] == 'update_order') {
         $order_id = $_POST['order_id'];
-        $user_id = $_POST['user_id'];
+        $serializedObject = $_SESSION['user']; // Lấy chuỗi đối tượng từ phiên
+        $user = unserialize($serializedObject); // Chuyển đổi chuỗi thành đối tượng ban đầu
+        $user_id = $user['id']; //
+        // $user_id = $_POST['user_id'];
         $fullname = $_POST['fullname'];
         $email = $_POST['email'];
         $phone = $_POST['phone'];
@@ -116,18 +124,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Xóa đơn hàng
-    if ($_POST['action'] == 'delete_order') {
-        $order_id = $_POST['order_id'];
+    if ($_POST['action'] == 'delete') {
+        $order_id = $_POST['id'];
 
-        $sql = "DELETE FROM orders WHERE id = ?";
+        $sql = "DELETE FROM order_details WHERE order_id = ?";
         $parameters = [$order_id];
         $result = executeQuery($connection, $sql, $parameters);
-
+        
         if($result) {
-            $sql = "DELETE FROM order_details WHERE order_id = ?";
+            $sql = "DELETE FROM orders WHERE id = ?";
             $parameters = [$order_id];
             $result = executeQuery($connection, $sql, $parameters);
-
+                
             if ($result) {
                 echo json_encode([
                     'status' => true,
@@ -145,6 +153,36 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 'message' => 'Có lỗi khi xóa đơn hàng'
             ]);
         }
+    }
+
+    if ($_POST['action'] == 'getOrderById') {
+        $order_id = $_POST['id'];
+        $sql1 = "SELECT od.id AS order_detail_id, od.order_id, od.quantity, p.name AS product_name, p.price AS product_price, i.link AS image_link
+        FROM order_details od
+        JOIN products p ON od.product_id = p.id
+        LEFT JOIN (
+            SELECT link, product_id
+            FROM images
+            GROUP BY product_id
+        ) i ON p.id = i.product_id
+        WHERE od.order_id = $order_id";
+        $orders1 = executeQuery($connection, $sql1, [], true);
+
+        $sql2 = "SELECT o.*, od.price, od.quantity
+        FROM orders o
+        JOIN order_details od ON o.id = od.order_id
+        WHERE o.id = $order_id limit 1;";
+        $orders2 = executeQuery($connection, $sql2, [], true);
+        $orders2[0]['details'] = $orders1;
+        echo json_encode($orders2[0]);
+    }
+
+    if ($_POST['action'] == 'getOrderByUserId') {
+        $userId = $_POST['id'];
+        $sql1 = "SELECT * FROM orders WHERE user_id = $userId";
+        $orders = executeQuery($connection, $sql1, [], true);
+
+        echo json_encode($orders);
     }
 }
 ?>

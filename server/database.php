@@ -1,12 +1,13 @@
 <?php
+    session_start();
+    
     // Thông tin kết nối database
     $host = 'localhost'; // Địa chỉ host của database
     $dbname = 'ecommerce_laptop'; // Tên database
     $username = 'root'; // Tên người dùng database
     $password = ''; // Mật khẩu database
-
     // Thực hiện kết nối đến database
-
+    
     $connection = null;
     try {
         $connection = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
@@ -17,6 +18,8 @@
         echo "Lỗi kết nối đến database: " . $e->getMessage();
     }
 
+
+    // Hàm thực thi câu lệnh
     function executeQuery($connection ,$query, $parameters = [], $fetch = false, $returnLastInsertId = false) {
     
         try {
