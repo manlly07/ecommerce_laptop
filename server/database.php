@@ -7,7 +7,6 @@
     $username = 'root'; // Tên người dùng database
     $password = ''; // Mật khẩu database
     // Thực hiện kết nối đến database
-    
     $connection = null;
     try {
         $connection = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);

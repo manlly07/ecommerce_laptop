@@ -40,7 +40,10 @@
                 $requestCount = $result[0]['request_count'];
                 // Nếu số lần yêu cầu OTP vượt quá giới hạn
                 if ($requestCount >= 5) {
-                    echo "Bạn đã vượt quá số lần yêu cầu OTP trong một khoảng thời gian nhất định. Vui lòng thử lại sau.";
+                    echo json_encode([
+                        'status' => false,
+                        'message' => 'Bạn đã vượt quá số lần yêu cầu OTP trong một khoảng thời gian nhất định. Vui lòng thử lại sau.',
+                    ]); 
                     exit;
                 }
 
@@ -57,7 +60,7 @@
                 // Thời gian hết hạn (ví dụ: 5 phút)
                 $expirationTime = date('Y-m-d H:i:s', strtotime('+5 minutes'));
 
-                $sql = "INSERT INTO otp (user_id, request_count, code, expiration_time) VALUES (?, ?)";
+                $sql = "INSERT INTO otp (user_id, request_count, code, expiration_time) VALUES (?, ?, ?, ?)";
                 $parameters = [$id, $newRequestCount, $otp, $expirationTime];
                 executeQuery($connection, $sql, $parameters);
             }

@@ -46,7 +46,7 @@
       <div class="d-flex align-items-center justify-content-between">
         <a href="index.php" class="logo d-flex align-items-center">
           <img src="assets/img/logo.png" alt="" />
-          <span class="d-none d-lg-block">NiceAdmin</span>
+          <span class="d-none d-lg-block">ThaoHien</span>
         </a>
         <i class="bi bi-list toggle-sidebar-btn"></i>
       </div>
@@ -867,6 +867,22 @@
               console.log(orders);
               $('.orderHistory').empty()
               orders.forEach(function(order) {
+                let label = ''
+                if (order.status == 'pending') {
+                  label = 'bg-label-warning'
+                }
+                if (order.status == 'processing') {
+                  label = 'bg-label-info'
+                }
+                if (order.status == 'shipped') {
+                  label = 'bg-label-primary'
+                }
+                if (order.status == 'delivered') {
+                  label = 'bg-label-success'
+                }
+                if (order.status == 'cancelled') {
+                  label = 'bg-label-danger'
+                }
                 let html = `
                           <tr>
                             <td class="sorting_1">
@@ -877,7 +893,7 @@
                             <td><span class="text-nowrap">${order.order_date}</span></td>
                             <td>
                               <span
-                                class="badge rounded-pill bg-label-success text-capitalize"
+                                class="badge rounded-pill ${label} text-capitalize"
                                 >${order.status}</span
                               >
                             </td>

@@ -32,7 +32,7 @@
     <div class="d-flex align-items-center justify-content-between">
       <a href="index.php" class="logo d-flex align-items-center">
         <img src="assets/img/logo.png" alt="" />
-        <span class="d-none d-lg-block">NiceAdmin</span>
+        <span class="d-none d-lg-block">ThaoHien</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div>
@@ -606,7 +606,7 @@
       var port = $('#port').val();
       var weight = $('#weight').val();
       var pin = $('#pin').val();
-      var window = $('#window').val();
+      var windows = $('#window').val();
       var price = $('#ecommerce-product-price').val();
       var quantity = $('#ecommerce-product-discount-price').val();
       var formData = new FormData();
@@ -624,7 +624,7 @@
       formData.append("port", port);
       formData.append("weight", weight);
       formData.append("pin", pin);
-      formData.append("window", window);
+      formData.append("window", windows);
       formData.append("price", price);
       formData.append("quantity", quantity);
       formData.append("action", 'update')
@@ -646,6 +646,15 @@
         processData: false,
         success: function(response) {
           console.log(response);
+          let {status, message} = JSON.parse(response)
+          if(status) {
+            showAlert('success', message)
+            setTimeout(function() {
+              window.location.reload()
+            },1000)
+          }else {
+            showAlert('danger', message)
+          }
         }
       });
     })

@@ -38,7 +38,7 @@
     <div class="d-flex align-items-center justify-content-between">
       <a href="index.php" class="logo d-flex align-items-center">
         <img src="assets/img/logo.png" alt="" />
-        <span class="d-none d-lg-block">NiceAdmin</span>
+        <span class="d-none d-lg-block">ThaoHien</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div>
@@ -479,11 +479,12 @@
               {
                 data: null,
                 render: function(data, type, row) {
+                  let image = row.image != '' ? `./server/${row.image}` : `./assets/img/user-default.png` 
                   return `
                       <div class="d-flex justify-content-start align-items-center">
                         <div class="avatar-wrapper me-3">
                           <div class="avatar avatar-sm">
-                            <img src="./server/${row.image}" alt="Avatar" class="rounded-circle" />
+                            <img src="${image}" alt="Avatar" class="rounded-circle" />
                           </div>
                         </div>
                         <div class="d-flex flex-column">
@@ -499,8 +500,14 @@
               {
                 data: null,
                 render: function(data, type, row) {
+                  let text = ''
+                  if (row.payment_method == 'COD') {
+                    text = 'text-warning'
+                  }else {
+                    text = 'text-primary'
+                  }
                   return `
-                      <h6 class="mb-0 fw-bolder text-warning">
+                      <h6 class="mb-0 fw-bolder ${text}">
                         <i class="bi bi-circle-fill me-2"></i>${row.payment_method}
                       </h6>
                   `
@@ -509,8 +516,24 @@
               {
                 data: null,
                 render: function(data, type, row) {
+                  let label = ''
+                  if (row.status == 'pending') {
+                    label = 'bg-label-warning'
+                  }
+                  if (row.status == 'processing') {
+                    label = 'bg-label-info'
+                  }
+                  if (row.status == 'shipped') {
+                    label = 'bg-label-primary'
+                  }
+                  if (row.status == 'delivered') {
+                    label = 'bg-label-success'
+                  }
+                  if (row.status == 'cancelled') {
+                    label = 'bg-label-danger'
+                  }
                   return `
-                      <span class="badge rounded-pill bg-label-danger text-capitalized">
+                      <span class="badge rounded-pill ${label} text-capitalized">
                         ${row.status}
                       </span>
                   `

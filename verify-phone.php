@@ -106,6 +106,8 @@
     <script src="assets/vendor/php-email-form/validate.js"></script>
     <script src="assets/vendor/jquery/jquery-3.7.1.js"></script>
     <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
+
+    <script src="./assets/js/auth.js"></script>
     <script src="assets/js/main.js"></script>
     <script>
         var urlParams = new URLSearchParams(window.location.search);
@@ -140,8 +142,13 @@
                 type: 'POST',
                 data: `action=resend&phone=${phone}&id=${userId}`,
                 success: (response) => {
-                    console.log(JSON.parse(response));
-                    alert('Gửi mã xác thực thành công')
+                    let {status, message} = JSON.parse(response);
+                    if (status) {
+                        showAlert('success', message)
+                        window.location.reload()
+                    }else {
+                        showAlert('danger', message)
+                    }
                 }
             })
         }
@@ -155,6 +162,13 @@
                 data: `action=verify&otp=${otp}&id=${userId}`,
                 success: (response) => {
                     console.log(JSON.parse(response));
+                    let {status, message} = JSON.parse(response);
+                    if (status) {
+                        showAlert('success', message)
+                        window.location.reload()
+                    }else {
+                        showAlert('danger', message)
+                    }
                 }
             })
         })

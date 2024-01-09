@@ -40,7 +40,7 @@
       <div class="d-flex align-items-center justify-content-between">
         <a href="index.php" class="logo d-flex align-items-center">
           <img src="assets/img/logo.png" alt="" />
-          <span class="d-none d-lg-block">NiceAdmin</span>
+          <span class="d-none d-lg-block">ThaoHien</span>
         </a>
         <i class="bi bi-list toggle-sidebar-btn"></i>
       </div>
@@ -672,10 +672,7 @@
                                   <img src="./server/${row.image}" alt="Avatar" class="rounded-circle">
                                 ` : 
                                 `
-                                  <span class="d-flex align-content-center  justify-content-center w-100 h-100 bg-secondary rounded-circle p-0">
-                                    ${row.first_name.charAt(0)}
-                                    ${row.last_name.charAt(0)}
-                                  </span>
+                                  <img src="./assets/img/user-default.png" alt="Avatar" class="rounded-circle">
                                 `}
                               
                             </div>
@@ -748,9 +745,9 @@
                   console.log(row);
                   return `
                       <div class="d-flex align-items-sm-center justify-content-sm-center">
-                        <button class="btn btn-sm btn-icon">
+                        <a href="customer-detail.php?id=${row.user_id}" class="btn btn-sm btn-icon">
                           <i class="bi bi-pencil"></i>
-                        </button>
+                        </a>
                         <button class="btn btn-sm btn-icon dropdown-toggle hide-arrow" data-bs-toggle="dropdown" aria-expanded="false">
                           <i class="bi bi-three-dots-vertical me-2"></i>
                         </button>

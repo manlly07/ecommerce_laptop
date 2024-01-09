@@ -38,7 +38,7 @@
     <div class="d-flex align-items-center justify-content-between">
       <a href="index.php" class="logo d-flex align-items-center">
         <img src="assets/img/logo.png" alt="" />
-        <span class="d-none d-lg-block">NiceAdmin</span>
+        <span class="d-none d-lg-block">ThaoHien</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div>
@@ -223,18 +223,19 @@
               <div class="d-flex flex-column justify-content-center">
                 <div class="d-flex">
                   <h5 class="mb-0">Đơn hàng #<span class="orderId">32543</span></h5>
-                  <span class="badge bg-label-success mx-2 rounded-pill statusOrder">Paid</span>
+                  <span class="badge mx-2 rounded-pill statusOrder">Paid</span>
                 </div>
                 <p class="mt-1 mb-0 text-secondary"><span id="orderDate"></span></p>
               </div>
               <div class="d-flex align-content-center flex-wrap gap-2">
-                <button class="btn btn-outline-danger fw-medium dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                <button class="btn btn-outline-danger fw-medium dropdown-toggle btn-update" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                   Cập nhật trạng thái
                   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <li><a class="dropdown-item" href="#">Đang xử lý</a></li>
-                    <li><a class="dropdown-item" href="#">Đang gửi</a></li>
-                    <li><a class="dropdown-item" href="#">Đã giao hàng</a></li>
-                    <li><a class="dropdown-item" href="#">Hủy đơn hàng</a></li>
+                    <li><a class="dropdown-item" onclick="handleUpdateStatus('processing')" href="#">Đang xử lý</a></li>
+                    <li><a class="dropdown-item" onclick="handleUpdateStatus('pending')" href="#">Đang chờ gửi đơn</a></li>
+                    <li><a class="dropdown-item" onclick="handleUpdateStatus('shipped')" href="#">Đang gửi</a></li>
+                    <li><a class="dropdown-item" onclick="handleUpdateStatus('delivered')" href="#">Đã giao hàng</a></li>
+                    <li><a class="dropdown-item" onclick="handleUpdateStatus('cancelled')" href="#">Hủy đơn hàng</a></li>
                   </ul>
                 </button>
               </div>
@@ -254,10 +255,10 @@
                 <thead>
                   <tr>
                     <th scope="col">#</th>
-                    <th scope="col" colspan="2">Products</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Qty</th>
-                    <th scope="col">Total</th>
+                    <th scope="col" colspan="2">Sản phẩm</th>
+                    <th scope="col">Gía</th>
+                    <th scope="col">S.Lượng</th>
+                    <th scope="col">Tổng</th>
                   </tr>
                 </thead>
                 <tbody class="tableProduct">   
@@ -358,9 +359,31 @@
           console.log(data);
           $('.orderId').html(data.id);
           $('#orderDate').html(data.order_date);
-          $('.statusOrder').html(data.status);
+          let label = ''
+          if (data.status == 'pending') {
+            label = 'bg-label-warning'
+          }
+          if (data.status == 'processing') {
+            label = 'bg-label-info'
+          }
+          if (data.status == 'shipped') {
+            label = 'bg-label-primary'
+          }
+          if (data.status == 'delivered') {
+            label = 'bg-label-success'
+            $('.btn-update').remove()
+          }
+          if (data.status == 'cancelled') {
+            label = 'bg-label-danger'
+            $('.btn-update').remove()
+          }
+          $('.statusOrder').removeClass(function(index, className) {
+            console.log(className);
+            return (className.match(/\bbg-label\S+/g) || []).join(' ');
+          }).addClass(label).html(data.status);
           let html ="";
           console.log(data.details);
+          $('.tableProduct').empty();
           data.details.forEach(function(item,index) {
             html += `<tr>
                             <th scope="row">${index + 1}</th>
@@ -380,9 +403,31 @@
           $('.userGmail').html(data.email);
           $('.userPhone').html(data.phone);
           $('.address').html(data.address);
-          $('.total').html(data.total + '<sup>đ</sup>');
+          $('.total').  html(data.total + '<sup>đ</sup>');
         }
       });
+    }
+    const handleUpdateStatus = (status) => {
+      console.log(status);
+      $.ajax({
+        url: "http://localhost:3000/server/order.php",
+        type: "POST",
+        data: {
+          action: "updateStatus",
+          id: id,
+          status: status
+        },
+        success: function(response) {
+          console.log(response);
+          let {status, message} = JSON.parse(response)
+          if(status) {
+            showAlert('success', message)
+            showOrderDetail()
+          }else {
+            showAlert('danger', message)
+          }
+        }
+      })
     }
     showOrderDetail();
   </script>

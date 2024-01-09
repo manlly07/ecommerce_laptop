@@ -109,6 +109,9 @@
             if (count($result) == 1) {
                 $sql = "UPDATE users set phone_verify = '1' WHERE id = '$id'";
                 $result = executeQuery($connection, $sql, []);
+                $sql = "SELECT * FROM users WHERE id = '$id'";
+                $result = executeQuery($connection, $sql, [], true);
+                $_SESSION['user'] = serialize($result[0]);
                 echo json_encode([
                     'status' => true,
                     'message' => 'Xác thực thành công',

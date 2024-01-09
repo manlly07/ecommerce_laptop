@@ -202,16 +202,6 @@ h6 {
   font-weight: 500;
 }
 
-.bg-label-primary {
-  background-color: #eee6ff !important;
-  color: #9055fd !important;
-}
-
-.bg-label-secondary {
-  background-color: #edeeef !important;
-  color: #8a8d93 !important;
-}
-
 .text-truncate {
   overflow: hidden;
   text-overflow: ellipsis;
@@ -230,6 +220,17 @@ h6 {
   font-weight: 600 !important;
 }
 
+
+.bg-label-primary {
+  background-color: #eee6ff !important;
+  color: #9055fd !important;
+}
+
+.bg-label-secondary {
+  background-color: #edeeef !important;
+  color: #8a8d93 !important;
+}
+
 .bg-label-danger {
   background-color: #ffe4e5 !important;
   color: #ff4c51 !important;
@@ -243,6 +244,11 @@ h6 {
 .bg-label-success {
   background-color: #e6f7d9 !important;
   color: #56ca00 !important;
+}
+
+.bg-label-info {
+  background-color: #dcf3ff !important;
+  color: #16b1ff !important;
 }
 
 .btn-primary {

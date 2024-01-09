@@ -16,6 +16,9 @@ const filePaths = [
     { path: 'filter.php', role: 'guest' },
 
     { path: 'orders.php', role: 'user' },
+    { path: 'users-order-detail.php', role: 'user' },
+    { path: 'users-profile.php', role: 'user' },
+    { path: 'users-profile-security.php', role: 'user' },
 
     { path: 'pages-login.php', role: 'auth' },
     { path: 'pages-register.php', role: 'auth' }
@@ -96,6 +99,12 @@ const checkAuth = () => {
             return
         }
 
+        if(user.role == 'admin') {
+            $('#header .logo').attr('href', 'index.php')
+        }else {
+            $('#header .logo').attr('href', 'filter.php')
+
+        }
         localStorage.setItem('userId', user.id)
         $('.profile-image').attr('src', `${user.image == '' ? './assets/img/user-1.png' : './server/' + user.image}`)
         $('.profile-name').html(user.first_name.charAt(0) + '.' + user.last_name)
@@ -106,7 +115,7 @@ const checkAuth = () => {
 
 
 const showAlert = (type, message) => {
-    let alertElment = `  <div class="position-absolute" id="box-alert" style="z-index: 100; top:80px; right: 10px">
+    let alertElment = `  <div class="position-absolute" id="box-alert" style="z-index: 10000; top:80px; right: 10px">
                             <div class="alert alert-${type}" role="alert">
                                 ${message}
                             </div>
@@ -117,6 +126,7 @@ const showAlert = (type, message) => {
       $(".alert").slideUp(500);
     });
 }
+
 
 $(document).on('click', '.sign-out', function() {
     $.ajax({
@@ -131,5 +141,6 @@ $(document).on('click', '.sign-out', function() {
         }
       })
 })
+
 
 checkAuth()

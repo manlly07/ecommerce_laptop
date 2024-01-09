@@ -36,7 +36,7 @@
       <div class="d-flex align-items-center justify-content-between">
         <a href="index.php" class="logo d-flex align-items-center">
           <img src="assets/img/logo.png" alt="" />
-          <span class="d-none d-lg-block">NiceAdmin</span>
+          <span class="d-none d-lg-block">ThaoHien</span>
         </a>
       </div>
 
@@ -241,26 +241,26 @@
                     <td id="hardware" scope="row">512GB SSD M.2 2242 PCIe® 4.0×4 NVMe®</td>
                     </tr>
                     <tr>
-                    <td scope="row"><strong>Card VGA</strong></td>
-                    <td id="cardvga" scope="row">NVIDIA GeForce RTX 2050 4GB GDDR6</td>
+                      <td scope="row"><strong>Card VGA</strong></td>
+                      <td id="cardvga" scope="row">NVIDIA GeForce RTX 2050 4GB GDDR6</td>
                     </tr>
                     <tr>
-                    <td scope="row"><strong>Màn hình</strong></td>
-                    <td id="display" scope="row">15.6inch FHD (1920×1080) IPS 250nits Anti-glare, 45% NTSC, 120Hz, FreeSync™</td>
+                      <td scope="row"><strong>Màn hình</strong></td>
+                      <td id="display" scope="row">15.6inch FHD (1920×1080) IPS 250nits Anti-glare, 45% NTSC, 120Hz, FreeSync™</td>
                     </tr>
                     <tr>
-                    <td scope="row"><strong>Camera</strong></td>
-                    <td id="camera" scope="row">HD 720p</td>
+                      <td scope="row"><strong>Camera</strong></td>
+                      <td id="camera" scope="row">HD 720p</td>
                     </tr>
                     <tr>
                     <td scope="row"><strong>Cổng kết nối</strong></td>
-                    <td id="port" scope="row"><span class="comma">1x USB 3.2 Type-C Thunderbolt 4<br>
-                      </span><span class="comma">1x HDMI 2.0<br>
-                      </span>1x Ethernet (RJ45)<br>
-                      1x Jack tai nghe 3.5 mm<br>
-                      2x USB 3.2 Type-A<br>
-                      1x&nbsp;Power connector
-                    </td>
+                      <td id="port" scope="row"><span class="comma">1x USB 3.2 Type-C Thunderbolt 4<br>
+                        </span><span class="comma">1x HDMI 2.0<br>
+                        </span>1x Ethernet (RJ45)<br>
+                        1x Jack tai nghe 3.5 mm<br>
+                        2x USB 3.2 Type-A<br>
+                        1x&nbsp;Power connector
+                      </td>
                     </tr>
                     <tr>
                     <td scope="row"><strong>Trọng lượng</strong></td>
@@ -466,6 +466,9 @@
 
     var urlParams = new URLSearchParams(window.location.search);
     var productId = urlParams.get('id');
+    if(!productId) {
+      window.location.href = 'filter.php'
+    }
     let selectedImages = []; // Mảng để lưu trữ các tệp ảnh đã chọn
     let rate = 0;
     const showImagePreview = (event) => {
@@ -599,9 +602,13 @@
         success: function(response) {
           let {status, message} = JSON.parse(response)
           if(status) {
-            window.location.reload()
+            showAlert('success', message)
+            setTimeout(function() {
+              window.location.reload()
+            }, 2000)
           }else {
-            alert(message)
+            // alert(message)
+            showAlert('danger', message)
           }
         }
       });
@@ -610,10 +617,16 @@
     $('.btn-add-to-cart').click(() => handleAddToCart(productId))
 
     const handleAddToCart = (id) => {
+      let number = $('#quantity').val()
+      let instock = $('.in-stock').html()
+      if (number > instock) {
+        showAlert('danger', 'Số lượng trong kho không đủ')
+        return
+      }
       let data = {
         user_id: 16,
         product_id: id,
-        quantity: 1,
+        quantity: number,
         action: 'create'
       }
       $.ajax({
@@ -623,7 +636,10 @@
         success: function(response) {
           let {status, message} = JSON.parse(response)
           if(status) {
-            window.location.reload()
+            showAlert('success', message)
+            setTimeout(function() {
+              window.location.reload()
+            }, 2000)
           }else {
             alert(message)
           }
@@ -637,12 +653,16 @@
         type: 'POST',
         data: `action=read&id=${id}`,
         success: (response) => {
+          let userId = localStorage.getItem('userId');
           console.log(JSON.parse(response));
           let reviews = JSON.parse(response)
           $('.total-review').html(reviews.length + ' Đánh giá')
           if (reviews.length > 0) {
             $('.review-list').empty()
             reviews.forEach(function(view) {
+              if(view.user_id === userId) {
+                $('.btn-review').remove()
+              }
               let starHtml = '';
               let imageHtml = '';
               let listImage = view.image.split(';')
@@ -658,7 +678,7 @@
                 starHtml += '<i class="bi bi-star-fill"></i>';
               }
               let html = `
-                <div class="review-item mb-3 d-flex gap-3">
+                <div class="review-item mb-1 d-flex gap-3">
                   <div class="image">
                     <img src="./server/${view.user_image}" alt="Profile" width="48" class="rounded-circle">
                   </div>
@@ -676,6 +696,15 @@
                     </div>
                   </div>
                 </div>
+                ${view.reply != "" ? 
+                  `
+                  <div class="mb-3 p-2" style="background: #eee; width: 600px; margin-left:52px;">
+                  <span class="fw-bold">Cửa hàng Thảo Hiền</span>
+                  <p>${view.reply}</p>
+                  </div>
+                  `
+                  : ''
+                }
               `
               $('.review-list').append(html)
             })
@@ -699,9 +728,29 @@
         }
       })
     }
+
+    const checkBuyProduct = () => {
+      // getOrderByUserId
+      let userId = localStorage.getItem('userId');
+      $.ajax({
+        url: 'http://localhost:3000/server/order.php',
+        type: 'POST',
+        data: `action=checkBuyOrderByUserId&id=${userId}&product_id=${productId}`,
+        success: (response) => {
+          console.log(JSON.parse(response));
+          let isBuy = JSON.parse(response).length
+          if(isBuy == 0) {
+            $('.btn-review').remove()
+          }
+
+        }
+      })
+    }
+
     getCartById()
     getProductById(productId)
     getReviewById(productId)
+    checkBuyProduct()
   </script>
 </body>
 

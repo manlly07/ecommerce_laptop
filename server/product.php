@@ -218,11 +218,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $filterConditions[] = $priceToCondition;
         }
     
-        if (!empty($rate)) {
-            $rateValue = str_replace('rate-', '', $rate);
-            $rateCondition = "AVG(r.rate) = " . $rateValue;
-            $filterConditions[] = $rateCondition;
-        }
+        // if (!empty($rate)) {
+        //     // $rateValue = str_replace('rate-', '', $rate);
+        //     $rate = floor($rate);
+        //     $rateCondition = "AVG(r.rate) = " . $rate;
+        //     $filterConditions[] = $rateCondition;
+        // }
     
         // Thêm điều kiện filter vào câu truy vấn SQL
         if (!empty($filterConditions)) {
@@ -231,7 +232,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
         $sql .= " GROUP BY
                     p.id, p.name, p.description, c.name, b.name, p.quantity, p.price, p.created_at, p.is_active";
-    
+        if (!empty($rate)) {
+            $sql .= " HAVING ROUND(AVG(r.rate), 0) = $rate";
+            // $filterConditions[] = $rateCondition;
+        }
         // Thực hiện truy vấn và lấy kết quả
         $products = executeQuery($connection, $sql, [], true);
         echo json_encode($products);
@@ -309,13 +313,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }else {
             echo json_encode([
                 'status' => false,
-                'message' => 'Something went wrong'
+                'message' => 'Đã xảy ra lỗi khi cập nhật!'
             ]);
             return;
         }
         echo json_encode([
             'status' => true,
-            'message' => 'Successfully'
+            'message' => 'Cập nhật sản phẩm thành công'
         ]);
     }
 

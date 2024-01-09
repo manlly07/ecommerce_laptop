@@ -11,9 +11,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Poppins:ital,wght@0,300;0,600;0,700;1,400;1,500&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Poppins:ital,wght@0,300;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
 
 
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
@@ -36,7 +34,7 @@
       <div class="d-flex align-items-center justify-content-between">
         <a href="index.html" class="logo d-flex align-items-center">
           <img src="assets/img/logo.png" alt="" />
-          <span class="d-none d-lg-block">NiceAdmin</span>
+          <span class="d-none d-lg-block">ThaoHien</span>
         </a>
       </div>
 
@@ -102,7 +100,7 @@
                 <hr class="dropdown-divider" />
               </li>
 
-              
+
               <li>
                 <hr class="dropdown-divider" />
               </li>
@@ -127,12 +125,9 @@
       <div class="row">
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
           <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
-              aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-              aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-              aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
           </div>
           <div class="carousel-inner">
             <div class="carousel-item active">
@@ -145,13 +140,11 @@
               <img src="./assets/img/slide-3.jpg" class="d-block w-100" alt="...">
             </div>
           </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-            data-bs-slide="prev">
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
           </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-            data-bs-slide="next">
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
           </button>
@@ -264,11 +257,11 @@
               </li>
             </ul>
             <ul class="list-unstyled">
-                <li>
-                  <button id="clearFilterBtn" type="button" class="btn btn-danger w-100">Bỏ lọc tất cả</button>
-                </li>
+              <li>
+                <button id="clearFilterBtn" type="button" class="btn btn-danger w-100">Bỏ lọc tất cả</button>
+              </li>
             </ul>
-            
+
           </div>
           <div class="col-lg-10">
             <!-- <div class="col-lg min-w-200 col-md-3 col-sm-12 p-1">
@@ -303,8 +296,8 @@
             <div class="row align-items-start flex-wrap filter-product-list">
 
             </div>
-
           </div>
+
         </div>
       </div>
   </main>
@@ -324,7 +317,6 @@
   <script src="./assets/js/auth.js"></script>
 
   <script>
-    
     // Lấy giá trị từ tham số 'price' trong URL và điền vào các trường input
     const urlParams = new URLSearchParams(window.location.search);
     const priceParam = urlParams.get('price');
@@ -340,22 +332,22 @@
       $('#toPrice').val(toPrice);
     }
 
-        // Xử lý sự kiện khi nhấp vào các dòng đánh giá
+    // Xử lý sự kiện khi nhấp vào các dòng đánh giá
     $('li[id^="rate"]').click(function() {
       const rate = $(this).attr('id');
 
       const urlParams = new URLSearchParams(window.location.search);
-      
+
       if ($(this).hasClass('bg-five')) {
         $(this).removeClass('bg-five')
         urlParams.delete('rate');
         const newUrl = `${window.location.pathname}?${urlParams.toString()}`;
         history.pushState(null, '', newUrl);
-      }else {
+      } else {
         // Xóa lớp active của tất cả các dòng đánh giá
         $('li[id^="rate"]').removeClass('bg-five');
         // Thêm lớp active cho dòng được nhấp vào
-        $(this).addClass('bg-five');  
+        $(this).addClass('bg-five');
         urlParams.set('rate', rate);
         const newUrl = `${window.location.pathname}?${urlParams.toString()}`;
         history.pushState(null, '', newUrl);
@@ -364,7 +356,7 @@
       filterProduct()
     });
 
-      // Xử lý sự kiện khi nhấp vào nút "Lọc"
+    // Xử lý sự kiện khi nhấp vào nút "Lọc"
     $('#priceButton').click(function() {
       const fromPrice = $('#fromPrice').val();
       const toPrice = $('#toPrice').val();
@@ -394,7 +386,7 @@
       } else {
         urlParams.delete('categories');
       }
-      
+
       const newUrl = `${window.location.pathname}?${urlParams.toString()}`;
       history.pushState(null, '', newUrl);
       filterProduct()
@@ -413,7 +405,7 @@
       } else {
         urlParams.delete('branches');
       }
-      
+
       const newUrl = `${window.location.pathname}?${urlParams.toString()}`;
       history.pushState(null, '', newUrl);
       filterProduct()
@@ -512,13 +504,15 @@
           console.log(JSON.parse(response));
           let products = JSON.parse(response)
           products.forEach(product => {
+            let label = product.quantity == 0 ? 'bg-label-danger' : 'bg-label-success'
+            let text = product.quantity == 0 ? 'Hết hàng' : 'Còn hàng'
             let html = `
                 <div class="col-lg-3 min-w-200 col-md-6 col-sm-12 p-1">
                   <div class="card h-100 mb-0">
                       <div class="card-body pt-1 pb-2">
-                          <div class="col-12 badge rounded-pill bg-label-success text-capitalized">
+                          <div class="col-12 badge rounded-pill ${label} text-capitalized">
                               <i class="bi bi-check-circle me-1"></i>
-                              <span>In stock</span>
+                              <span>${text}</span>
                           </div>
                           <div class="col-12 my-1">
                               <img src="./server/${product.image}" alt="" style="width:100%; height:185px; object-fit:cover" class="w-100 h-150px">
@@ -547,7 +541,7 @@
         }
       })
     }
-    
+
     const filterProduct = () => {
       const urlParams = new URLSearchParams(window.location.search);
       const categoryParams = urlParams.get('categories')?.split(';') || [];
@@ -556,7 +550,7 @@
       const priceFrom = price.length > 0 ? Math.min(...price) : '';
       const priceTo = price.length > 0 ? Math.max(...price) : '';
       const rate = urlParams.get('rate')?.replace('rate-', '');
-
+      
       // var rate = urlParams.get('rate')?.replace('rate-','');
       console.log(categoryParams, branchParams, priceFrom, priceTo, rate);
 
@@ -568,7 +562,7 @@
         rate: rate,
         action: 'readandfilter'
       }
-      
+
       $.ajax({
         url: "http://localhost:3000/server/product.php",
         type: "POST",
@@ -578,13 +572,15 @@
           let products = JSON.parse(response)
           $('.filter-product-list').empty()
           products.forEach(product => {
+            let label = product.quantity == 0 ? 'bg-label-danger' : 'bg-label-success'
+            let text = product.quantity == 0 ? 'Hết hàng' : 'Còn hàng'
             let html = `
                 <a href="./about-product.php?id=${product.id}" class="col-lg-3 min-w-200 col-md-6 col-sm-12 p-1">
                   <div class="card h-100 mb-0">
                       <div class="card-body pt-1 pb-2">
-                          <div class="col-12 badge rounded-pill bg-label-success text-capitalized">
+                          <div class="col-12 badge rounded-pill ${label} text-capitalized">
                               <i class="bi bi-check-circle me-1"></i>
-                              <span>In stock</span>
+                              <span>${text}</span>
                           </div>
                           <div class="col-12 my-1">
                               <img src="./server/${product.image}" alt="" style="width:100%; height:185px; object-fit:cover" class="w-100 h-150px">
@@ -614,12 +610,27 @@
       });
     }
 
+    const getCartById = () => {
+      let userId = localStorage.getItem('userId');
+      $.ajax({
+        url: 'http://localhost:3000/server/cart.php',
+        type: 'POST',
+        data: `action=read&id=${userId}`,
+        success: (response) => {
+          console.log(JSON.parse(response));
+          let carts = JSON.parse(response)
+          $('.total-cart').each(function() {
+            $(this).html(carts.length)
+          })
+        }
+      })
+    }
 
 
     showBrachFilter()
     showCategoryFilter()
-    // showProduct()
     filterProduct()
+    getCartById()
   </script>
 </body>
 

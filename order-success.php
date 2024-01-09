@@ -39,7 +39,7 @@
         <div class="d-flex align-items-center justify-content-between">
           <a href="index.php" class="logo d-flex align-items-center">
             <img src="assets/img/logo.png" alt="" />
-            <span class="d-none d-lg-block">NiceAdmin</span>
+            <span class="d-none d-lg-block">ThaoHien</span>
           </a>
         </div>
 
@@ -155,7 +155,7 @@
                                 </tr>
                             </table>
 
-                            <button class="btn btn-dark rounded-pill px-4">Lịch sử giao dịch</button>
+                            <a href="#" class="btn btn-dark rounded-pill px-4 btn-navigate">Lịch sử giao dịch</a>
                         </div>
                     </div>
                 </div>
@@ -183,10 +183,14 @@
         var date = urlParams.get('date');
         var total = urlParams.get('total');
         var method = urlParams.get('method');
+        if (!orderId && !date && !total) {
+          window.location.href = 'page-error.php';
+        }
         $('.orderId').html(orderId)
         $('.date').html(date)
         $('.total').html(total)
         $('.method').html(method)
+        $('.btn-navigate').attr('href', `users-order-detail.php?id=${orderId}`)
     </script>
   </body>
 </html>

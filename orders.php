@@ -39,7 +39,7 @@
         <div class="d-flex align-items-center justify-content-between">
           <a href="index.php" class="logo d-flex align-items-center">
             <img src="assets/img/logo.png" alt="" />
-            <span class="d-none d-lg-block">NiceAdmin</span>
+            <span class="d-none d-lg-block">ThaoHien</span>
           </a>
         </div>
 
@@ -544,10 +544,10 @@
             console.log(JSON.parse(response));
             let {status, message} = JSON.parse(response)
             if (status) {
-              getCartById(16)
-              alert(message)
+              getCartById()
+              showAlert('success', message)
             }else {
-              alert(message)
+              showAlert('danger', message)
             }
           }
         })
@@ -587,7 +587,7 @@
             console.log(JSON.parse(response));
             let {status, message} = JSON.parse(response)
             if (!status) {
-              alert(message)
+              showAlert('danger', message)
             }
             getCartById()
           }
@@ -630,6 +630,8 @@
             let data = JSON.parse(response)
             if (data.status) {
               window.location.href = `./order-success.php?order_id=${data.order}&date=${getDate()}&total=${total}&method=${shipping_method}`
+            }else {
+              showAlert('danger', data.message)
             }
           }
         })
