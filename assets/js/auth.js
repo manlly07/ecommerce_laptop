@@ -126,7 +126,15 @@ const showAlert = (type, message) => {
       $(".alert").slideUp(500);
     });
 }
-
+const convertToCurrency = (number) => {
+    var formatter = new Intl.NumberFormat('vi-VN', {
+      style: 'currency',
+      currency: 'VND'
+    });
+    var currencyString = formatter.format(number);
+    var currencyWithoutSymbol = currencyString.replace(/đ/g, '');
+    return currencyWithoutSymbol;
+  }
 
 $(document).on('click', '.sign-out', function() {
     $.ajax({

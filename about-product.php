@@ -164,7 +164,6 @@
               </div>
               <div class="mt-4 fw-bold fs-2 text-danger">
                 <span class="product-price">8.900.000</span>
-                <sup>đ</sup>
               </div>
               <div class="mt-4 w-fit d-flex gap-2 align-items-center">
                 <div style="width: 64px;">
@@ -557,7 +556,7 @@
             $(this).html(product.name)
           })
           $('.total-sold').html(product.total_orders + ' Đã bán')
-          $('.product-price').html(product.price)
+          $('.product-price').html(convertToCurrency(product.price))
           $('.in-stock').html(product.quantity)
           $('#quantity').attr('max', product.quantity);
           $('.product-description').html(product.description)

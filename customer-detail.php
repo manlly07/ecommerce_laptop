@@ -794,7 +794,8 @@
         var urlParams = new URLSearchParams(window.location.search);
         var custommerId = urlParams.get('id');
         if(!custommerId) {
-          history.back()
+          console.log(custommerId);
+          window.location.href = 'page-error.php'
         }
         $('.custommer-navigate-security').attr('href', `./customer-detail-security.php?id=${custommerId}`)
         const showCustomerById = (id) => {
@@ -970,8 +971,9 @@
         })
 
         $('.delete-customer').click(function() {
-          let status = $(this).data('status');
-          status = 1 ? 0 : 1;
+          let status = $(this).data('status')
+          console.log('status bandau' + status);
+          status = status == 1 ? 0 : 1;
           console.log(status);
           $.ajax({
             url: "http://localhost:3000/server/user.php",

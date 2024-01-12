@@ -451,9 +451,9 @@
                       <tr>
                         <th scope="row"><a href="#"><img src="./server/${product.image}" alt=""></a></th>
                         <td><a href="#" class="text-primary fw-bold">${product.name}</a></td>
-                        <td>${product.price}<sup>đ</sup></td>
+                        <td>${convertToCurrency(product.price)}</td>
                         <td class="fw-bold">${product.total_quantity}</td>
-                        <td>${product.price * product.total_quantity}<sup>đ</sup></td>
+                        <td>${convertToCurrency(product.price * product.total_quantity)}</td>
                       </tr>
             `
             $('.tbody').append(htmls)

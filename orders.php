@@ -239,7 +239,7 @@
                                 
                                 <div class="px-3 d-flex justify-content-between mt-4">
                                     <span class="fw-bold fs-4">Tổng:</span>
-                                    <span class="fs-4"><span class="total-bill">1.000.000</span> <sup>đ</sup></span>
+                                    <span class="fs-4"><span class="total-bill">1.000.000</span></span>
                                 </div>
 
                                 <button class="btn btn-dark mt-3 w-100 p-3">Thanh toán</button>
@@ -327,7 +327,7 @@
                                                   <td scope="row" class="fw-bold fs-5">
                                                       Tổng
                                                   </td>
-                                                  <td><span class="fs-6 fw-bold"><span class="total-bill">234.000.000</span></span> <sup>đ</sup></td>
+                                                  <td><span class="fs-6 fw-bold"><span class="total-bill">234.000.000</span></span></td>
                                                 </tr>
                                             </tfoot>
                                           </table>
@@ -487,12 +487,10 @@
                               </div>
                           </td>
                           <td style="vertical-align:middle">
-                              <span>${cart.product_price}</span>
-                              <sup>đ</sup>
+                              <span>${convertToCurrency(cart.product_price)}</span>
                           </td>
                           <td class="fw-bold" style="vertical-align:middle">
-                              <span>${cart.quantity * cart.product_price}</span>
-                              <sup>đ</sup>
+                              <span>${convertToCurrency(cart.quantity * cart.product_price)}</span>
                           </td>
                         </tr>
               `
@@ -517,16 +515,14 @@
                                     </div>
                               </td>
                               <td class="fw-bold fs-5" style="vertical-align:middle">
-                                  <span>${cart.quantity * cart.product_price}</span>
-                                  <sup>đ</sup>
+                                  <span>${convertToCurrency(cart.quantity * cart.product_price)}</span>
                               </td>
                             </tr>
-              
               `
               $('#table-cart').append(htmls)
               $('#table-cart-2').append(htmls2);
             })
-            $('.total-bill').html(totalBill)
+            $('.total-bill').html(convertToCurrency(totalBill))
 
             if (carts.length === 0) {
               $('.buy-now').remove()

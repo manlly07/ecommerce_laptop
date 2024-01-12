@@ -227,7 +227,7 @@
             </div>
             <div class="card-body">
               <div class="form-floating form-floating-outline mb-4">
-                <input type="text" class="form-control" id="ecommerce-product-name" placeholder="Product title" name="productTitle" aria-label="Product title" />
+                <input type="text" class="form-control" id="ecommerce-product-name" placeholder="Product title" name="productTitle" aria-label="Product title" pattern="/^(?!\s*$).+/" />
                 <label for="ecommerce-product-name">Tên sản phẩm</label>
               </div>
 

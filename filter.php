@@ -560,6 +560,7 @@
         priceFrom: priceFrom,
         priceTo: priceTo,
         rate: rate,
+        role: 0,
         action: 'readandfilter'
       }
 
@@ -596,7 +597,7 @@
                                   ${product.name}
                               </div>
                               <div class="price col mt-2">
-                                  <p class="fw-bold fs-5 mb-0">${product.price}<sup>đ</sup></p>
+                                  <p class="fw-bold fs-5 mb-0">${convertToCurrency(product.price)}</p>
                               </div>
                           </div>
                           

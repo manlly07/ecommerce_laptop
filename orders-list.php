@@ -501,14 +501,17 @@
                 data: null,
                 render: function(data, type, row) {
                   let text = ''
+                  let html = ''
                   if (row.payment_method == 'COD') {
                     text = 'text-warning'
+                    html = 'Tiền mặt'
                   }else {
                     text = 'text-primary'
+                    html = 'Chuyển khoản'
                   }
                   return `
                       <h6 class="mb-0 fw-bolder ${text}">
-                        <i class="bi bi-circle-fill me-2"></i>${row.payment_method}
+                        <i class="bi bi-circle-fill me-2"></i>${html}
                       </h6>
                   `
                 }
@@ -517,24 +520,30 @@
                 data: null,
                 render: function(data, type, row) {
                   let label = ''
+                  let text = ''
                   if (row.status == 'pending') {
                     label = 'bg-label-warning'
+                    text = 'Đang chờ'
                   }
                   if (row.status == 'processing') {
                     label = 'bg-label-info'
+                    text = 'Đang xử lý'
                   }
                   if (row.status == 'shipped') {
                     label = 'bg-label-primary'
+                    text = 'Đã vận chuyển'
                   }
                   if (row.status == 'delivered') {
                     label = 'bg-label-success'
+                    text = 'Đã nhận hàng'
                   }
                   if (row.status == 'cancelled') {
                     label = 'bg-label-danger'
+                    text = 'Đã hủy đơn'
                   }
                   return `
                       <span class="badge rounded-pill ${label} text-capitalized">
-                        ${row.status}
+                        ${text}
                       </span>
                   `
                 }

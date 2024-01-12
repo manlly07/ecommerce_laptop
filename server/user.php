@@ -201,23 +201,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($newPassword !== $confirmPassword) {
             echo json_encode([
                 'status' => false,
-                'message' => 'Password and Confirm Password do not match'
+                'message' => 'Mật khẩu không khớp'
             ]);
             exit;
         }
         $sql = "UPDATE users SET password = ? WHERE id = ?";
-        $parameters = [$password, $id];
+        $parameters = [$newPassword, $id];
 
         $result = executeQuery($connection, $sql, $parameters);
         if ($result) {
             echo json_encode([
                 'status' => true,
-                'message' => 'Successfully'
+                'message' => 'Đổi mật khẩu thành công'
             ]);
         } else {
             echo json_encode([
                 'status' => false,
-                'message' => 'Something went wrong'
+                'message' => 'Đổi mật khẩu thất bại'
             ]);
         }
     }

@@ -22,6 +22,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $price = $_POST['price'];
         $quantity = $_POST['quantity'];
 
+        if (empty($product_name) || empty($branch_id) || empty($category_id) || empty($cpu) || empty($ram) || empty($hardware) || empty($cardvga) || empty($display) || empty($camera) || empty($port) || empty($weight) || empty($pin) || empty($window) || empty($price) || empty($quantity) || !isset($_FILES['images'])) {
+            echo json_encode([
+                'status' => false,
+                'message' => 'Vui lòng điền đầy đủ thông tin của máy tính'
+            ]);
+            exit();
+        }        
+
+        if($price < 0 || $quantity < 0) {
+            echo json_encode([
+                'status' => false,
+                'message' => 'Kiểm tra lại giá và số lượng'
+            ]);
+            exit();
+        }
+
         $sql = "INSERT INTO products (name, description, cpu, ram, hardware, cardvga, display, camera, port, weight, pin, window, price, quantity, category_id, branches_id)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $parameters = array($product_name, $description, $cpu, $ram, $hardware, $cardvga, $display, $camera, $port, $weight, $pin, $window, $price, $quantity, $category_id, $branch_id);
@@ -169,31 +185,60 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $priceFrom = isset($_POST['priceFrom']) ? $_POST['priceFrom'] : '';
         $priceTo = isset($_POST['priceTo']) ? $_POST['priceTo'] : '';
         $rate = isset($_POST['rate']) ? $_POST['rate'] : '';
-    
+        $role = isset($_POST['role']) ? $_POST['role'] : '';
+
+        if($role == 0) {
+            $sql = "SELECT
+            p.id,
+            (
+                SELECT link
+                FROM images
+                WHERE product_id = p.id
+                LIMIT 1
+            ) AS image,
+            p.name,
+            p.description,
+            c.name AS category_name,
+            b.name AS branch_name,
+            p.quantity,
+            p.price,
+            p.created_at,
+            p.is_active,
+            AVG(r.rate) AS average_rate,
+            COUNT(r.id) AS total_reviews
+        FROM
+            products p
+            LEFT JOIN categories c ON p.category_id = c.id
+            LEFT JOIN branches b ON p.branches_id = b.id
+            LEFT JOIN reviews r ON p.id = r.product_id 
+        WHERE p.is_active = 1";
+        }
         // Xây dựng câu truy vấn SQL
-        $sql = "SELECT
-                    p.id,
-                    (
-                        SELECT link
-                        FROM images
-                        WHERE product_id = p.id
-                        LIMIT 1
-                    ) AS image,
-                    p.name,
-                    p.description,
-                    c.name AS category_name,
-                    b.name AS branch_name,
-                    p.quantity,
-                    p.price,
-                    p.created_at,
-                    p.is_active,
-                    AVG(r.rate) AS average_rate,
-                    COUNT(r.id) AS total_reviews
-                FROM
-                    products p
-                    LEFT JOIN categories c ON p.category_id = c.id
-                    LEFT JOIN branches b ON p.branches_id = b.id
-                    LEFT JOIN reviews r ON p.id = r.product_id";
+        else {
+            $sql = "SELECT
+            p.id,
+            (
+                SELECT link
+                FROM images
+                WHERE product_id = p.id
+                LIMIT 1
+            ) AS image,
+            p.name,
+            p.description,
+            c.name AS category_name,
+            b.name AS branch_name,
+            p.quantity,
+            p.price,
+            p.created_at,
+            p.is_active,
+            AVG(r.rate) AS average_rate,
+            COUNT(r.id) AS total_reviews
+        FROM
+            products p
+            LEFT JOIN categories c ON p.category_id = c.id
+            LEFT JOIN branches b ON p.branches_id = b.id
+            LEFT JOIN reviews r ON p.id = r.product_id ";
+        }
     
         // Xây dựng mảng điều kiện filter
         $filterConditions = [];
@@ -263,6 +308,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $quantity = $_POST['quantity'];
         $id = $_POST['id'];
         $files = [];
+
+        if (empty($product_name) || empty($branch_id) || empty($category_id) || empty($cpu) || empty($ram) || empty($hardware) || empty($cardvga) || empty($display) || empty($camera) || empty($port) || empty($weight) || empty($pin) || empty($window) || empty($price) || empty($quantity)) {
+            echo json_encode([
+                'status' => false,
+                'message' => 'Vui lòng điền đầy đủ thông tin của máy tính'
+            ]);
+            exit();
+        }
+
+        if($price < 0 || $quantity < 0) {
+            echo json_encode([
+                'status' => false,
+                'message' => 'Kiểm tra lại giá và số lượng'
+            ]);
+            exit();
+        }
 
         if(count($images) > 0 ) {
             foreach ($images['tmp_name'] as $key => $tmp_name) {
@@ -346,6 +407,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             echo json_encode([
                 'status' => false,
                 'message' => 'Something went wrong'
+            ]);
+            return;
+        }
+    }
+
+    if($_POST['action'] == 'updateStatus') {
+        $id = $_POST['id'];
+        $status = $_POST['status'];
+        $sql = "UPDATE products SET is_active = $status WHERE id = $id";
+        $result = executeQuery($connection, $sql, []);
+
+        if($result) {
+            echo json_encode([
+                'status' => true,
+                'message' => 'Cập nhật trạng thái thành công'
+            ]);
+        }else {
+            echo json_encode([
+                'status' => false,
+                'message' => 'Cập nhật trạng thái thất bại'
             ]);
             return;
         }

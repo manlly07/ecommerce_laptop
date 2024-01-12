@@ -681,7 +681,7 @@
                             <a href="customer-detail.php?id=${row.user_id}" class="text-truncate">
                               <span class="text-heading fs-7 fw-medium">${row.first_name + ' ' + row.last_name}</span>
                             </a>
-                            <small class="text-truncate">${row.role}</small>
+                            <small class="text-truncate">${row.role == 'user' ? 'Khách hàng' : 'Chủ cửa hàng'}</small>
                           </div>
                         </div>
                   `
@@ -727,13 +727,13 @@
                   if(row.is_active == 0) {
                     return `
                         <span class="badge rounded-pill bg-label-danger text-capitalized">
-                          Inactive
+                          Vô hiệu hóa
                         </span>
                     `
                   }else {
                     return `
                         <span class="badge rounded-pill bg-label-success text-capitalized">
-                          Active
+                          Hoạt động
                         </span>
                     `
                   }

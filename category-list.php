@@ -302,7 +302,7 @@
           <label class="form-label">Trạng thái của loại mặt hàng</label>
           <select class="form-select" aria-label="Default select example" id="status" name="status">
             <option value="1">Kích hoạt</option>
-            <option value="2">Vô hiệu hóa</option>
+            <option value="0">Vô hiệu hóa</option>
           </select>
         </div>
         <div class="invalid-feedback mb-4 cerror"></div>
@@ -347,7 +347,7 @@
           <label class="form-label">Trạng thái của loại mặt hàng</label>
           <select class="form-select" aria-label="Default select example" id="status-edit" name="status">
             <option value="1">Kích hoạt</option>
-            <option value="2">Vô hiệu hóa</option>
+            <option value="0">Vô hiệu hóa</option>
           </select>
         </div>
         <div class="invalid-feedback mb-4 cerror"></div>
@@ -515,16 +515,16 @@
               {
                 data: 'status',
                 render: function(data, type, row) {
-                  if(row.is_active == 2) {
+                  if(row.is_active == 0) {
                     return `
                         <span class="badge rounded-pill bg-label-danger text-capitalized">
-                          Inactive
+                          Tạm dừng
                         </span>
                     `
                   }else {
                     return `
                         <span class="badge rounded-pill bg-label-success text-capitalized">
-                          Active
+                          Hoạt động
                         </span>
                     `
                   }
@@ -536,16 +536,12 @@
                   console.log(row);
                   return `
                       <div class="d-flex align-items-sm-center justify-content-sm-center">
-                        <button class="btn btn-sm btn-icon">
+                        <button class="btn btn-sm btn-icon" onclick="handleView(${row.id})">
                           <i class="bi bi-pencil"></i>
                         </button>
-                        <button class="btn btn-sm btn-icon dropdown-toggle hide-arrow" data-bs-toggle="dropdown" aria-expanded="false">
-                          <i class="bi bi-three-dots-vertical me-2"></i>
+                        <button class="btn btn-sm btn-icon" onclick="handleDelete(${row.id})">
+                          <i class="bi bi-trash3-fill me-2"></i>
                         </button>
-                        <div class="dropdown-menu dropdown-menu-end m-0">
-                          <a href="javascript:0;" class="dropdown-item" onclick="handleView(${row.id})">View</a>
-                          <a href="javascript:0;" class="dropdown-item" onclick="handleDelete(${row.id})">Delete</a>
-                        </div>
                       </div>
                   `
                 }

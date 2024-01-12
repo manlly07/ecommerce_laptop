@@ -340,11 +340,36 @@
         }
       })
     }
+
+    const handleUpdate = (id, status) => {
+      console.log('hehe');
+      status = status == 0 ? 1 : 0
+      $.ajax({
+        url: 'http://localhost:3000/server/product.php',
+        type: 'POST',
+        data: `id=${id}&status=${status}&action=updateStatus`,
+        success: (response) => {
+          let {
+            status,
+            message
+          } = JSON.parse(response)
+          console.log(status);
+          console.log(message);
+          if (status) {
+            window.location.reload()
+          } else {
+            // $('.cerror').html(message);
+          }
+        }
+      })
+    }
+
     const showProduct = () => {
       $.ajax({
         url: 'http://localhost:3000/server/product.php',
         type: 'POST',
         data: {
+          role: 1,
           action: "readandfilter"
         },
         success: (response) => {
@@ -393,7 +418,7 @@
               {
                 data: 'price',
                 render: function(data, type, row) {
-                  return row.price
+                  return convertToCurrency(row.price)
                 }
               },
               {
@@ -405,16 +430,16 @@
               {
                 data: 'status',
                 render: function(data, type, row) {
-                  if (row.is_active == 2) {
+                  if (row.is_active == 0) {
                     return `
                         <span class="badge rounded-pill bg-label-danger text-capitalized">
-                          Inactive
+                          Dừng bán
                         </span>
                     `
                   } else {
                     return `
                         <span class="badge rounded-pill bg-label-success text-capitalized">
-                          Active
+                          Đang bán
                         </span>
                     `
                   }
@@ -429,7 +454,7 @@
                         <a href="./edit-product.php?id=${row.id}" class="btn btn-sm btn-icon">
                           <i class="bi bi-pencil"></i>
                         </a>
-                        <button onclick="handleDelete(${row.id})" class="btn btn-sm btn-icon">
+                        <button onclick="handleUpdate(${row.id}, ${row.is_active})" class="btn btn-sm btn-icon">
                           <i class="bi bi-trash3-fill me-2"></i>
                         </button>
                       </div>

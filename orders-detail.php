@@ -344,7 +344,7 @@
     const urlParams = new URLSearchParams(window.location.search);
     const id = urlParams.get('id');
     if(!id) {
-      history.back()
+      window.location.href = 'page-error.php'
     }
     const showOrderDetail = () => {
       $.ajax({
@@ -360,27 +360,33 @@
           $('.orderId').html(data.id);
           $('#orderDate').html(data.order_date);
           let label = ''
+          let text = ''
           if (data.status == 'pending') {
             label = 'bg-label-warning'
+            text = 'Đang chờ'
           }
           if (data.status == 'processing') {
             label = 'bg-label-info'
+            text = 'Đang xử lý'
           }
           if (data.status == 'shipped') {
             label = 'bg-label-primary'
+            text = 'Đã vận chuyển'
           }
           if (data.status == 'delivered') {
             label = 'bg-label-success'
+            text = 'Đã nhận hàng'
             $('.btn-update').remove()
           }
           if (data.status == 'cancelled') {
             label = 'bg-label-danger'
+            text = 'Đã hủy đơn'
             $('.btn-update').remove()
           }
           $('.statusOrder').removeClass(function(index, className) {
             console.log(className);
             return (className.match(/\bbg-label\S+/g) || []).join(' ');
-          }).addClass(label).html(data.status);
+          }).addClass(label).html(text);
           let html ="";
           console.log(data.details);
           $('.tableProduct').empty();
@@ -390,9 +396,9 @@
                             <td colspan="2">
                                 <div class="d-flex justify-content-start align-items-center product-name"><div class="avatar-wrapper me-3"><div class="avatar rounded-2 bg-label-secondary"><img src="./server/${item.image_link}" alt="product-Wooden Chair" class="rounded-2"></div></div><div class="d-flex flex-column"><span class="text-nowrap text-heading fw-medium">${item.product_name}</span><small class="text-truncate d-none d-sm-block">Material: Wooden</small></div></div>
                             </td>
-                            <td>${item.product_price}<sup>đ</sup></td>
+                            <td>${convertToCurrency(item.product_price)}</td>
                             <td>${item.quantity}</td>
-                            <td>${item.product_price * item.quantity}<sup>đ</sup></td>
+                            <td>${convertToCurrency(item.product_price * item.quantity)}</td>
                           </tr>
                           `;
           })
@@ -403,7 +409,7 @@
           $('.userGmail').html(data.email);
           $('.userPhone').html(data.phone);
           $('.address').html(data.address);
-          $('.total').  html(data.total + '<sup>đ</sup>');
+          $('.total').html(convertToCurrency(data.total));
         }
       });
     }

@@ -669,7 +669,7 @@
                 $(this).html(custommer.first_name + ' ' + custommer.last_name)                
               })
               $('.total-order').html(custommer.total_orders)
-              $('.total-spent').html(custommer.total_amount_paid ? custommer.total_amount_paid : 0)
+              $('.total-spent').html(custommer.total_amount_paid ? convertToCurrency(custommer.total_amount_paid) : convertToCurrency(0))
 
               $('.custommer-phone').html(custommer.phone)
               $('.custommer-address').html(custommer.address)
@@ -745,7 +745,7 @@
                                 >${order.status}</span
                               >
                             </td>
-                            <td><span>${order.total}<sup>đ</sup></span></td>
+                            <td><span>${convertToCurrency(order.total)}</span></td>
                           </tr>
                 `
                 $('.orderHistory').append(html)

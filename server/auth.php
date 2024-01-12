@@ -17,7 +17,7 @@
             if ($password !== $confirmPassword) {
                 echo json_encode([
                     'status' => false,
-                    'message' => 'Password and Confirm Password do not match'
+                    'message' => 'Mật khẩu không khớp'
                 ]);
                 exit;
             }

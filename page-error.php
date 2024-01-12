@@ -41,9 +41,9 @@
     <img src="../../assets/img/misc-mask-light.png" alt="misc-error" class="scaleX-n1-rtl misc-bg d-none d-lg-inline-block" data-app-light-img="misc-mask-light.png" data-app-dark-img="misc-mask-dark.png">
     <div class="d-flex flex-column align-items-center">
       <img src="../../assets/img/404.png" alt="misc-error" class="misc-model img-fluid z-1" width="780">
-      <!-- <div style="z-index: 10; margin-top: 40px;">
-        <a href="index.html" class="btn btn-primary text-center my-4 waves-effect waves-light">Back to home</a>
-      </div> -->
+      <div style="z-index: 10; margin-top: 40px;">
+        <a href="index.php" class="btn btn-primary text-center my-4 waves-effect waves-light">Back to home</a>
+      </div>
     </div>
   </div>
 </div>

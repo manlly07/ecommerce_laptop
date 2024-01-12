@@ -259,7 +259,7 @@
                     </ul>
 
                     <div class="card mb-4">
-                    <h5 class="card-header px-4 fs-5 fw-bold">Change Password</h5>
+                    <h5 class="card-header px-4 fs-5 fw-bold">Thay đổi mật khẩu</h5>
                     <div class="card-body">
                         <form
                         id="formChangePassword"
@@ -267,14 +267,14 @@
                         onsubmit="return false"
                         novalidate="novalidate"
                         >
-                        <div class="alert alert-warning" role="alert">
+                        <!-- <div class="alert alert-warning" role="alert">
                             <h6 class="alert-heading mb-1 fs-6 text-warning fw-bold">
                             Ensure that these requirements are met
                             </h6>
                             <span class="fs-7 text-warning fw-medium"
                             >Minimum 8 characters long, uppercase &amp; symbol</span
                             >
-                        </div>
+                        </div> -->
                         <div class="row">
                             <div
                             class="mb-3 col-12 col-sm-6"
@@ -288,7 +288,7 @@
                                     name="newPassword"
                                     placeholder="············"
                                 />
-                                <label for="newPassword">New Password</label>
+                                <label for="newPassword">Mật khẩu mới</label>
                                 </div>
                                 <span class="input-group-text cursor-pointer"
                                 ><i class="bi bi-eye-slash-fill"></i
@@ -311,7 +311,7 @@
                                     placeholder="············"
                                 />
                                 <label for="confirmPassword"
-                                    >Confirm New Password</label
+                                    >Nhập lại mật khẩu mới</label
                                 >
                                 </div>
                                 <span class="input-group-text cursor-pointer"
@@ -330,7 +330,7 @@
                                 type="submit"
                                 class="btn btn-primary me-2"
                             >
-                                Change Password
+                                Xác nhận
                             </button>
                             </div>
                         </div>
@@ -462,7 +462,7 @@
                 $(this).html(custommer.first_name + ' ' + custommer.last_name)                
               })
               $('.total-order').html(custommer.total_orders)
-              $('.total-spent').html(custommer.total_amount_paid ? custommer.total_amount_paid : 0)
+              $('.total-spent').html(custommer.total_amount_paid ? convertToCurrency(custommer.total_amount_paid) : convertToCurrency(0))
 
               $('.custommer-phone').html(custommer.phone)
               $('.custommer-address').html(custommer.address)
@@ -578,9 +578,11 @@
               console.log(response);
               const {status, message} = JSON.parse(response)
               if(status) {
-                window.location.reload();
+                showAlert('success', message)
+                // window.location.reload();
               }else {
-                $('.error').html(message)
+                showAlert('danger', message)
+                // $('.error').html(message)
                 console.log(message);
               }
             }

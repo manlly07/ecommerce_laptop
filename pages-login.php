@@ -110,19 +110,23 @@
   
   <script src="assets/js/main.js"></script>
   <script>
-    
+    // $ tương ứng với document.querySelector
+    // on nghĩa là lắng nghe sự kiện
+    // submit: gửi lên server
     var userRole = checkAuth()
     console.log(userRole);
     $('#formLogin').on('submit', function(e) {
       e.preventDefault();
+
+      // chuyển số điện thoại và mật khẩu thành dạng chuỗi phone=0987654321&password=1234
       var form = $(this).serialize()
       $.ajax({
         url: 'http://localhost:3000/server/auth.php',
-        type: 'POST',
-        data: `${form}&action=login`,
+        type: 'POST',  // có  2 định dạng gửi xuống database. POST: mã hóa dữ liệu để gửi xuống. GET: 
+        data: `${form}&action=login`, // 
         success: (response) => {
           console.log(JSON.parse(response));
-          let data = JSON.parse(response)
+          let data = JSON.parse(response) // chuyển từ dạng chuỗi sang kí tự, mảng
           if (data.status) {
             if(!data.phone) {
               window.location.href = `./verify-phone.php?id=${data.id}`
